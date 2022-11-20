@@ -2023,27 +2023,21 @@
     },
     "assetCatalog": {
       "Cargo§Cattle-Hammer": {
-        "classification": "Cargo",
         "text": "This vehicle may consider its current gear to be any value, up to this vehicle’s max gear, during the wipe-out step, including during any collisions resolved during the wipe-out step."
       },
       "Cargo§Old Fashioned Corn Liquor": {
-        "classification": "Cargo",
         "text": "Whenever a vehicle within medium range of this vehicle gains one or more hazard tokens, it gains one additional hazard token."
       },
       "Cargo§Peach Moonshine": {
-        "classification": "Cargo",
         "text": "This vehicle’s molotov cocktail count as having an infinite number of ammo tokens."
       },
       "Cargo§Siphon Pump": {
-        "classification": "Cargo",
         "text": "At the start of this vehicle’s attack step, regardless of whether it is distracted, this vehicle may take up to one hazard token from each car within short range of it and place it on this vehicle."
       },
       "Cargo§Sourmash Jet Booster": {
-        "classification": "Cargo",
         "text": "At the end of this vehicle’s movement step, if this vehicle has 5 or more hazard tokens, it must immediately make a long straight maneuver forward."
       },
       "Injuries§Injuries": {
-        "classification": "Injuries",
         "allowed": {
           "classifications": [
             "Injury"
@@ -2051,7 +2045,6 @@
         }
       },
       "Injury§Audience Favorite": {
-        "classification": "Injury",
         "stats": {
           "Dents": {
             "value": 3
@@ -2072,8 +2065,7 @@
           "Keywords": [
             "This vehicle must pay 1 additional Audience Vote to re-spawn"
           ]
-        },
-        "classification": "Injury"
+        }
       },
       "Injury§Badass": {
         "stats": {
@@ -2081,11 +2073,9 @@
             "value": -6
           }
         },
-        "text": "This vehicle may immediately select and gain any one Badass perk",
-        "classification": "Injury"
+        "text": "This vehicle may immediately select and gain any one Badass perk"
       },
       "Injury§Bent Wheel Arch": {
-        "classification": "Injury",
         "stats": {
           "Dents": {
             "value": 1
@@ -2093,7 +2083,6 @@
         }
       },
       "Injury§Blown off": {
-        "classification": "Injury",
         "stats": {
           "Dents": {
             "value": 1
@@ -2106,8 +2095,7 @@
             "value": -2
           }
         },
-        "text": "This vehicle must always declare an evade during a collision",
-        "classification": "Injury"
+        "text": "This vehicle must always declare an evade during a collision"
       },
       "Injury§Crazed": {
         "stats": {
@@ -2115,8 +2103,7 @@
             "value": -2
           }
         },
-        "text": "This vehicle may not use shift results to cancel out spin or slide results",
-        "classification": "Injury"
+        "text": "This vehicle may not use shift results to cancel out spin or slide results"
       },
       "Injury§Deathwish": {
         "stats": {
@@ -2128,8 +2115,7 @@
           "Keywords": [
             "This vehicle cannot choose to shift down"
           ]
-        },
-        "classification": "Injury"
+        }
       },
       "Injury§Held Together By Rust": {
         "stats": {
@@ -2146,8 +2132,7 @@
           "classifications": [
             "when rolling on the Vehicle Wrecked table: apply the first result then roll again apply the second result also."
           ]
-        },
-        "classification": "Injury"
+        }
       },
       "Injury§Living Legend": {
         "stats": {
@@ -2155,8 +2140,7 @@
             "value": -11
           }
         },
-        "text": "During the Post-Game Sequence",
-        "classification": "Injury"
+        "text": "During the Post-Game Sequence"
       },
       "Injury§Old War Wound": {
         "stats": {
@@ -2176,11 +2160,9 @@
           "items": [
             "this vehicle cannot take part in this game"
           ]
-        },
-        "classification": "Injury"
+        }
       },
       "Injury§Popped it back in!": {
-        "classification": "Injury",
         "stats": {
           "Dents": {
             "value": -1
@@ -2193,8 +2175,7 @@
             "value": -3
           }
         },
-        "text": "This vehicle wipes out at 5 hazard tokens instead of 6",
-        "classification": "Injury"
+        "text": "This vehicle wipes out at 5 hazard tokens instead of 6"
       },
       "Injury§Twitch": {
         "stats": {
@@ -2202,11 +2183,9 @@
             "value": -4
           }
         },
-        "text": "At the start of the game",
-        "classification": "Injury"
+        "text": "At the start of the game"
       },
       "Injury§Upholstery Ruined": {
-        "classification": "Injury",
         "stats": {
           "Crew": {
             "statType": "numeric",
@@ -2219,7 +2198,6 @@
         }
       },
       "Injury§Weakened chassis": {
-        "classification": "Injury",
         "text": "+1 Hazard Token when involved in a Collision.",
         "stats": {
           "Dents": {
@@ -2228,7 +2206,6 @@
         }
       },
       "Injury§Wrecked Pinion": {
-        "classification": "Injury",
         "stats": {
           "Dents": {
             "value": 1
@@ -2236,7 +2213,6 @@
         }
       },
       "Perk—Aggression§Battlehammer": {
-        "classification": "Perk—Aggression",
         "stats": {
           "Cost": {
             "value": 4,
@@ -2246,7 +2222,6 @@
         "text": "When making a smash attack, this vehicle gains +1 attack dice for each hazard token it currently has."
       },
       "Perk—Aggression§Boarding Party": {
-        "classification": "Perk—Aggression",
         "stats": {
           "Cost": {
             "value": 2,
@@ -2256,7 +2231,6 @@
         "text": "This vehicle ignores the distracted rule. Crew members in this vehicle may attack during the attack step even if the vehicle is distracted."
       },
       "Perk—Aggression§Double-Barreled": {
-        "classification": "Perk—Aggression",
         "stats": {
           "Cost": {
             "value": 2,
@@ -2266,7 +2240,6 @@
         "text": "During the attack step, up to 3 weapons with the Crew Fired special rule may gain a +1 bonus to hit."
       },
       "Perk—Aggression§Grinderman": {
-        "classification": "Perk—Aggression",
         "stats": {
           "Cost": {
             "value": 5,
@@ -2276,7 +2249,6 @@
         "text": "Before this Vehicle rolls its attack dice in a smash attack, it may choose to add hazard tokens to the target vehicle for each damage it inflicts, instead of removing hull points."
       },
       "Perk—Aggression§Murder Tractor": {
-        "classification": "Perk—Aggression",
         "stats": {
           "Cost": {
             "value": 5,
@@ -2286,7 +2258,6 @@
         "text": "This vehicle may make piledriver attacks, like a War Rig."
       },
       "Perk—Aggression§Terrifying Lunatic": {
-        "classification": "Perk—Aggression",
         "stats": {
           "Cost": {
             "value": 5,
@@ -2296,7 +2267,6 @@
         "text": "Whenever a vehicle controlled by another player ends its movement step within short range of this vehicle, the active vehicle gains a hazard token."
       },
       "Perk—Badass§Bullet-time": {
-        "classification": "Perk—Badass",
         "stats": {
           "Cost": {
             "value": 3,
@@ -2306,7 +2276,6 @@
         "text": "If this vehicle resolves a slide result during its movement step, this may select one of its weapons to count as turret-mounted for the rest of the activation."
       },
       "Perk—Badass§Cover Me": {
-        "classification": "Perk—Badass",
         "stats": {
           "Cost": {
             "value": 2,
@@ -2316,7 +2285,6 @@
         "text": "Once during its activation this vehicle may remove a hazard token and place it on another friendly vehicle within double range."
       },
       "Perk—Badass§Crowd Pleaser": {
-        "classification": "Perk—Badass",
         "stats": {
           "Cost": {
             "value": 1,
@@ -2326,7 +2294,6 @@
         "text": "If this vehicle wipes out, gain +1 audience vote."
       },
       "Perk—Badass§Madman": {
-        "classification": "Perk—Badass",
         "stats": {
           "Cost": {
             "value": 3,
@@ -2336,7 +2303,6 @@
         "text": "At the end of this vehicle’s Movement Step, if it has 4 or more hazard tokens, it may remove a hazard token and place it on another vehicle within medium range."
       },
       "Perk—Badass§Powder Keg": {
-        "classification": "Perk—Badass",
         "stats": {
           "Cost": {
             "value": 1,
@@ -2346,7 +2312,6 @@
         "text": "This vehicle may add +1 to its explosion check. Treat this vehicle as one weight-class heavier when it explodes.\n\nNote: this bonus does apply during resolution of the FIREWORKS perk."
       },
       "Perk—Badass§Road Warrior": {
-        "classification": "Perk—Badass",
         "stats": {
           "Cost": {
             "value": 2,
@@ -2356,7 +2321,6 @@
         "text": "Once per activation, if this vehicle has successfully causes one or more hits on an enemy vehicle at any point during this activation, this vehicle may remove a single hazard token at the end of its attack step."
       },
       "Perk—Built§Barrel Roll": {
-        "classification": "Perk—Built",
         "stats": {
           "Cost": {
             "value": 2,
@@ -2366,7 +2330,6 @@
         "text": "When this vehicle suffers a flip, it may choose to place the flip template touching the centre of either side edge or the rear edge of this vehicle, and perpendicular to that edge, instead of touching the front edge as normal."
       },
       "Perk—Built§Bruiser": {
-        "classification": "Perk—Built",
         "stats": {
           "Cost": {
             "value": 4,
@@ -2376,7 +2339,6 @@
         "text": "In a collision involving this vehicle, if this vehicle declares a reaction other than evade against an enemy vehicle, the enemy vehicle immediately gains one hazard token."
       },
       "Perk—Built§Crusher": {
-        "classification": "Perk—Built",
         "stats": {
           "Cost": {
             "value": 7,
@@ -2406,7 +2368,6 @@
         }
       },
       "Perk—Built§Dead Weight": {
-        "classification": "Perk—Built",
         "stats": {
           "Cost": {
             "value": 2,
@@ -2416,7 +2377,6 @@
         "text": "During this vehicle’s attack step, this vehicle may gain 2 hazards to count as one weight-class heavier (unless already heavyweight) until the start of its next activation."
       },
       "Perk—Built§Feel No Pain": {
-        "classification": "Perk—Built",
         "stats": {
           "Cost": {
             "value": 8,
@@ -2426,7 +2386,6 @@
         "text": "During an enemy vehicle’s attack step, after an attacker has rolled all of their attack dice against this vehicle, if the attacks causes a total of 2 or fewer un-canceled hits, cancel all remaining hits."
       },
       "Perk—Built§Splashback": {
-        "classification": "Perk—Built",
         "stats": {
           "Cost": {
             "value": 5,
@@ -2436,7 +2395,6 @@
         "text": "Once per step, when this vehicle loses one or more hull points, make a 1D6 attack against each vehicle within medium range at end of that step."
       },
       "Perk—Daring§Chrome-Whisperer": {
-        "classification": "Perk—Daring",
         "stats": {
           "Cost": {
             "value": 2,
@@ -2446,7 +2404,6 @@
         "text": "This vehicle may *push it* any number of times during a single skid check, gaining 1 hazard token each time."
       },
       "Perk—Daring§Evasive": {
-        "classification": "Perk—Daring",
         "stats": {
           "Cost": {
             "value": 5,
@@ -2456,7 +2413,6 @@
         "text": "Before making an evade roll, this vehicle may gain any number of hazard tokens to add +1 to each of their evade dice for each hazard token gained. A roll of a ‘1’ on an evade dice always counts as a failure."
       },
       "Perk—Daring§Handbrake Artist": {
-        "classification": "Perk—Daring",
         "stats": {
           "Cost": {
             "value": 3,
@@ -2466,7 +2422,6 @@
         "text": "When applying a spin result, this vehicle may choose to face any direction."
       },
       "Perk—Daring§Powerslide": {
-        "classification": "Perk—Daring",
         "stats": {
           "Cost": {
             "value": 5,
@@ -2476,7 +2431,6 @@
         "text": "This vehicle may use any template except the long straight template instead of the slide template when applying a slide result. As with the movement step 1.1, you must use the first maneuver template you touch. Treat the selected maneuver template as a slide template for purposes of finding the vehicle’s final position."
       },
       "Perk—Daring§Slippery": {
-        "classification": "Perk—Daring",
         "stats": {
           "Cost": {
             "value": 3,
@@ -2486,7 +2440,6 @@
         "text": "Vehicles making a smash attack targeting this vehicle suffer a penalty of -2 attack dice."
       },
       "Perk—Daring§Stunt Driver": {
-        "classification": "Perk—Daring",
         "rules": {
           "This perk may only be taken on a lightweight or middleweight vehicle type with a base handling value of 3 or more.": {
             "evals": [
@@ -2532,7 +2485,6 @@
         "text": "This vehicle may choose to ignore any number of obstructions during its movement step. After any movement step in which this vehicle chooses to ignore any obstruction using this ability, this vehicle immediately gains 3 hazard tokens."
       },
       "Perk—Horror§Angel of Death": {
-        "classification": "Perk—Horror",
         "stats": {
           "Cost": {
             "value": 4,
@@ -2542,7 +2494,6 @@
         "text": "Before making an attack, this vehicle may elect to suffer up to three damage to add that many attack dice to a single weapon used in this attack."
       },
       "Perk—Horror§Ecstatic Visions": {
-        "classification": "Perk—Horror",
         "stats": {
           "Cost": {
             "value": 1,
@@ -2552,7 +2503,6 @@
         "text": "Once per activation, at the start of this vehicle’s activation, this vehicle may elect to to gain up to 3 hazard tokens to discard one hazard token from a friendly vehicle for each hazard token gained."
       },
       "Perk—Horror§Highway to Hell": {
-        "classification": "Perk—Horror",
         "stats": {
           "Cost": {
             "value": 2,
@@ -2562,7 +2512,6 @@
         "text": "At the end of its movement step, if this vehicle selected a straight template, this vehicle may suffer 2 damage. This damage counts as having the ‘Fire’ rule. If any hull points are removed by this effect, this vehicle may leave its movement template (ignoring any slide template) in play as a Napalm dropped weapon template. Remove this template at the start of this vehicle’s next activation."
       },
       "Perk—Horror§Purifying Flames": {
-        "classification": "Perk—Horror",
         "stats": {
           "Cost": {
             "value": 1,
@@ -2572,7 +2521,6 @@
         "text": "Once per activation, at the start of this vehicle’s activation, this vehicle may suffer up to 3 damage to repair one hull point on a friendly vehicle for each hull point removed by this effect. This damage counts as having the *Fire* rule. This effect may not be used to raise a vehicle above its hull value."
       },
       "Perk—Horror§Sympathy for the Devil": {
-        "classification": "Perk—Horror",
         "stats": {
           "Cost": {
             "value": 1,
@@ -2582,7 +2530,6 @@
         "text": "When this vehicle makes an evade check, it’s controller may select a friendly vehicle within medium range. Add the current gear of the selected vehicle to this vehicle’s current gear for the purposes of this evade check. Both the selected vehicle and this vehicle suffer any unsaved damage from this attack, including any additional effects."
       },
       "Perk—Horror§Violent Manifestation": {
-        "classification": "Perk—Horror",
         "stats": {
           "Cost": {
             "value": 3,
@@ -2592,7 +2539,6 @@
         "text": "When this vehicle is respawned: make an immediate attack (with attack dice based on the weight of the respawned vehicle) against every other vehicle within medium range. This explosion counts as having both the *Blast* and *Fire* rules."
       },
       "Perk—Military§Dead-Eye": {
-        "classification": "Perk—Military",
         "stats": {
           "Cost": {
             "value": 2,
@@ -2602,7 +2548,6 @@
         "text": "During this vehicle’s attack step this vehicle may gain a +1 bonus to hit if making a shooting attack at a target within double range and not within medium range. \n\nCritical hits still occur only on the natural roll of a 6."
       },
       "Perk—Military§Fully Loaded": {
-        "classification": "Perk—Military",
         "stats": {
           "Cost": {
             "value": 2,
@@ -2612,7 +2557,6 @@
         "text": "If a shooting weapon on this vehicle has 3 or more ammo tokens remaining before discarding an ammo token to attack, that weapon gains +1 attack dice."
       },
       "Perk—Military§Headshot": {
-        "classification": "Perk—Military",
         "stats": {
           "Cost": {
             "value": 4,
@@ -2622,7 +2566,6 @@
         "text": "When making a shooting attack, this vehicle’s critical hits inflict 3 hits instead of the normal 2 hits."
       },
       "Perk—Military§Loader": {
-        "classification": "Perk—Military",
         "stats": {
           "Cost": {
             "value": 2,
@@ -2632,7 +2575,6 @@
         "text": "At the start of its attack step, this vehicle may temporarily reduce its crew value by one, once, until the end of the attack step, to gain +1 bonus to hit with a single weapon. Critical hits still occur only on the natural roll of a 6."
       },
       "Perk—Military§Rapid Fire": {
-        "classification": "Perk—Military",
         "stats": {
           "Cost": {
             "value": 2,
@@ -2642,7 +2584,6 @@
         "text": "Once per round, after attacking with a weapon, this vehicle may resolve an additional attack step in which it may only attack with that weapon."
       },
       "Perk—Military§Return Fire": {
-        "classification": "Perk—Military",
         "stats": {
           "Cost": {
             "value": 5,
@@ -2652,7 +2593,6 @@
         "text": "Once per gear phase, if this vehicle is the target of a shooting attack, this vehicle may take 2 hazard tokens to immediately attack, as if it was this vehicle’s attack step."
       },
       "Perk—Precision§Easy Rider": {
-        "classification": "Perk—Precision",
         "stats": {
           "Cost": {
             "value": 5,
@@ -2662,7 +2602,6 @@
         "text": "Once per turn, this vehicle may discard one rolled skid die result before applying the results."
       },
       "Perk—Precision§Expertise": {
-        "classification": "Perk—Precision",
         "stats": {
           "Cost": {
             "value": 3,
@@ -2678,7 +2617,6 @@
         "text": "This vehicle adds +1 to its handling value."
       },
       "Perk—Precision§Mister Fahrenheit": {
-        "classification": "Perk—Precision",
         "stats": {
           "Cost": {
             "value": 2,
@@ -2688,7 +2626,6 @@
         "text": "This vehicle cannot gain more than 2 hazards tokens from collisions during a single activation."
       },
       "Perk—Precision§Moment of Glory": {
-        "classification": "Perk—Precision",
         "stats": {
           "Cost": {
             "value": 2,
@@ -2698,7 +2635,6 @@
         "text": "Once per game, after rolling the skid dice, but before resolving the results, this vehicle may immediately change any number of skid dice to any results they choose."
       },
       "Perk—Precision§Restraint": {
-        "classification": "Perk—Precision",
         "stats": {
           "Cost": {
             "value": 2,
@@ -2708,7 +2644,6 @@
         "text": "When this vehicle would gain a hazard token for shifting down a gear, this vehicle may remove a hazard token instead."
       },
       "Perk—Precision§Trick Driving": {
-        "classification": "Perk—Precision",
         "stats": {
           "Cost": {
             "value": 3,
@@ -2718,7 +2653,6 @@
         "text": "This vehicle may select a movement template as if its current gear was one higher or one lower."
       },
       "Perk—Pursuit§On Your Tail": {
-        "classification": "Perk—Pursuit",
         "stats": {
           "Cost": {
             "value": 2,
@@ -2728,7 +2662,6 @@
         "text": "When an enemy vehicle resolves a spin or slide move that ends within short range of this vehicle, that vehicle gains +1 hazard token."
       },
       "Perk—Pursuit§Out Run": {
-        "classification": "Perk—Pursuit",
         "stats": {
           "Cost": {
             "value": 2,
@@ -2738,7 +2671,6 @@
         "text": "At the start of this vehicle’s attack step, all vehicles within short range of this vehicle and in a current, lower gear than this vehicle gain +1 hazard token."
       },
       "Perk—Pursuit§PIT": {
-        "classification": "Perk—Pursuit",
         "stats": {
           "Cost": {
             "value": 4,
@@ -2748,7 +2680,6 @@
         "text": "During this vehicle’s activation, if this vehicle is involved in a non-head-on collision with an enemy vehicle, it may declare a *Pursuit Intervention Technique* (PIT) as its reaction, targeting the enemy vehicle, instead of declaring a smash attack or an evade. If this vehicle declares a PIT, it may select any movement template the target vehicle considers hazardous in its current gear. Immediately after the resolution of this collision, the target vehicle must make a forced move directly forward using the selected movement template."
       },
       "Perk—Pursuit§Schadenfreude": {
-        "classification": "Perk—Pursuit",
         "stats": {
           "Cost": {
             "value": 2,
@@ -2758,7 +2689,6 @@
         "text": "If another vehicle within short range of this vehicle resolves a wipe out, (either before or after any flip), remove all hazard tokens from this vehicle."
       },
       "Perk—Pursuit§Taunt": {
-        "classification": "Perk—Pursuit",
         "stats": {
           "Cost": {
             "value": 2,
@@ -2768,7 +2698,6 @@
         "text": "At the start of this vehicle’s attack step, roll a skid die. If you roll something other than a SHIFT result, you may place that skid die result onto the dashboard of a target vehicle within short range. This skid die result must be resolved during that vehicle’s next skid check, and may not be re-rolled."
       },
       "Perk—Pursuit§Unnerving Eye Contact": {
-        "classification": "Perk—Pursuit",
         "stats": {
           "Cost": {
             "value": 5,
@@ -2778,7 +2707,6 @@
         "text": "Enemy vehicles within short range of this vehicle may not use shift results to remove hazard tokens from their dashboard."
       },
       "Perk—Reckless§Beerseeker": {
-        "classification": "Perk—Reckless",
         "stats": {
           "Cost": {
             "value": 5,
@@ -2788,7 +2716,6 @@
         "text": "When this vehicle would suffer damage outside of its activation, reduce that damage by 1, to a minimum of 1."
       },
       "Perk—Reckless§Bigger’n You": {
-        "classification": "Perk—Reckless",
         "stats": {
           "Cost": {
             "value": 4,
@@ -2798,7 +2725,6 @@
         "text": "Double any smash attack bonuses or penalties resulting from weight differences in collisions involving this vehicle."
       },
       "Perk—Reckless§Don’t Come Knocking": {
-        "classification": "Perk—Reckless",
         "stats": {
           "Cost": {
             "value": 4,
@@ -2808,7 +2734,6 @@
         "text": "At the start of this vehicle’s activation, it may gain 4 hazard tokens. If it does, this vehicle cannot gain or lose any hazard tokens by any means until the start of its next activation."
       },
       "Perk—Reckless§Drive Angry": {
-        "classification": "Perk—Reckless",
         "stats": {
           "Cost": {
             "value": 1,
@@ -2818,7 +2743,6 @@
         "text": "Gain 1 hazard token at the start of each activation."
       },
       "Perk—Reckless§Hog Wild": {
-        "classification": "Perk—Reckless",
         "stats": {
           "Cost": {
             "value": 2,
@@ -2828,7 +2752,6 @@
         "text": "This vehicle gains +2 smash attack dice during any collision resolved during a wipe out step."
       },
       "Perk—Reckless§In For a Penny": {
-        "classification": "Perk—Reckless",
         "stats": {
           "Cost": {
             "value": 2,
@@ -2838,7 +2761,6 @@
         "text": "If this vehicle has gained six or more hazard tokens during this activation, it may double the attack dice of any smash attack for this activation only."
       },
       "Perk—Speed§Downshift": {
-        "classification": "Perk—Speed",
         "stats": {
           "Cost": {
             "value": 3,
@@ -2848,7 +2770,6 @@
         "text": "At the end of a movement step in which this vehicle changed down one or more gears, this vehicle may immediately make a forced short straight movement forward."
       },
       "Perk—Speed§Hell For Leather": {
-        "classification": "Perk—Speed",
         "stats": {
           "Cost": {
             "value": 5,
@@ -2858,7 +2779,6 @@
         "text": "This vehicle considers long straight to he permitted in any gear. The long straight is not considered either hazardous or trivial in any gear."
       },
       "Perk—Speed§Hot Start": {
-        "classification": "Perk—Speed",
         "stats": {
           "Cost": {
             "value": 1,
@@ -2868,7 +2788,6 @@
         "text": "Roll a D6 at the start of the game This vehicle starts the game in that gear. Re-roll if this is above the vehicles max gear."
       },
       "Perk—Speed§Overload": {
-        "classification": "Perk—Speed",
         "stats": {
           "Cost": {
             "value": 2,
@@ -2878,7 +2797,6 @@
         "text": "When making a skid check, this vehicle may roll one additional skid die. If it does, it must change up at least one gear or gain a hazard token."
       },
       "Perk—Speed§Slipstream": {
-        "classification": "Perk—Speed",
         "stats": {
           "Cost": {
             "value": 2,
@@ -2888,7 +2806,6 @@
         "text": "If this vehicle is involved in a tailgate collision during its activation, this vehicle may declare a slipstream reaction. If they do, they other vehicle may not declare a reaction. If this vehicle declares a slipstream reaction: this vehicle may change up or down one gear and gains a hazard token. Neither vehicle gains hazard tokens as a result of this collision."
       },
       "Perk—Speed§Time Extended!": {
-        "classification": "Perk—Speed",
         "stats": {
           "Cost": {
             "value": 3,
@@ -2898,7 +2815,6 @@
         "text": "At the end of an activation in which this vehicle passes a gate, before checking for wipeouts, this vehicle may immediately remove any number of hazard tokens."
       },
       "Perk—Technology§Eureka!": {
-        "classification": "Perk—Technology",
         "stats": {
           "Cost": {
             "value": 4,
@@ -2908,7 +2824,6 @@
         "text": "Once per game, at the start of its attack step, this vehicle’s controller may declare any weapon that this vehicle has not attacked with yet this game. This vehicle counts as being armed with the declared weapon, on a facing of their choice, for the next attack only."
       },
       "Perk—Technology§Gyroscope": {
-        "classification": "Perk—Technology",
         "stats": {
           "Cost": {
             "value": 1,
@@ -2918,7 +2833,6 @@
         "text": "At the start of each game, this vehicle gains a random DARING PERK. This perk is lost at the end of the game."
       },
       "Perk—Technology§Mobile Mechanic": {
-        "classification": "Perk—Technology",
         "stats": {
           "Cost": {
             "value": 3,
@@ -2928,7 +2842,6 @@
         "text": "Once per activation, at the start of its attack step, this vehicle may temporarily reduce its crew value by one, once, until the end of the attack step, to perform a field repair. If it does, this vehicle gains 1 hull point, which may not take its hull points above the vehicle’s hull value."
       },
       "Perk—Technology§Rocket Thrusters": {
-        "classification": "Perk—Technology",
         "stats": {
           "Cost": {
             "value": 1,
@@ -2938,7 +2851,6 @@
         "text": "When this vehicle is moved as part of a flip, it may choose to use the long straight, veer or gentle templates instead of the medium straight template."
       },
       "Perk—Technology§Satellite Navigation": {
-        "classification": "Perk—Technology",
         "stats": {
           "Cost": {
             "value": 2,
@@ -2948,7 +2860,6 @@
         "text": "When this vehicle resolves its skid dice, this vehicle’s controller may set aside one shift result. This vehicle may have any number of shift results set aside. Any vehicle in this team may use these set aside shift results during a later movement step, as if they had rolled them in that movement step."
       },
       "Perk—Technology§Whizbang": {
-        "classification": "Perk—Technology",
         "stats": {
           "Cost": {
             "value": 1,
@@ -2958,7 +2869,6 @@
         "text": "At the start of each game, this vehicle gains a random SPEED PERK. This perk is lost at the end of the game."
       },
       "Perk—Tuning§Delicate Touch": {
-        "classification": "Perk—Tuning",
         "stats": {
           "Cost": {
             "value": 3,
@@ -2968,7 +2878,6 @@
         "text": "This vehicle ignores the hazard icons on maneuver templates."
       },
       "Perk—Tuning§Fenderkiss": {
-        "classification": "Perk—Tuning",
         "stats": {
           "Cost": {
             "value": 2,
@@ -2978,7 +2887,6 @@
         "text": "When this vehicle makes a smash attack, this vehicle suffers a penalty of -2 attack dice. Vehicles making a smash attack targeting this vehicle suffer a penalty of -2 attack dice."
       },
       "Perk—Tuning§Momentum": {
-        "classification": "Perk—Tuning",
         "stats": {
           "Cost": {
             "value": 3,
@@ -2988,7 +2896,6 @@
         "text": "When resolving skid dice, this vehicle may set aside a Slide or Spin result to re-roll a skid dice. The effect may be used multiple times.  Set aside results must be resolved."
       },
       "Perk—Tuning§Purring": {
-        "classification": "Perk—Tuning",
         "stats": {
           "Cost": {
             "value": 6,
@@ -2998,7 +2905,6 @@
         "text": "This vehicle does not receive more than 1 hazard token from Spin results each turn. This vehicle does not receive more than 1 hazard token from Slide results each turn. This vehicle does not receive more than 1 hazard token from Hazard results each turn."
       },
       "Perk—Tuning§Rear Drive": {
-        "classification": "Perk—Tuning",
         "stats": {
           "Cost": {
             "value": 2,
@@ -3008,7 +2914,6 @@
         "text": "This vehicle may pivot about the centre of its front edge, rather than the centre of the vehicle, when resolving Spin results."
       },
       "Perk—Tuning§Skiing": {
-        "classification": "Perk—Tuning",
         "stats": {
           "Cost": {
             "value": 6,
@@ -3030,7 +2935,6 @@
           "Type": "conceptual",
           "Unique": true
         },
-        "classification": "Roster",
         "stats": {
           "Cost": {
             "label": "Cans",
@@ -4084,7 +3988,6 @@
         }
       },
       "Special Rule§360-degree": {
-        "classification": "Special Rule",
         "keywords": {
           "Keywords": [
             "Weapon Rule"
@@ -4093,7 +3996,6 @@
         "text": "This weapon has a 360° arc of fire."
       },
       "Special Rule§Airborne": {
-        "classification": "Special Rule",
         "keywords": {
           "Keywords": [
             "Vehicle Rule"
@@ -4102,7 +4004,6 @@
         "text": "This Vehicle ignores obstructions, dropped weapons and terrain at all times; except that this vehicle may target other vehicles in its attack step. Other vehicles ignore this vehicle at all times, except that other vehicles may target this vehicle during their attack steps. This vehicle cannot be involved in collisions."
       },
       "Special Rule§Airwolf": {
-        "classification": "Special Rule",
         "keywords": {
           "Keywords": [
             "Vehicle Rule"
@@ -4111,7 +4012,6 @@
         "text": "At the start of this vehicle’s activation, this vehicle may make a single pivot about its centre point, up to 90 degrees."
       },
       "Special Rule§All Terrain": {
-        "classification": "Special Rule",
         "keywords": {
           "Keywords": [
             "Vehicle Rule"
@@ -4120,7 +4020,6 @@
         "text": "This vehicle may ignore the penalties for rough and treacherous surfaces."
       },
       "Special Rule§Articulated": {
-        "classification": "Special Rule",
         "keywords": {
           "Keywords": [
             "Vehicle Rule"
@@ -4135,7 +4034,6 @@
         }
       },
       "Special Rule§Blast": {
-        "classification": "Special Rule",
         "keywords": {
           "Keywords": [
             "Weapon Rule"
@@ -4144,7 +4042,6 @@
         "text": "For every un-canceled hit, the target immediately gains one hazard token."
       },
       "Special Rule§Blitz": {
-        "classification": "Special Rule",
         "keywords": {
           "Keywords": [
             "Weapon Rule"
@@ -4153,7 +4050,6 @@
         "text": "During its attack step, this weapon’s vehicle may attack any number of times, up to its remaining ammo or crew stat, whichever is lesser."
       },
       "Special Rule§Bombs Away": {
-        "classification": "Special Rule",
         "keywords": {
           "Keywords": [
             "Vehicle Rule"
@@ -4187,7 +4083,6 @@
         }
       },
       "Special Rule§Crew Fired": {
-        "classification": "Special Rule",
         "keywords": {
           "Keywords": [
             "Weapon Rule"
@@ -4196,7 +4091,6 @@
         "text": "360° arc of fire."
       },
       "Special Rule§Downers": {
-        "classification": "Special Rule",
         "keywords": {
           "Keywords": [
             "Vehicle Rule"
@@ -4205,7 +4099,6 @@
         "text": "When this vehicle declares a SMASH ATTACK during its activation remove 2 hazard tokens from the target vehicle, and then reduce the target vehicle’s crew value by 1 until the end of the phase."
       },
       "Special Rule§Electrical": {
-        "classification": "Special Rule",
         "keywords": {
           "Keywords": [
             "Weapon Rule"
@@ -4214,7 +4107,6 @@
         "text": "The book doesn’t seem to say anything about this."
       },
       "Special Rule§Fire": {
-        "classification": "Special Rule",
         "keywords": {
           "Keywords": [
             "Weapon Rule"
@@ -4223,7 +4115,6 @@
         "text": "If this weapon deals at least one damage to a target that isn’t *On Fire*, that target is set On Fire."
       },
       "Special Rule§Full Throttle": {
-        "classification": "Special Rule",
         "keywords": {
           "Keywords": [
             "Vehicle Rule"
@@ -4232,7 +4123,6 @@
         "text": "This vehicle considers the long straight maneuver template to be permitted in any gear. The long straight is not considered either hazardous or trivial in any gear."
       },
       "Special Rule§Indirect": {
-        "classification": "Special Rule",
         "keywords": {
           "Keywords": [
             "Weapon Rule"
@@ -4241,7 +4131,6 @@
         "text": "When making a shooting attack, this weapon’s vehicle may ignore Terrain and Cover during that attack."
       },
       "Special Rule§Infuriating Jingle": {
-        "classification": "Special Rule",
         "keywords": {
           "Keywords": [
             "Vehicle Rule"
@@ -4250,7 +4139,6 @@
         "text": "Vehicles that target this vehicle with a SMASH ATTACK during a collision receive no hazard tokens during step 6 of the collision resolution."
       },
       "Special Rule§Jet Engine": {
-        "classification": "Special Rule",
         "keywords": {
           "Keywords": [
             "Vehicle Rule"
@@ -4259,7 +4147,6 @@
         "text": "A vehicle with a jet engine counts as having a Nitro Booster with infinite ammo tokens. This vehicle automatically explodes when it is wrecked. A vehicle with a jet engine must use the Nitro Booster every time it activates."
       },
       "Special Rule§Piledriver": {
-        "classification": "Special Rule",
         "keywords": {
           "Keywords": [
             "Vehicle Rule"
@@ -4268,7 +4155,6 @@
         "text": "During this vehicle’s Movement Step, when the vehicle collides with another vehicle of a lighter weight-class, it may declare a Piledriver Attack as its reaction. See War Rig rules."
       },
       "Special Rule§Pivot": {
-        "classification": "Special Rule",
         "keywords": {
           "Keywords": [
             "Vehicle Rule"
@@ -4277,7 +4163,6 @@
         "text": "At the start of this vehicle’s activation, if  this vehicle’s current Gear is 1, this vehicle may make a pivot about its centre to face any direction. This pivot cannot cause a Collision and cannot leave this vehicle touching an obstruction."
       },
       "Special Rule§Ponderous": {
-        "classification": "Special Rule",
         "keywords": {
           "Keywords": [
             "Vehicle Rule"
@@ -4286,7 +4171,6 @@
         "text": "Hard to maneuver but also hard to shift. See War Rig rules."
       },
       "Special Rule§Restricted": {
-        "classification": "Special Rule",
         "keywords": {
           "Keywords": [
             "Vehicle Rule"
@@ -4295,7 +4179,6 @@
         "text": "If playing with Sponsor rules, this vehicle can only be purchased by a team with the appropriate sponsor."
       },
       "Special Rule§Slip Away": {
-        "classification": "Special Rule",
         "keywords": {
           "Keywords": [
             "Vehicle Rule"
@@ -4304,7 +4187,6 @@
         "text": "If this vehicle is targeted with a tailgate, T-bone or sideswipe smash attack, and this vehicle declares evade as its reaction, this vehicle may perform a free activation immediately after the active vehicle completes its activation. This free activation does not count as the vehicle’s activation this gear phase."
       },
       "Special Rule§Splash": {
-        "classification": "Special Rule",
         "keywords": {
           "Keywords": [
             "Weapon Rule"
@@ -4313,7 +4195,6 @@
         "text": "When this weapon is used to attack, resolve a separate attack targeting each vehicle, including allies, under its shooting template."
       },
       "Special Rule§Turret": {
-        "classification": "Special Rule",
         "keywords": {
           "Keywords": [
             "Vehicle Rule"
@@ -4394,7 +4275,6 @@
         }
       },
       "Special Rule§Up and Over": {
-        "classification": "Special Rule",
         "keywords": {
           "Keywords": [
             "Vehicle Rule"
@@ -4403,7 +4283,6 @@
         "text": "After resolving a collision with an obstruction of a lower weight class during movement step 1.7, this vehicle may declare a Up and Over to ignore the obstruction for the remainder of its movement step, as it drives right over the top of it. This vehicle cannot declare a Up and Over against another vehicle with the Up and Over special rule."
       },
       "Special Rule§Uppers": {
-        "classification": "Special Rule",
         "keywords": {
           "Keywords": [
             "Vehicle Rule"
@@ -4412,48 +4291,37 @@
         "text": "If this vehicle is involved in a collision in which both vehicles declare an evade, both vehicles must declare a single stick-shift up immediately after the collision is resolved (gaining a hazard token as per the normal stick-shift rules). If either vehicle is already at its max gear, the stick-shift does not affect that vehicle’s current gear, but that vehicle does gain a hazard token."
       },
       "Sponsor Perk§All the Toys": {
-        "classification": "Sponsor Perk",
         "text": "Whenever a vehicle in this team attacks with a named weapon that has not been attacked with by any vehicle during this game yet this team gains +1 audience vote."
       },
       "Sponsor Perk§As Straight as I’m Able": {
-        "classification": "Sponsor Perk",
         "text": "This vehicle does not gain a hazard from the articulated rule if it selects a template that is not a straight."
       },
       "Sponsor Perk§At the Crossroads": {
-        "classification": "Sponsor Perk",
         "text": "This team may choose to pay only 1 vote to respawn a vehicle. If they do, the respawned car must gain the *Ghost Rider* special rule."
       },
       "Sponsor Perk§Bogey at 12 O‘Clock": {
-        "classification": "Sponsor Perk",
         "text": "At the end of this vehicle’s movement step, if the Bogey is in this vehicle’s front arc of fire, in line of sight, and further than double range away, this vehicle may immediately resolve another movement step."
       },
       "Sponsor Perk§Burning Man": {
-        "classification": "Sponsor Perk",
         "text": "If this vehicle is On Fire it gains +1 to all evade dice."
       },
       "Sponsor Perk§Crew Quarters": {
-        "classification": "Sponsor Perk",
         "text": "This team may purchase the Extra Crewmember upgrade at half the listed cost.",
         "rules": {}
       },
       "Sponsor Perk§Cult of Flame": {
-        "classification": "Sponsor Perk",
         "text": "At the end of the gear phase, if there are more enemy vehicles on fire than there are friendly vehicles on fire, or all enemy vehicles are on fire, this team gains 1 audience vote for each friendly vehicle that is On Fire."
       },
       "Sponsor Perk§Cult of Speed": {
-        "classification": "Sponsor Perk",
         "text": "If this vehicle selects the long straight movement template (including when using the Nitro Booster upgrade) during gear phase 1, 2, or 3, this vehicle’s controller gains 1 audience vote."
       },
       "Sponsor Perk§Dizzy": {
-        "classification": "Sponsor Perk",
         "text": "This vehicle may resolve any number of spin results separately during its movement step, one after another. This can allow this vehicle to spin more than 90 degrees during its movement step."
       },
       "Sponsor Perk§Dutch Courage": {
-        "classification": "Sponsor Perk",
         "text": "Vehicles in this team only wipe out when they have 8 hazards."
       },
       "Sponsor Perk§Dynamo": {
-        "classification": "Sponsor Perk",
         "text": "After activating in gear Phase 4, 5 or 6, this vehicle may add +1 ammo token to a single electrical weapon or upgrade on that vehicle.",
         "rules": {
           "dynamo": {
@@ -4496,27 +4364,21 @@
         }
       },
       "Sponsor Perk§Elegance": {
-        "classification": "Sponsor Perk",
         "text": "Teams sponsored by Miyazaki may not purchase vehicle types with a base Handling value of 2 or lower."
       },
       "Sponsor Perk§Fire, Walk With Me": {
-        "classification": "Sponsor Perk",
         "text": "When this vehicle receives damage from any weapon or effect with the Fire rule , this vehicle may reduce that damage by up to 3, to a minimum of 1."
       },
       "Sponsor Perk§Fireworks": {
-        "classification": "Sponsor Perk",
         "text": "If a vehicle belonging to this team explodes, gain +1 audience vote if it was middleweight or +2 audience votes if it was heavyweight in addition to any votes gained for being wrecked, and then discard all ammo tokens from the wreck."
       },
       "Sponsor Perk§Ghost Rider": {
-        "classification": "Sponsor Perk",
         "text": "This vehicle ignores and is ignored by other vehicles at all times. This vehicle cannot be involved in collisions. This vehicle may not make shooting attacks or be attacked with shooting weapons . This vehicle may never count towards the victory conditions of a scenario."
       },
       "Sponsor Perk§Graveyard Shift": {
-        "classification": "Sponsor Perk",
         "text": "At the start of the game, after deployment, all vehicle in this team except one must gain the *Ghost Rider* special rule."
       },
       "Sponsor Perk§Haulage": {
-        "classification": "Sponsor Perk",
         "text": "Each vehicle on this team equipped with a trailer upgrade, and each War Rig, may equip a single trailer cargo upgrade for free.",
         "rules": {
           "haulage": {
@@ -4547,15 +4409,12 @@
         }
       },
       "Sponsor Perk§Hot Pursuit": {
-        "classification": "Sponsor Perk",
         "text": "Before the first gear phase of the game, after deployment, this team must nominate one enemy vehicle as the *Bogey*."
       },
       "Sponsor Perk§Inexorable": {
-        "classification": "Sponsor Perk",
         "text": "If a vehicle from this team is a wreck or out of play, the vehicle may be respawned, even if other rules would ordinarily prevent that."
       },
       "Sponsor Perk§Kiss My Asphalt": {
-        "classification": "Sponsor Perk",
         "text": "This team may not purchase Gyrocopters.",
         "rules": {
           "This team may not purchase Gyrocopters": {
@@ -4579,19 +4438,15 @@
         }
       },
       "Sponsor Perk§Live Fast": {
-        "classification": "Sponsor Perk",
         "text": "If a vehicle in this team begins the wipeout step with more hazard tokens than hull points during its own activation this team gains +1 audience vote."
       },
       "Sponsor Perk§Maxximum Drift": {
-        "classification": "Sponsor Perk",
         "text": "If this vehicle resolves two slide results in a single skid check, it may use the medium straight in place of the slide template. If this vehicle resolves three or more slide results in a single skid check, it may use the long straight in place of the slide template."
       },
       "Sponsor Perk§Meshuggah": {
-        "classification": "Sponsor Perk",
         "text": "When this vehicle resolves a slide or spin that ends within medium of a friendly vehicle without causing a collision: this team gains +1 Audience Vote."
       },
       "Sponsor Perk§MicroPlate Armour": {
-        "classification": "Sponsor Perk",
         "text": "Vehicles in this team may purchase the MicroPlate Armour upgrade.",
         "rules": {
           "microplate": {
@@ -4623,7 +4478,6 @@
         }
       },
       "Sponsor Perk§Might is Right": {
-        "classification": "Sponsor Perk",
         "text": "This team may not purchase lightweight vehicles.",
         "rules": {
           "This team may not purchase lightweight vehicles.": {
@@ -4647,7 +4501,6 @@
         }
       },
       "Sponsor Perk§Military Hardware": {
-        "classification": "Sponsor Perk",
         "text": "This team may purchase a single Tank. This team may purchase a single Helicopter.",
         "rules": {
           "tank + chopper": {
@@ -4673,24 +4526,19 @@
         }
       },
       "Sponsor Perk§N₂O Addict": {
-        "classification": "Sponsor Perk",
         "text": "This team may purchase the Nitro upgrade at half the listed cost.",
         "rules": {}
       },
       "Sponsor Perk§Over the Limit": {
-        "classification": "Sponsor Perk",
         "text": "This vehicle never considers any of the straight movement templates to be permitted. This vehicle considers veer to be permitted and trivial in any gear."
       },
       "Sponsor Perk§Party Hard": {
-        "classification": "Sponsor Perk",
         "text": "At the end of this vehicle’s attack step, if this vehicle has more hazard tokens than the sum of the hazards tokens on all other enemy vehicles within medium range combined, this vehicle’s controller gains +1 audience vote for each enemy vehicle with 1+ hazard tokens within medium range of this vehicle."
       },
       "Sponsor Perk§Pinball": {
-        "classification": "Sponsor Perk",
         "text": "If a vehicle in this team is involved in a collision during its movement step in which the point of contact on both vehicles is along their side edges and this vehicle declares a smash attack, then this vehicle may immediately resolve another movement step after the current movement step."
       },
       "Sponsor Perk§Press Gang": {
-        "classification": "Sponsor Perk",
         "text": "When another vehicle in contact with this vehicle is wrecked, this vehicle may gain either 1 crew or 2 audience votes.",
         "rules": {
           "press gang": {
@@ -4733,11 +4581,9 @@
         }
       },
       "Sponsor Perk§Prison Cars": {
-        "classification": "Sponsor Perk",
         "text": "Vehicles in this team may purchase the Prison Car upgrade."
       },
       "Sponsor Perk§Raiders": {
-        "classification": "Sponsor Perk",
         "text": "At the end of the attack step, this vehicle may permanently reduce its crew value by any number, to a minimum of 0 crew: remove 1 hull point from any vehicle in base contact for each crew removed in this way.",
         "rules": {
           "raiders": {
@@ -4780,31 +4626,24 @@
         }
       },
       "Sponsor Perk§Raise the Sails": {
-        "classification": "Sponsor Perk",
         "text": "After rolling skid dice, this vehicle may permanently reduce its crew value by 1, to a minimum of 0 crew to add 1 free shift result to the skid dice result."
       },
       "Sponsor Perk§Showing Off": {
-        "classification": "Sponsor Perk",
         "text": "At the end of this vehicle’s activation, if it resolved at least one spin result, and resolved at least one slide result, and changed gear at least once, and did not wipeout, then this vehicle gains a *Showing Off* token. If a vehicle with a *Showing Off* token wipes out, that vehicle must discard its *Showing Off* token. At the end of this vehicle’s activation, if every in-play vehicle on this team has a *Showing Off* token, this player discards all *Showing Off* tokens and gains 1 audience vote for each *Showing Off* token discarded in this way. Discard all *Showing Off* tokens at the end of the gear phase."
       },
       "Sponsor Perk§Siren": {
-        "classification": "Sponsor Perk",
         "text": "At the end of this vehicle’s activation, if this vehicle in the Bogey’s rear arc of fire (regardless of range), the Bogey must either reduce its gear by 1 or gain 2 hazards."
       },
       "Sponsor Perk§Soul Anchor": {
-        "classification": "Sponsor Perk",
         "text": "If all in play vehicles from this team have the Ghost Rider special rule immediately remove all vehicles on this team from play."
       },
       "Sponsor Perk§Soul Harvest": {
-        "classification": "Sponsor Perk",
         "text": "If this vehicle’s movement template comes into contact with an enemy vehicle: this vehicle gains 1 Soul token, even if the enemy vehicle is being ignored. If this vehicle’s movement template comes into contact with a friendly vehicle without the *Ghost Rider* rule that it did not start in contact with, choose one: either gain 1 vote for each Soul token; or repair two Hull Points on the vehicle without the *Ghost Rider* rule for each Soul token. Then discard all Soul tokens."
       },
       "Sponsor Perk§Speed Demon": {
-        "classification": "Sponsor Perk",
         "text": "When this vehicle gains hazards as a result of the Nitro Booster, this vehicle only gains hazard tokens until it has 3 hazard tokens, rather than 5 hazard tokens."
       },
       "Sponsor Perk§Spiked Fist": {
-        "classification": "Sponsor Perk",
         "text": "This vehicle counts the Ram upgrade as requiring zero build slots.",
         "rules": {
           "spiked fist": {
@@ -4839,27 +4678,21 @@
         }
       },
       "Sponsor Perk§Steel Justice": {
-        "classification": "Sponsor Perk",
         "text": "If the Bogey wipes out this team as a whole gains 2 audience votes. If the Bogey is wrecked this team as a whole gains 4 audience votes."
       },
       "Sponsor Perk§Televised Carnage": {
-        "classification": "Sponsor Perk",
         "text": "If a vehicle in this team causes 6 or more hits in a single attack step, before evades, this team gains +1 audience vote."
       },
       "Sponsor Perk§That’s Entertainment": {
-        "classification": "Sponsor Perk",
         "text": "Whenever a dropped weapon template that was placed by this team is removed from play, this team gains 1 Audience Vote."
       },
       "Sponsor Perk§Thumpermonkey": {
-        "classification": "Sponsor Perk",
         "text": "This team may purchase electrical weapons and upgrades."
       },
       "Sponsor Perk§Tombstone": {
-        "classification": "Sponsor Perk",
         "text": "If the shooting template of a shooting attack touches the rear edge of this vehicle, this vehicle gains +1 to its evade rolls. During this vehicle’s  attack step, this vehicle may gain 2 hazards. If it does, all collisions involving this vehicle are considered to be head-on until the start of its next activation."
       },
       "Sponsor Perk§Trailer Trash": {
-        "classification": "Sponsor Perk",
         "text": "This team must contain at least one medium or heavyweight vehicle equipped with a trailer upgrade, or a War Rig.",
         "rules": {
           "Add a War Rig or put a trailer on a middleweight or heavy!": {
@@ -4902,15 +4735,12 @@
         }
       },
       "Sponsor Perk§Trunk of Junk": {
-        "classification": "Sponsor Perk",
         "text": "You may attack with any number of dropped weapons in a single activation."
       },
       "Sponsor Perk§Virtuoso": {
-        "classification": "Sponsor Perk",
         "text": "The first time each vehicle in this team uses push it in an activation they may push it without gaining a hazard token."
       },
       "Sponsor Perk§Well Stocked": {
-        "classification": "Sponsor Perk",
         "text": "This team considers any weapon with the ammo 3 special rule to instead have the ammo 4 special rule when purchased.",
         "rules": {}
       },
@@ -4920,7 +4750,6 @@
             "Special Rule§Electrical"
           ]
         },
-        "classification": "Upgrade—Restricted",
         "keywords": {
           "Keywords": [
             "Mishkin"
@@ -4940,7 +4769,6 @@
             "Special Rule§Electrical"
           ]
         },
-        "classification": "Upgrade—Restricted",
         "keywords": {
           "Keywords": [
             "Mishkin"
@@ -4955,7 +4783,6 @@
         "text": "See rulebook"
       },
       "Upgrade—Restricted§Louder Siren": {
-        "classification": "Upgrade—Restricted",
         "keywords": {
           "Keywords": [
             "Highway Patrol"
@@ -4969,7 +4796,6 @@
         }
       },
       "Upgrade—Restricted§MicroPlate Armour": {
-        "classification": "Upgrade—Restricted",
         "keywords": {
           "Keywords": [
             "Verney"
@@ -4991,7 +4817,6 @@
         "text": "+2 hull points"
       },
       "Upgrade—Restricted§Prison Car": {
-        "classification": "Upgrade—Restricted",
         "keywords": {
           "Keywords": [
             "The Warden"
@@ -5016,7 +4841,6 @@
             "Special Rule§Piledriver"
           ]
         },
-        "classification": "Upgrade—Restricted",
         "keywords": {
           "Keywords": [
             "Rusty’s Bootleggers"
@@ -5103,7 +4927,6 @@
             "Special Rule§Piledriver"
           ]
         },
-        "classification": "Upgrade—Restricted",
         "keywords": {
           "Keywords": [
             "Rusty’s Bootleggers"
@@ -5140,7 +4963,6 @@
             "Special Rule§Piledriver"
           ]
         },
-        "classification": "Upgrade—Restricted",
         "keywords": {
           "Keywords": [
             "Rusty’s Bootleggers"
@@ -5173,11 +4995,9 @@
             "Weapon—Mounted"
           ]
         },
-        "classification": "Upgrade—Restricted",
         "text": "Pay 3x weapon cost. Turret-mounted weapon has 360° arc of fire."
       },
       "Upgrade§Armour Plating": {
-        "classification": "Upgrade",
         "stats": {
           "Build Slots": {
             "value": 1,
@@ -5201,7 +5021,6 @@
           "Lock Qty": true,
           "Unique": true
         },
-        "classification": "Upgrade",
         "stats": {
           "Ammo": {
             "value": 1,
@@ -5215,7 +5034,6 @@
         "text": "Highly Explosive. Limit of 1."
       },
       "Upgrade§Extra Crewmember": {
-        "classification": "Upgrade",
         "stats": {
           "Cost": {
             "value": 4,
@@ -5258,7 +5076,6 @@
         }
       },
       "Upgrade§Improvised Sludge Thrower": {
-        "classification": "Upgrade",
         "stats": {
           "Build Slots": {
             "value": 1,
@@ -5272,7 +5089,6 @@
         "text": "This vehicle may place the burst templates for its dropped weapons anywhere within a 360 arc of fire that is at least partially within medium range of this vehicle."
       },
       "Upgrade§Nitro Booster": {
-        "classification": "Upgrade",
         "stats": {
           "Ammo": {
             "value": 1,
@@ -5286,7 +5102,6 @@
         "text": "Once per activation, at the start of a Movement Step, this vehicle may declare that it is using a Nitro Booster. If it does, this vehicle makes an immediate forced, Long Straight move forward, and then gains hazard tokens until it has 5 hazard tokens. It then resolves its Movement Step as normal, except that it may not reverse. Then, at the end of the movement step, it again gains Hazard Tokens until it has 5 Hazard Tokens."
       },
       "Upgrade§Ram": {
-        "classification": "Upgrade",
         "stats": {
           "Build Slots": {
             "value": 1,
@@ -5300,7 +5115,6 @@
         "text": "No hazards gained during collisions on declared facing."
       },
       "Upgrade§Roll Cage": {
-        "classification": "Upgrade",
         "stats": {
           "Build Slots": {
             "value": 1,
@@ -5319,7 +5133,6 @@
             "Special Rule§All Terrain"
           ]
         },
-        "classification": "Upgrade",
         "stats": {
           "Build Slots": {
             "value": 1,
@@ -5353,7 +5166,6 @@
             "Special Rule§Bombs Away"
           ]
         },
-        "classification": "Vehicle—Restricted",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -5403,7 +5215,6 @@
             "Special Rule§Restricted"
           ]
         },
-        "classification": "Vehicle—Restricted",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -5446,7 +5257,6 @@
             "Special Rule§Downers"
           ]
         },
-        "classification": "Vehicle—Standard",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -5489,7 +5299,6 @@
             "Special Rule§Pivot"
           ]
         },
-        "classification": "Vehicle—Standard",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -5532,7 +5341,6 @@
             "Special Rule§Pivot"
           ]
         },
-        "classification": "Vehicle—Standard",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -5574,7 +5382,6 @@
             "Upgrade§Roll Cage"
           ]
         },
-        "classification": "Vehicle—Standard",
         "keywords": {
           "Keywords": [
             "Basic"
@@ -5611,7 +5418,6 @@
         }
       },
       "Vehicle—Standard§Bus": {
-        "classification": "Vehicle—Standard",
         "keywords": {
           "Keywords": [
             "Basic"
@@ -5648,7 +5454,6 @@
         }
       },
       "Vehicle—Standard§Car": {
-        "classification": "Vehicle—Standard",
         "keywords": {
           "Keywords": [
             "Basic"
@@ -5690,7 +5495,6 @@
             "Special Rule§Jet Engine"
           ]
         },
-        "classification": "Vehicle—Standard",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -5734,7 +5538,6 @@
             "Special Rule§Bombs Away"
           ]
         },
-        "classification": "Vehicle—Standard",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -5767,7 +5570,6 @@
         }
       },
       "Vehicle—Standard§Heavy Truck": {
-        "classification": "Vehicle—Standard",
         "keywords": {
           "Keywords": [
             "Basic"
@@ -5809,7 +5611,6 @@
             "Special Rule§Infuriating Jingle"
           ]
         },
-        "classification": "Vehicle—Standard",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -5852,7 +5653,6 @@
             "Special Rule§Up and Over"
           ]
         },
-        "classification": "Vehicle—Standard",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -5894,7 +5694,6 @@
             "Special Rule§Slip Away"
           ]
         },
-        "classification": "Vehicle—Standard",
         "keywords": {
           "Keywords": [
             "Basic"
@@ -5931,7 +5730,6 @@
         }
       },
       "Vehicle—Standard§Truck": {
-        "classification": "Vehicle—Standard",
         "keywords": {
           "Keywords": [
             "Basic"
@@ -5974,7 +5772,6 @@
             "Special Rule§Articulated"
           ]
         },
-        "classification": "Vehicle—Standard",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -6017,7 +5814,6 @@
             "Special Rule§Splash"
           ]
         },
-        "classification": "Weapon—Crew Fired",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -6054,7 +5850,6 @@
             "Special Rule§Blitz"
           ]
         },
-        "classification": "Weapon—Crew Fired",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -6088,7 +5883,6 @@
             "Special Rule§Blitz"
           ]
         },
-        "classification": "Weapon—Crew Fired",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -6117,7 +5911,6 @@
           "Lock Qty": true,
           "Unique": true
         },
-        "classification": "Weapon—Crew Fired",
         "keywords": {
           "Keywords": [
             "Basic"
@@ -6158,7 +5951,6 @@
             "Special Rule§Crew Fired"
           ]
         },
-        "classification": "Weapon—Crew Fired",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -6196,7 +5988,6 @@
             "Special Rule§Blitz"
           ]
         },
-        "classification": "Weapon—Crew Fired",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -6226,7 +6017,6 @@
             "Special Rule§Crew Fired"
           ]
         },
-        "classification": "Weapon—Crew Fired",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -6267,7 +6057,6 @@
             "Special Rule§Blast"
           ]
         },
-        "classification": "Weapon—Crew Fired",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -6299,7 +6088,6 @@
             "Special Rule§Crew Fired"
           ]
         },
-        "classification": "Weapon—Crew Fired",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -6334,7 +6122,6 @@
             "Special Rule§Small Burst"
           ]
         },
-        "classification": "Weapon—Dropped",
         "keywords": {
           "Keywords": []
         },
@@ -6358,7 +6145,6 @@
         }
       },
       "Weapon—Dropped§Glue Dropper": {
-        "classification": "Weapon—Dropped",
         "keywords": {
           "Keywords": []
         },
@@ -6393,7 +6179,6 @@
             "Special Rule§Blast"
           ]
         },
-        "classification": "Weapon—Dropped",
         "keywords": {
           "Keywords": []
         },
@@ -6423,7 +6208,6 @@
             "Special Rule§Fire"
           ]
         },
-        "classification": "Weapon—Dropped",
         "keywords": {
           "Keywords": []
         },
@@ -6447,7 +6231,6 @@
         }
       },
       "Weapon—Dropped§Oil Slick Dropper": {
-        "classification": "Weapon—Dropped",
         "keywords": {
           "Keywords": []
         },
@@ -6481,7 +6264,6 @@
         }
       },
       "Weapon—Dropped§RC Car Bombs": {
-        "classification": "Weapon—Dropped",
         "keywords": {
           "Keywords": []
         },
@@ -6510,7 +6292,6 @@
         }
       },
       "Weapon—Dropped§Sentry Gun": {
-        "classification": "Weapon—Dropped",
         "keywords": {
           "Keywords": []
         },
@@ -6539,7 +6320,6 @@
         }
       },
       "Weapon—Dropped§Smoke Dropper": {
-        "classification": "Weapon—Dropped",
         "keywords": {
           "Keywords": []
         },
@@ -6578,7 +6358,6 @@
             "Special Rule§Blast"
           ]
         },
-        "classification": "Weapon—Mounted",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -6613,7 +6392,6 @@
             "Special Rule§Blast"
           ]
         },
-        "classification": "Weapon—Mounted",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -6642,7 +6420,6 @@
         }
       },
       "Weapon—Mounted§BFG": {
-        "classification": "Weapon—Mounted",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -6682,7 +6459,6 @@
             "Special Rule§Splash"
           ]
         },
-        "classification": "Weapon—Mounted",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -6721,7 +6497,6 @@
             "Special Rule§Electrical"
           ]
         },
-        "classification": "Weapon—Mounted",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -6758,7 +6533,6 @@
             "Special Rule§Indirect"
           ]
         },
-        "classification": "Weapon—Mounted",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -6787,7 +6561,6 @@
         }
       },
       "Weapon—Mounted§Grabber Arm": {
-        "classification": "Weapon—Mounted",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -6818,7 +6591,6 @@
         }
       },
       "Weapon—Mounted§Harpoon": {
-        "classification": "Weapon—Mounted",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -6852,7 +6624,6 @@
         }
       },
       "Weapon—Mounted§Heavy Machine Gun": {
-        "classification": "Weapon—Mounted",
         "keywords": {
           "Keywords": [
             "Basic"
@@ -6877,7 +6648,6 @@
         }
       },
       "Weapon—Mounted§Machine Gun": {
-        "classification": "Weapon—Mounted",
         "keywords": {
           "Keywords": [
             "Basic"
@@ -6902,7 +6672,6 @@
         }
       },
       "Weapon—Mounted§Minigun": {
-        "classification": "Weapon—Mounted",
         "keywords": {
           "Keywords": [
             "Basic"
@@ -6932,7 +6701,6 @@
             "Special Rule§Indirect"
           ]
         },
-        "classification": "Weapon—Mounted",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -6961,7 +6729,6 @@
         }
       },
       "Weapon—Mounted§Rockets": {
-        "classification": "Weapon—Mounted",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -6995,7 +6762,6 @@
             "Special Rule§360-degree"
           ]
         },
-        "classification": "Weapon—Mounted",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -7034,7 +6800,6 @@
         }
       },
       "Weapon—Mounted§Wreck Lobber": {
-        "classification": "Weapon—Mounted",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -7068,7 +6833,6 @@
         }
       },
       "Weapon—Mounted§Wrecking Ball": {
-        "classification": "Weapon—Mounted",
         "keywords": {
           "Keywords": [
             "Advanced"
@@ -7109,7 +6873,6 @@
             "Special Rule§Electrical"
           ]
         },
-        "classification": "Weapon—Restricted",
         "keywords": {
           "Keywords": [
             "Advanced",
@@ -7145,7 +6908,6 @@
             "Special Rule§Electrical"
           ]
         },
-        "classification": "Weapon—Restricted",
         "keywords": {
           "Keywords": [
             "Advanced",
@@ -7181,7 +6943,6 @@
             "Special Rule§Electrical"
           ]
         },
-        "classification": "Weapon—Restricted",
         "keywords": {
           "Keywords": [
             "Advanced",
@@ -7217,7 +6978,6 @@
             "Special Rule§Electrical"
           ]
         },
-        "classification": "Weapon—Restricted",
         "keywords": {
           "Keywords": [
             "Advanced",
@@ -7270,7 +7030,6 @@
             "Special Rule§360-degree"
           ]
         },
-        "classification": "Weapon—Restricted",
         "keywords": {
           "Keywords": [
             "Advanced",
