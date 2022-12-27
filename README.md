@@ -1,3 +1,3 @@
 # Gaslands
 
-https://raw.githubusercontent.com/RosterizerTestData/Gaslands/master/Gaslands-Refuelled.manifest
+https://raw.githubusercontent.com/RosterizerTestData/Gaslands/main/Gaslands-Refuelled.manifest
