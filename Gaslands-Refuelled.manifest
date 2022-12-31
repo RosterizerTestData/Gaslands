@@ -1,6 +1,6 @@
 {
   "name": "Gaslands",
-  "revision": "0.1.3",
+  "revision": "0.1.4",
   "game": "Gaslands Refuelled",
   "genre": "sci-fi",
   "publisher": "Osprey Games",
@@ -36,12 +36,8 @@
             "Damage"
           ]
         },
-        "rules": {},
         "aspects": {
           "Group Includes": true
-        },
-        "removed": {
-          "rules": {}
         }
       },
       "Injury": {
@@ -129,8 +125,12 @@
             ],
             "group": "Cost",
             "groupOrder": -1,
-            "tracked": true
+            "tracked": true,
+            "statType": "numeric"
           }
+        },
+        "aspects": {
+          "Lock Qty": true
         }
       },
       "Upgrade—Restricted": {
@@ -197,7 +197,7 @@
           "Vehicle"
         ],
         "rules": {
-          "dents min 0": {
+          "dentsMin0": {
             "evals": [
               {
                 "paths": [
@@ -233,7 +233,7 @@
               }
             ]
           },
-          "crew min 1": {
+          "crewMin1": {
             "evals": [
               {
                 "paths": [
@@ -315,7 +315,7 @@
               }
             ]
           },
-          "highway patrol": {
+          "highwayPatrol": {
             "evals": [
               {
                 "paths": [
@@ -654,7 +654,7 @@
               }
             ]
           },
-          "the warden": {
+          "theWarden": {
             "evals": [
               {
                 "paths": [
@@ -862,7 +862,7 @@
               }
             ]
           },
-          "the order of the inferno": {
+          "inferno": {
             "evals": [
               {
                 "paths": [
@@ -908,7 +908,7 @@
               }
             ]
           },
-          "rusty's bootleggers": {
+          "rusty’sBootleggers": {
             "evals": [
               {
                 "paths": [
@@ -978,7 +978,7 @@
               }
             ]
           },
-          "crew quarters": {
+          "crewQuarters": {
             "evals": [
               {
                 "paths": [
@@ -1045,7 +1045,7 @@
               }
             ]
           },
-          "n₂o addict": {
+          "n₂oAddict": {
             "evals": [
               {
                 "paths": [
@@ -1158,7 +1158,7 @@
             "failState": "error",
             "evaluate": "OR"
           },
-          "no sponsor": {
+          "noSponsor": {
             "evals": [
               {
                 "paths": [
@@ -1378,7 +1378,7 @@
               }
             ]
           },
-          "heavy trailer": {
+          "heavyTrailer": {
             "evals": [
               {
                 "paths": [
@@ -1422,7 +1422,7 @@
               }
             ]
           },
-          "medium trailer": {
+          "mediumTrailer": {
             "evals": [
               {
                 "paths": [
@@ -1454,7 +1454,7 @@
               }
             ]
           },
-          "rusty's trailers": {
+          "rusty’sTrailers": {
             "evals": [
               {
                 "paths": [
@@ -1526,7 +1526,7 @@
             "evaluate": "OR",
             "order": 20
           },
-          "Teams sponsored by Miyazaki may not purchase vehicle types with a base Handling value of 2 or lower.": {
+          "Teams sponsored by Miyazaki may not purchase vehicle types with a base Handling value of 2 or lower": {
             "evals": [
               {
                 "paths": [
@@ -1637,7 +1637,7 @@
           }
         },
         "rules": {
-          "well stocked": {
+          "wellStocked": {
             "evals": [
               {
                 "paths": [
@@ -1684,79 +1684,6 @@
                 "iterations": 1
               }
             ]
-          },
-          "turret mounting": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Mounting",
-                    "value"
-                  ]
-                ],
-                "value": "360°",
-                "operator": "AND",
-                "not": false
-              },
-              {
-                "paths": [
-                  [
-                    "{parent}",
-                    "designation"
-                  ]
-                ],
-                "value": "turret",
-                "operator": "AND",
-                "not": true
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Cost",
-                    "processed",
-                    "numeric",
-                    "default"
-                  ]
-                ],
-                "operator": "AND",
-                "not": false,
-                "actionable": false,
-                "equation": {
-                  "operator": "T*O",
-                  "value": 2
-                }
-              }
-            ],
-            "failState": "pass",
-            "evaluate": "OR",
-            "order": 25,
-            "actions": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Cost",
-                    "value"
-                  ]
-                ],
-                "actionType": "modify",
-                "value": [
-                  "{self}",
-                  "rules",
-                  "turret mounting",
-                  "evals",
-                  "1",
-                  "result",
-                  "integer"
-                ],
-                "iterations": 1
-              }
-            ]
           }
         }
       },
@@ -1777,7 +1704,7 @@
       "Weapon—Mounted": {
         "templateClass": "Weapon",
         "rules": {
-          "well stocked": {
+          "wellStocked": {
             "evals": [
               {
                 "paths": [
@@ -1895,7 +1822,7 @@
             "failState": "error",
             "evaluate": "OR"
           },
-          "turret mounting": {
+          "turretMounting": {
             "evals": [
               {
                 "paths": [
@@ -1922,6 +1849,31 @@
                 "operator": "AND",
                 "not": true,
                 "actionable": true
+              }
+            ],
+            "failState": "pass",
+            "evaluate": "AND",
+            "order": 25,
+            "actions": [
+              {
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Cost",
+                    "value"
+                  ]
+                ],
+                "actionType": "modify",
+                "value": [
+                  "{self}",
+                  "stats",
+                  "Cost",
+                  "processed",
+                  "numeric",
+                  "default"
+                ],
+                "iterations": 2
               }
             ]
           }
@@ -2325,7 +2277,7 @@
         },
         "text": "This vehicle gains the Up and Over special rule (see the Monster Truck rules).",
         "rules": {
-          "up and over": {
+          "upAndOver": {
             "evals": [],
             "failState": "pass",
             "evaluate": "OR",
@@ -3282,7 +3234,7 @@
           }
         },
         "rules": {
-          "no sponsor": {
+          "noSponsor": {
             "evals": [
               {
                 "paths": [
@@ -3729,7 +3681,7 @@
         },
         "text": "When purchasing weapons, this vehicle may count dropped weapons as requiring 0 build slots.",
         "rules": {
-          "bombs away": {
+          "bombsAway": {
             "evals": [],
             "failState": "pass",
             "evaluate": "OR",
@@ -3879,7 +3831,7 @@
           ]
         },
         "rules": {
-          "Only 1 weapon can mount on this turret.": {
+          "Only 1 weapon can mount on this turret": {
             "evals": [
               {
                 "paths": [
@@ -4151,7 +4103,7 @@
       "Sponsor Perk§Might is Right": {
         "text": "This team may not purchase lightweight vehicles.",
         "rules": {
-          "This team may not purchase lightweight vehicles.": {
+          "This team may not purchase lightweight vehicles": {
             "evals": [
               {
                 "paths": [
@@ -4174,7 +4126,7 @@
       "Sponsor Perk§Military Hardware": {
         "text": "This team may purchase a single Tank. This team may purchase a single Helicopter.",
         "rules": {
-          "tank + chopper": {
+          "tankChopper": {
             "evals": [],
             "failState": "pass",
             "evaluate": "OR",
@@ -4197,8 +4149,7 @@
         }
       },
       "Sponsor Perk§N₂O Addict": {
-        "text": "This team may purchase the Nitro upgrade at half the listed cost.",
-        "rules": {}
+        "text": "This team may purchase the Nitro upgrade at half the listed cost."
       },
       "Sponsor Perk§Over the Limit": {
         "text": "This vehicle never considers any of the straight movement templates to be permitted. This vehicle considers veer to be permitted and trivial in any gear."
@@ -4212,7 +4163,7 @@
       "Sponsor Perk§Press Gang": {
         "text": "When another vehicle in contact with this vehicle is wrecked, this vehicle may gain either 1 crew or 2 audience votes.",
         "rules": {
-          "press gang": {
+          "pressGang": {
             "evals": [],
             "failState": "pass",
             "evaluate": "OR",
@@ -4317,7 +4268,7 @@
       "Sponsor Perk§Spiked Fist": {
         "text": "This vehicle counts the Ram upgrade as requiring zero build slots.",
         "rules": {
-          "spiked fist": {
+          "spikedFist": {
             "evals": [],
             "failState": "pass",
             "evaluate": "OR",
@@ -4412,8 +4363,7 @@
         "text": "The first time each vehicle in this team uses push it in an activation they may push it without gaining a hazard token."
       },
       "Sponsor Perk§Well Stocked": {
-        "text": "This team considers any weapon with the ammo 3 special rule to instead have the ammo 4 special rule when purchased.",
-        "rules": {}
+        "text": "This team considers any weapon with the ammo 3 special rule to instead have the ammo 4 special rule when purchased."
       },
       "Upgrade—Restricted§Experimental Nuclear Engine": {
         "assets": {
@@ -4472,11 +4422,9 @@
             "Verney"
           ]
         },
-        "rules": {},
         "stats": {
           "Cost": {
-            "value": 6,
-            "statType": "numeric"
+            "value": 6
           },
           "Hull": {
             "tracked": true,
@@ -4496,6 +4444,55 @@
         "text": "Reduce the cost of this vehicle by 4 Cans to a minimum of 5 Cans. Reduce the hull value of this vehicle by 2. May only be purchased by middleweight vehicles. May only be purchased once for each vehicle.",
         "aspects": {
           "Unique": true
+        },
+        "stats": {
+          "Cost": {
+            "value": -4
+          },
+          "Hull": {
+            "statType": "numeric",
+            "value": -2,
+            "visibility": "normal",
+            "dynamic": false,
+            "tracked": true
+          }
+        },
+        "rules": {
+          "minCost5": {
+            "evals": [
+              {
+                "paths": [
+                  [
+                    "{parent}",
+                    "stats",
+                    "Cost",
+                    "value"
+                  ]
+                ],
+                "min": 5,
+                "operator": "AND",
+                "not": true,
+                "actionable": true
+              }
+            ],
+            "failState": "pass",
+            "evaluate": "AND",
+            "actions": [
+              {
+                "paths": [
+                  [
+                    "{parent}",
+                    "stats",
+                    "Cost",
+                    "value"
+                  ]
+                ],
+                "actionType": "set",
+                "value": 5,
+                "iterations": 1
+              }
+            ]
+          }
         }
       },
       "Upgrade—Restricted§Trailer (heavy)": {
@@ -4538,7 +4535,7 @@
           "Unique": true
         },
         "rules": {
-          "heavy trailer": {
+          "heavyTrailer": {
             "evals": [
               {
                 "paths": [
@@ -4728,8 +4725,8 @@
                   "{parent}",
                   "stats",
                   "Crew",
-                  "numbers",
-                  "value",
+                  "processed",
+                  "numeric",
                   "default"
                 ],
                 "operator": "AND",
