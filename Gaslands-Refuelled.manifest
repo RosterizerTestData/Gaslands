@@ -1,6 +1,6 @@
 {
   "name": "Gaslands",
-  "revision": "0.1.2",
+  "revision": "0.1.3",
   "game": "Gaslands Refuelled",
   "genre": "sci-fi",
   "publisher": "Osprey Games",
@@ -74,24 +74,49 @@
           }
         }
       },
-      "Perk—Aggression": {},
-      "Perk—Badass": {},
-      "Perk—Built": {},
-      "Perk—Daring": {},
-      "Perk—Horror": {},
-      "Perk—Military": {},
-      "Perk—Precision": {},
-      "Perk—Pursuit": {},
-      "Perk—Reckless": {},
-      "Perk—Speed": {},
-      "Perk—Technology": {},
-      "Perk—Tuning": {},
+      "Perk—Aggression": {
+        "templateClass": "Perk"
+      },
+      "Perk—Badass": {
+        "templateClass": "Perk"
+      },
+      "Perk—Built": {
+        "templateClass": "Perk"
+      },
+      "Perk—Daring": {
+        "templateClass": "Perk"
+      },
+      "Perk—Horror": {
+        "templateClass": "Perk"
+      },
+      "Perk—Military": {
+        "templateClass": "Perk"
+      },
+      "Perk—Precision": {
+        "templateClass": "Perk"
+      },
+      "Perk—Pursuit": {
+        "templateClass": "Perk"
+      },
+      "Perk—Reckless": {
+        "templateClass": "Perk"
+      },
+      "Perk—Speed": {
+        "templateClass": "Perk"
+      },
+      "Perk—Technology": {
+        "templateClass": "Perk"
+      },
+      "Perk—Tuning": {
+        "templateClass": "Perk"
+      },
       "Special Rule": {},
       "Sponsor Perk": {
         "aspects": {
           "Type": "game piece",
           "Visibility": "active"
-        }
+        },
+        "templateClass": "Perk"
       },
       "Upgrade": {
         "stats": {
@@ -108,7 +133,9 @@
           }
         }
       },
-      "Upgrade—Restricted": {},
+      "Upgrade—Restricted": {
+        "templateClass": "Upgrade"
+      },
       "Vehicle": {
         "allowed": {
           "classifications": [
