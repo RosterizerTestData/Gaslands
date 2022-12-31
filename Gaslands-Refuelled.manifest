@@ -1,18 +1,47 @@
 {
   "name": "Gaslands",
-  "revision": "0.1.1",
+  "revision": "0.1.2",
   "game": "Gaslands Refuelled",
   "genre": "sci-fi",
   "publisher": "Osprey Games",
   "url": "https://gaslands.com/",
   "notes": "This manifest is provided for the purposes of testing *Rosterizer* and is not intended for distribution.",
-  "wip":false,
+  "wip": false,
   "manifest": {
     "assetTaxonomy": {
       "Cargo": {
         "aspects": {
           "Lock Qty": true,
           "Unique": true
+        }
+      },
+      "Damage": {
+        "stats": {
+          "Dents": {
+            "statType": "numeric",
+            "value": 0,
+            "visibility": "hidden",
+            "dynamic": false,
+            "tracked": true
+          }
+        },
+        "aspects": {
+          "Unique": true
+        }
+      },
+      "Injuries": {
+        "allowed": {
+          "classifications": [
+            "Injury",
+            "Damage"
+          ]
+        },
+        "rules": {},
+        "aspects": {
+          "Group Includes": true
+        },
+        "removed": {
+          "rules": {}
         }
       },
       "Injury": {
@@ -23,6 +52,10 @@
             "visibility": "hidden",
             "tracked": true
           }
+        },
+        "aspects": {
+          "Unique": true,
+          "Lock Qty": true
         }
       },
       "Perk": {
@@ -41,10 +74,23 @@
           }
         }
       },
+      "Perk—Aggression": {},
+      "Perk—Badass": {},
+      "Perk—Built": {},
+      "Perk—Daring": {},
+      "Perk—Horror": {},
+      "Perk—Military": {},
+      "Perk—Precision": {},
+      "Perk—Pursuit": {},
+      "Perk—Reckless": {},
+      "Perk—Speed": {},
+      "Perk—Technology": {},
+      "Perk—Tuning": {},
       "Special Rule": {},
       "Sponsor Perk": {
         "aspects": {
-          "Type": "game piece"
+          "Type": "game piece",
+          "Visibility": "active"
         }
       },
       "Upgrade": {
@@ -59,218 +105,6 @@
             "group": "Cost",
             "groupOrder": -1,
             "tracked": true
-          }
-        }
-      },
-      "Vehicle—Standard": {
-        "templateClass": "Vehicle"
-      },
-      "Weapon—Crew Fired": {
-        "templateClass": "Weapon",
-        "stats": {
-          "Mounting": {
-            "statType": "rank"
-          }
-        }
-      },
-      "Weapon—Dropped": {
-        "stats": {
-          "Build Slots": {
-            "tracked": true
-          },
-          "Mounting": {
-            "statType": "rank"
-          },
-          "Range": {
-            "statType": "rank"
-          }
-        },
-        "templateClass": "Weapon"
-      },
-      "Weapon—Mounted": {
-        "templateClass": "Weapon",
-        "rules": {
-          "well stocked": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{roster}",
-                    "tally",
-                    "Well Stocked"
-                  ]
-                ],
-                "operator": "AND",
-                "not": false
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Ammo",
-                    "processed",
-                    "numeric",
-                    "default"
-                  ]
-                ],
-                "value": 3,
-                "operator": "AND",
-                "not": false
-              }
-            ],
-            "failState": "pass",
-            "evaluate": "OR",
-            "actions": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Ammo",
-                    "value"
-                  ]
-                ],
-                "actionType": "modify",
-                "value": 1,
-                "iterations": 1
-              }
-            ]
-          },
-          "turret mounting": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Mounting",
-                    "processed",
-                    "rank",
-                    "current",
-                    "index"
-                  ]
-                ],
-                "value": "360°",
-                "operator": "AND",
-                "not": false
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Cost",
-                    "processed",
-                    "numeric",
-                    "default"
-                  ]
-                ],
-                "operator": "AND",
-                "not": false,
-                "actionable": false,
-                "equation": {
-                  "operator": "T*O",
-                  "value": 2
-                }
-              }
-            ],
-            "failState": "pass",
-            "evaluate": "OR",
-            "actions": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Cost",
-                    "value"
-                  ]
-                ],
-                "actionType": "modify",
-                "value": [
-                  "{self}",
-                  "rules",
-                  "turret mounting",
-                  "evals",
-                  "1",
-                  "result",
-                  "integer"
-                ],
-                "iterations": 1
-              }
-            ]
-          },
-          "Choose mounting direction": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Mounting",
-                    "value"
-                  ]
-                ],
-                "value": "Back",
-                "operator": "AND",
-                "not": false
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Mounting",
-                    "value"
-                  ]
-                ],
-                "value": "Front",
-                "operator": "AND",
-                "not": false
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Mounting",
-                    "value"
-                  ]
-                ],
-                "value": "Left",
-                "operator": "AND",
-                "not": false
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Mounting",
-                    "value"
-                  ]
-                ],
-                "value": "Right",
-                "operator": "AND",
-                "not": false
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Mounting",
-                    "value"
-                  ]
-                ],
-                "value": "360°",
-                "operator": "AND",
-                "not": false
-              }
-            ],
-            "failState": "error",
-            "evaluate": "OR"
           }
         }
       },
@@ -310,10 +144,6 @@
             "statOrder": 5,
             "tracked": true
           },
-          "Dents": {
-            "statOrder": 7,
-            "value": 0
-          },
           "Handling": {
             "statOrder": 3,
             "tracked": true
@@ -325,6 +155,15 @@
           "Max Gear": {
             "statOrder": 4,
             "tracked": true
+          },
+          "Dents": {
+            "statType": "numeric",
+            "value": 0,
+            "statOrder": 7,
+            "visibility": "normal",
+            "dynamic": false,
+            "tracked": true,
+            "min": 0
           }
         },
         "lineage": [
@@ -1112,40 +951,6 @@
               }
             ]
           },
-          "Teams sponsored by Miyazaki may not purchase vehicle types with a base Handling value of 2 or lower.": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{roster}",
-                    "stats",
-                    "Sponsor",
-                    "value"
-                  ]
-                ],
-                "value": "Miyazaki",
-                "operator": "AND",
-                "not": true
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Handling",
-                    "processed",
-                    "numeric",
-                    "default"
-                  ]
-                ],
-                "min": 2,
-                "operator": "AND",
-                "not": false
-              }
-            ],
-            "failState": "error",
-            "evaluate": "OR"
-          },
           "crew quarters": {
             "evals": [
               {
@@ -1693,6 +1498,42 @@
             "failState": "pass",
             "evaluate": "OR",
             "order": 20
+          },
+          "Teams sponsored by Miyazaki may not purchase vehicle types with a base Handling value of 2 or lower.": {
+            "evals": [
+              {
+                "paths": [
+                  [
+                    "{roster}",
+                    "stats",
+                    "Sponsor",
+                    "value"
+                  ]
+                ],
+                "value": "Miyazaki",
+                "operator": "AND",
+                "not": true,
+                "actionable": true
+              },
+              {
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Handling",
+                    "processed",
+                    "numeric",
+                    "default"
+                  ]
+                ],
+                "min": 3,
+                "operator": "AND",
+                "not": false,
+                "actionable": true
+              }
+            ],
+            "failState": "error",
+            "evaluate": "OR"
           }
         },
         "keywords": {
@@ -1700,6 +1541,9 @@
         }
       },
       "Vehicle—Restricted": {
+        "templateClass": "Vehicle"
+      },
+      "Vehicle—Standard": {
         "templateClass": "Vehicle"
       },
       "Weapon": {
@@ -1753,37 +1597,6 @@
           },
           "Build Slots": {
             "tracked": true
-          },
-          "Mounting": {
-            "label": "Mounting",
-            "statOrder": 0,
-            "ranks": {
-              "-": {
-                "order": 0
-              },
-              "Front": {
-                "hotkey": "f",
-                "order": 1
-              },
-              "Back": {
-                "hotkey": "b",
-                "order": 2
-              },
-              "Left": {
-                "hotkey": "l",
-                "order": 3
-              },
-              "Right": {
-                "hotkey": "r",
-                "order": 4
-              },
-              "360°": {
-                "hotkey": "3",
-                "order": 5
-              }
-            },
-            "statType": "rank",
-            "dynamic": true
           },
           "Attack Dice": {
             "label": "Attack Dice",
@@ -1920,6 +1733,208 @@
           }
         }
       },
+      "Weapon—Crew Fired": {
+        "templateClass": "Weapon"
+      },
+      "Weapon—Dropped": {
+        "stats": {
+          "Build Slots": {
+            "tracked": true
+          },
+          "Range": {
+            "statType": "rank"
+          }
+        },
+        "templateClass": "Weapon"
+      },
+      "Weapon—Mounted": {
+        "templateClass": "Weapon",
+        "rules": {
+          "well stocked": {
+            "evals": [
+              {
+                "paths": [
+                  [
+                    "{roster}",
+                    "tally",
+                    "Well Stocked"
+                  ]
+                ],
+                "operator": "AND",
+                "not": false
+              },
+              {
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Ammo",
+                    "processed",
+                    "numeric",
+                    "default"
+                  ]
+                ],
+                "value": 3,
+                "operator": "AND",
+                "not": false
+              }
+            ],
+            "failState": "pass",
+            "evaluate": "OR",
+            "actions": [
+              {
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Ammo",
+                    "value"
+                  ]
+                ],
+                "actionType": "modify",
+                "value": 1,
+                "iterations": 1
+              }
+            ]
+          },
+          "Choose mounting direction": {
+            "evals": [
+              {
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Mounting",
+                    "value"
+                  ]
+                ],
+                "value": "Back",
+                "operator": "AND",
+                "not": false
+              },
+              {
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Mounting",
+                    "value"
+                  ]
+                ],
+                "value": "Front",
+                "operator": "AND",
+                "not": false
+              },
+              {
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Mounting",
+                    "value"
+                  ]
+                ],
+                "value": "Left",
+                "operator": "AND",
+                "not": false
+              },
+              {
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Mounting",
+                    "value"
+                  ]
+                ],
+                "value": "Right",
+                "operator": "AND",
+                "not": false
+              },
+              {
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Mounting",
+                    "value"
+                  ]
+                ],
+                "value": "360°",
+                "operator": "AND",
+                "not": false
+              }
+            ],
+            "failState": "error",
+            "evaluate": "OR"
+          },
+          "turret mounting": {
+            "evals": [
+              {
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Mounting",
+                    "value"
+                  ]
+                ],
+                "value": "360°",
+                "operator": "AND",
+                "not": false,
+                "actionable": true
+              },
+              {
+                "paths": [
+                  [
+                    "{parent}",
+                    "designation"
+                  ]
+                ],
+                "value": "Turret",
+                "operator": "AND",
+                "not": true,
+                "actionable": true
+              }
+            ]
+          }
+        },
+        "stats": {
+          "Mounting": {
+            "statType": "rank",
+            "value": "-",
+            "ranks": {
+              "-": {
+                "order": 0
+              },
+              "Front": {
+                "order": 1,
+                "hotkey": "f"
+              },
+              "Back": {
+                "order": 2,
+                "hotkey": "b"
+              },
+              "Left": {
+                "order": 3,
+                "hotkey": "l"
+              },
+              "Right": {
+                "order": 4,
+                "hotkey": "r"
+              },
+              "360°": {
+                "order": 5,
+                "hotkey": "3"
+              }
+            },
+            "statOrder": 0,
+            "visibility": "normal",
+            "dynamic": true,
+            "tracked": false
+          }
+        }
+      },
       "Weapon—Restricted": {
         "templateClass": "Weapon",
         "rules": {
@@ -1995,25 +2010,6 @@
             "evaluate": "OR"
           }
         }
-      },
-      "Perk—Badass": {},
-      "Perk—Military": {},
-      "Perk—Daring": {},
-      "Perk—Precision": {},
-      "Perk—Technology": {},
-      "Perk—Speed": {},
-      "Perk—Tuning": {},
-      "Perk—Reckless": {},
-      "Perk—Aggression": {},
-      "Perk—Pursuit": {},
-      "Perk—Built": {},
-      "Perk—Horror": {},
-      "Injuries": {
-        "allowed": {
-          "classifications": [
-            "Injury"
-          ]
-        }
       }
     },
     "assetCatalog": {
@@ -2032,6 +2028,69 @@
       "Cargo§Sourmash Jet Booster": {
         "text": "At the end of this vehicle’s movement step, if this vehicle has 5 or more hazard tokens, it must immediately make a long straight maneuver forward."
       },
+      "Damage§Audience Favorite": {
+        "stats": {
+          "Dents": {
+            "value": 3
+          },
+          "Champ. Points": {
+            "statType": "numeric",
+            "visibility": "hidden",
+            "tracked": true,
+            "value": 5
+          }
+        },
+        "text": "If this vehicle is Wrecked, its controller immediately discards 3 Audience Votes (to a minimum of 0)."
+      },
+      "Damage§Bent Wheel Arch": {
+        "stats": {
+          "Dents": {
+            "value": 1
+          }
+        }
+      },
+      "Damage§Blown off": {
+        "stats": {
+          "Dents": {
+            "value": 1
+          }
+        }
+      },
+      "Damage§Popped it back in!": {
+        "stats": {
+          "Dents": {
+            "value": -1
+          }
+        }
+      },
+      "Damage§Upholstery Ruined": {
+        "stats": {
+          "Crew": {
+            "statType": "numeric",
+            "visibility": "hidden",
+            "tracked": true,
+            "value": -1
+          },
+          "Dents": {
+            "value": 2
+          }
+        }
+      },
+      "Damage§Weakened chassis": {
+        "text": "+1 Hazard Token when involved in a Collision.",
+        "stats": {
+          "Dents": {
+            "value": 2
+          }
+        }
+      },
+      "Damage§Wrecked Pinion": {
+        "stats": {
+          "Dents": {
+            "value": 1
+          }
+        }
+      },
       "Injuries§Injuries": {
         "allowed": {
           "classifications": [
@@ -2039,28 +2098,13 @@
           ]
         }
       },
-      "Injury§Audience Favorite": {
-        "stats": {
-          "Dents": {
-            "value": 3
-          },
-          "Champ. Points": {
-            "statType": "numeric"
-          }
-        },
-        "text": "If this vehicle is Wrecked, its controller immediately discards 3 Audience Votes (to a minimum of 0)."
-      },
       "Injury§Bad Television": {
         "stats": {
           "Dents": {
             "value": -1
           }
         },
-        "keywords": {
-          "Keywords": [
-            "This vehicle must pay 1 additional Audience Vote to re-spawn"
-          ]
-        }
+        "text": "This vehicle must pay 1 additional Audience Vote to re-spawn."
       },
       "Injury§Badass": {
         "stats": {
@@ -2068,21 +2112,7 @@
             "value": -6
           }
         },
-        "text": "This vehicle may immediately select and gain any one Badass perk"
-      },
-      "Injury§Bent Wheel Arch": {
-        "stats": {
-          "Dents": {
-            "value": 1
-          }
-        }
-      },
-      "Injury§Blown off": {
-        "stats": {
-          "Dents": {
-            "value": 1
-          }
-        }
+        "text": "This vehicle may immediately select and gain any one Badass perk, without paying its cost, even if this driver could not normally select Badass perks."
       },
       "Injury§Cowardly": {
         "stats": {
@@ -2090,7 +2120,7 @@
             "value": -2
           }
         },
-        "text": "This vehicle must always declare an evade during a collision"
+        "text": "This vehicle must always declare an evade during a collision, they may not declare a Smash Attack."
       },
       "Injury§Crazed": {
         "stats": {
@@ -2098,7 +2128,7 @@
             "value": -2
           }
         },
-        "text": "This vehicle may not use shift results to cancel out spin or slide results"
+        "text": "This vehicle may not use shift results to cancel out spin or slide results."
       },
       "Injury§Deathwish": {
         "stats": {
@@ -2106,11 +2136,7 @@
             "value": -1
           }
         },
-        "keywords": {
-          "Keywords": [
-            "This vehicle cannot choose to shift down"
-          ]
-        }
+        "text": "This vehicle cannot choose to shift down."
       },
       "Injury§Held Together By Rust": {
         "stats": {
@@ -2118,16 +2144,7 @@
             "value": -5
           }
         },
-        "keywords": {
-          "Keywords": [
-            "During the Post-Game Sequence"
-          ]
-        },
-        "allowed": {
-          "classifications": [
-            "when rolling on the Vehicle Wrecked table: apply the first result then roll again apply the second result also."
-          ]
-        }
+        "text": "During the Post-Game Sequence, when rolling on the Vehicle Wrecked table (see page 162), apply the first result then roll again apply the second result as well."
       },
       "Injury§Living Legend": {
         "stats": {
@@ -2135,7 +2152,7 @@
             "value": -11
           }
         },
-        "text": "During the Post-Game Sequence"
+        "text": "During the Post-Game Sequence, when rolling on the Vehicle Wrecked table (see page 162), count your result as 1 and remove any injury perks you wish."
       },
       "Injury§Old War Wound": {
         "stats": {
@@ -2143,26 +2160,7 @@
             "value": -3
           }
         },
-        "keywords": {
-          "Keywords": [
-            "At the start of every game"
-          ]
-        },
-        "allowed": {
-          "classifications": [
-            "roll a D6. On a 1"
-          ],
-          "items": [
-            "this vehicle cannot take part in this game"
-          ]
-        }
-      },
-      "Injury§Popped it back in!": {
-        "stats": {
-          "Dents": {
-            "value": -1
-          }
-        }
+        "text": "At the start of every game,roll a D6. On a 1, this vehicle cannot take part in this game."
       },
       "Injury§Shakes": {
         "stats": {
@@ -2180,38 +2178,10 @@
         },
         "text": "At the start of the game"
       },
-      "Injury§Upholstery Ruined": {
-        "stats": {
-          "Crew": {
-            "statType": "numeric",
-            "visibility": "hidden",
-            "tracked": true
-          },
-          "Dents": {
-            "value": 2
-          }
-        }
-      },
-      "Injury§Weakened chassis": {
-        "text": "+1 Hazard Token when involved in a Collision.",
-        "stats": {
-          "Dents": {
-            "value": 2
-          }
-        }
-      },
-      "Injury§Wrecked Pinion": {
-        "stats": {
-          "Dents": {
-            "value": 1
-          }
-        }
-      },
       "Perk—Aggression§Battlehammer": {
         "stats": {
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           }
         },
         "text": "When making a smash attack, this vehicle gains +1 attack dice for each hazard token it currently has."
@@ -2219,8 +2189,7 @@
       "Perk—Aggression§Boarding Party": {
         "stats": {
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         },
         "text": "This vehicle ignores the distracted rule. Crew members in this vehicle may attack during the attack step even if the vehicle is distracted."
@@ -2228,8 +2197,7 @@
       "Perk—Aggression§Double-Barreled": {
         "stats": {
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         },
         "text": "During the attack step, up to 3 weapons with the Crew Fired special rule may gain a +1 bonus to hit."
@@ -2237,8 +2205,7 @@
       "Perk—Aggression§Grinderman": {
         "stats": {
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           }
         },
         "text": "Before this Vehicle rolls its attack dice in a smash attack, it may choose to add hazard tokens to the target vehicle for each damage it inflicts, instead of removing hull points."
@@ -2246,8 +2213,7 @@
       "Perk—Aggression§Murder Tractor": {
         "stats": {
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           }
         },
         "text": "This vehicle may make piledriver attacks, like a War Rig."
@@ -2255,8 +2221,7 @@
       "Perk—Aggression§Terrifying Lunatic": {
         "stats": {
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           }
         },
         "text": "Whenever a vehicle controlled by another player ends its movement step within short range of this vehicle, the active vehicle gains a hazard token."
@@ -2264,8 +2229,7 @@
       "Perk—Badass§Bullet-time": {
         "stats": {
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           }
         },
         "text": "If this vehicle resolves a slide result during its movement step, this may select one of its weapons to count as turret-mounted for the rest of the activation."
@@ -2273,8 +2237,7 @@
       "Perk—Badass§Cover Me": {
         "stats": {
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         },
         "text": "Once during its activation this vehicle may remove a hazard token and place it on another friendly vehicle within double range."
@@ -2282,8 +2245,7 @@
       "Perk—Badass§Crowd Pleaser": {
         "stats": {
           "Cost": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           }
         },
         "text": "If this vehicle wipes out, gain +1 audience vote."
@@ -2291,8 +2253,7 @@
       "Perk—Badass§Madman": {
         "stats": {
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           }
         },
         "text": "At the end of this vehicle’s Movement Step, if it has 4 or more hazard tokens, it may remove a hazard token and place it on another vehicle within medium range."
@@ -2300,8 +2261,7 @@
       "Perk—Badass§Powder Keg": {
         "stats": {
           "Cost": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           }
         },
         "text": "This vehicle may add +1 to its explosion check. Treat this vehicle as one weight-class heavier when it explodes.\n\nNote: this bonus does apply during resolution of the FIREWORKS perk."
@@ -2309,8 +2269,7 @@
       "Perk—Badass§Road Warrior": {
         "stats": {
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         },
         "text": "Once per activation, if this vehicle has successfully causes one or more hits on an enemy vehicle at any point during this activation, this vehicle may remove a single hazard token at the end of its attack step."
@@ -2318,8 +2277,7 @@
       "Perk—Built§Barrel Roll": {
         "stats": {
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         },
         "text": "When this vehicle suffers a flip, it may choose to place the flip template touching the centre of either side edge or the rear edge of this vehicle, and perpendicular to that edge, instead of touching the front edge as normal."
@@ -2327,8 +2285,7 @@
       "Perk—Built§Bruiser": {
         "stats": {
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           }
         },
         "text": "In a collision involving this vehicle, if this vehicle declares a reaction other than evade against an enemy vehicle, the enemy vehicle immediately gains one hazard token."
@@ -2336,8 +2293,7 @@
       "Perk—Built§Crusher": {
         "stats": {
           "Cost": {
-            "value": 7,
-            "statType": "numeric"
+            "value": 7
           }
         },
         "text": "This vehicle gains the Up and Over special rule (see the Monster Truck rules).",
@@ -2365,8 +2321,7 @@
       "Perk—Built§Dead Weight": {
         "stats": {
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         },
         "text": "During this vehicle’s attack step, this vehicle may gain 2 hazards to count as one weight-class heavier (unless already heavyweight) until the start of its next activation."
@@ -2374,8 +2329,7 @@
       "Perk—Built§Feel No Pain": {
         "stats": {
           "Cost": {
-            "value": 8,
-            "statType": "numeric"
+            "value": 8
           }
         },
         "text": "During an enemy vehicle’s attack step, after an attacker has rolled all of their attack dice against this vehicle, if the attacks causes a total of 2 or fewer un-canceled hits, cancel all remaining hits."
@@ -2383,8 +2337,7 @@
       "Perk—Built§Splashback": {
         "stats": {
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           }
         },
         "text": "Once per step, when this vehicle loses one or more hull points, make a 1D6 attack against each vehicle within medium range at end of that step."
@@ -2392,8 +2345,7 @@
       "Perk—Daring§Chrome-Whisperer": {
         "stats": {
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         },
         "text": "This vehicle may *push it* any number of times during a single skid check, gaining 1 hazard token each time."
@@ -2401,8 +2353,7 @@
       "Perk—Daring§Evasive": {
         "stats": {
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           }
         },
         "text": "Before making an evade roll, this vehicle may gain any number of hazard tokens to add +1 to each of their evade dice for each hazard token gained. A roll of a ‘1’ on an evade dice always counts as a failure."
@@ -2410,8 +2361,7 @@
       "Perk—Daring§Handbrake Artist": {
         "stats": {
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           }
         },
         "text": "When applying a spin result, this vehicle may choose to face any direction."
@@ -2419,8 +2369,7 @@
       "Perk—Daring§Powerslide": {
         "stats": {
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           }
         },
         "text": "This vehicle may use any template except the long straight template instead of the slide template when applying a slide result. As with the movement step 1.1, you must use the first maneuver template you touch. Treat the selected maneuver template as a slide template for purposes of finding the vehicle’s final position."
@@ -2428,8 +2377,7 @@
       "Perk—Daring§Slippery": {
         "stats": {
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           }
         },
         "text": "Vehicles making a smash attack targeting this vehicle suffer a penalty of -2 attack dice."
@@ -2473,8 +2421,7 @@
         },
         "stats": {
           "Cost": {
-            "value": 7,
-            "statType": "numeric"
+            "value": 7
           }
         },
         "text": "This vehicle may choose to ignore any number of obstructions during its movement step. After any movement step in which this vehicle chooses to ignore any obstruction using this ability, this vehicle immediately gains 3 hazard tokens."
@@ -2482,8 +2429,7 @@
       "Perk—Horror§Angel of Death": {
         "stats": {
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           }
         },
         "text": "Before making an attack, this vehicle may elect to suffer up to three damage to add that many attack dice to a single weapon used in this attack."
@@ -2491,8 +2437,7 @@
       "Perk—Horror§Ecstatic Visions": {
         "stats": {
           "Cost": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           }
         },
         "text": "Once per activation, at the start of this vehicle’s activation, this vehicle may elect to to gain up to 3 hazard tokens to discard one hazard token from a friendly vehicle for each hazard token gained."
@@ -2500,8 +2445,7 @@
       "Perk—Horror§Highway to Hell": {
         "stats": {
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         },
         "text": "At the end of its movement step, if this vehicle selected a straight template, this vehicle may suffer 2 damage. This damage counts as having the ‘Fire’ rule. If any hull points are removed by this effect, this vehicle may leave its movement template (ignoring any slide template) in play as a Napalm dropped weapon template. Remove this template at the start of this vehicle’s next activation."
@@ -2509,8 +2453,7 @@
       "Perk—Horror§Purifying Flames": {
         "stats": {
           "Cost": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           }
         },
         "text": "Once per activation, at the start of this vehicle’s activation, this vehicle may suffer up to 3 damage to repair one hull point on a friendly vehicle for each hull point removed by this effect. This damage counts as having the *Fire* rule. This effect may not be used to raise a vehicle above its hull value."
@@ -2518,8 +2461,7 @@
       "Perk—Horror§Sympathy for the Devil": {
         "stats": {
           "Cost": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           }
         },
         "text": "When this vehicle makes an evade check, it’s controller may select a friendly vehicle within medium range. Add the current gear of the selected vehicle to this vehicle’s current gear for the purposes of this evade check. Both the selected vehicle and this vehicle suffer any unsaved damage from this attack, including any additional effects."
@@ -2527,8 +2469,7 @@
       "Perk—Horror§Violent Manifestation": {
         "stats": {
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           }
         },
         "text": "When this vehicle is respawned: make an immediate attack (with attack dice based on the weight of the respawned vehicle) against every other vehicle within medium range. This explosion counts as having both the *Blast* and *Fire* rules."
@@ -2536,8 +2477,7 @@
       "Perk—Military§Dead-Eye": {
         "stats": {
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         },
         "text": "During this vehicle’s attack step this vehicle may gain a +1 bonus to hit if making a shooting attack at a target within double range and not within medium range. \n\nCritical hits still occur only on the natural roll of a 6."
@@ -2545,8 +2485,7 @@
       "Perk—Military§Fully Loaded": {
         "stats": {
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         },
         "text": "If a shooting weapon on this vehicle has 3 or more ammo tokens remaining before discarding an ammo token to attack, that weapon gains +1 attack dice."
@@ -2554,8 +2493,7 @@
       "Perk—Military§Headshot": {
         "stats": {
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           }
         },
         "text": "When making a shooting attack, this vehicle’s critical hits inflict 3 hits instead of the normal 2 hits."
@@ -2563,8 +2501,7 @@
       "Perk—Military§Loader": {
         "stats": {
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         },
         "text": "At the start of its attack step, this vehicle may temporarily reduce its crew value by one, once, until the end of the attack step, to gain +1 bonus to hit with a single weapon. Critical hits still occur only on the natural roll of a 6."
@@ -2572,8 +2509,7 @@
       "Perk—Military§Rapid Fire": {
         "stats": {
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         },
         "text": "Once per round, after attacking with a weapon, this vehicle may resolve an additional attack step in which it may only attack with that weapon."
@@ -2581,8 +2517,7 @@
       "Perk—Military§Return Fire": {
         "stats": {
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           }
         },
         "text": "Once per gear phase, if this vehicle is the target of a shooting attack, this vehicle may take 2 hazard tokens to immediately attack, as if it was this vehicle’s attack step."
@@ -2590,8 +2525,7 @@
       "Perk—Precision§Easy Rider": {
         "stats": {
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           }
         },
         "text": "Once per turn, this vehicle may discard one rolled skid die result before applying the results."
@@ -2599,8 +2533,7 @@
       "Perk—Precision§Expertise": {
         "stats": {
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Handling": {
             "tracked": true,
@@ -2614,8 +2547,7 @@
       "Perk—Precision§Mister Fahrenheit": {
         "stats": {
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         },
         "text": "This vehicle cannot gain more than 2 hazards tokens from collisions during a single activation."
@@ -2623,8 +2555,7 @@
       "Perk—Precision§Moment of Glory": {
         "stats": {
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         },
         "text": "Once per game, after rolling the skid dice, but before resolving the results, this vehicle may immediately change any number of skid dice to any results they choose."
@@ -2632,8 +2563,7 @@
       "Perk—Precision§Restraint": {
         "stats": {
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         },
         "text": "When this vehicle would gain a hazard token for shifting down a gear, this vehicle may remove a hazard token instead."
@@ -2641,8 +2571,7 @@
       "Perk—Precision§Trick Driving": {
         "stats": {
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           }
         },
         "text": "This vehicle may select a movement template as if its current gear was one higher or one lower."
@@ -2650,8 +2579,7 @@
       "Perk—Pursuit§On Your Tail": {
         "stats": {
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         },
         "text": "When an enemy vehicle resolves a spin or slide move that ends within short range of this vehicle, that vehicle gains +1 hazard token."
@@ -2659,8 +2587,7 @@
       "Perk—Pursuit§Out Run": {
         "stats": {
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         },
         "text": "At the start of this vehicle’s attack step, all vehicles within short range of this vehicle and in a current, lower gear than this vehicle gain +1 hazard token."
@@ -2668,8 +2595,7 @@
       "Perk—Pursuit§PIT": {
         "stats": {
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           }
         },
         "text": "During this vehicle’s activation, if this vehicle is involved in a non-head-on collision with an enemy vehicle, it may declare a *Pursuit Intervention Technique* (PIT) as its reaction, targeting the enemy vehicle, instead of declaring a smash attack or an evade. If this vehicle declares a PIT, it may select any movement template the target vehicle considers hazardous in its current gear. Immediately after the resolution of this collision, the target vehicle must make a forced move directly forward using the selected movement template."
@@ -2677,8 +2603,7 @@
       "Perk—Pursuit§Schadenfreude": {
         "stats": {
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         },
         "text": "If another vehicle within short range of this vehicle resolves a wipe out, (either before or after any flip), remove all hazard tokens from this vehicle."
@@ -2686,8 +2611,7 @@
       "Perk—Pursuit§Taunt": {
         "stats": {
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         },
         "text": "At the start of this vehicle’s attack step, roll a skid die. If you roll something other than a SHIFT result, you may place that skid die result onto the dashboard of a target vehicle within short range. This skid die result must be resolved during that vehicle’s next skid check, and may not be re-rolled."
@@ -2695,8 +2619,7 @@
       "Perk—Pursuit§Unnerving Eye Contact": {
         "stats": {
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           }
         },
         "text": "Enemy vehicles within short range of this vehicle may not use shift results to remove hazard tokens from their dashboard."
@@ -2704,8 +2627,7 @@
       "Perk—Reckless§Beerseeker": {
         "stats": {
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           }
         },
         "text": "When this vehicle would suffer damage outside of its activation, reduce that damage by 1, to a minimum of 1."
@@ -2713,8 +2635,7 @@
       "Perk—Reckless§Bigger’n You": {
         "stats": {
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           }
         },
         "text": "Double any smash attack bonuses or penalties resulting from weight differences in collisions involving this vehicle."
@@ -2722,8 +2643,7 @@
       "Perk—Reckless§Don’t Come Knocking": {
         "stats": {
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           }
         },
         "text": "At the start of this vehicle’s activation, it may gain 4 hazard tokens. If it does, this vehicle cannot gain or lose any hazard tokens by any means until the start of its next activation."
@@ -2731,8 +2651,7 @@
       "Perk—Reckless§Drive Angry": {
         "stats": {
           "Cost": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           }
         },
         "text": "Gain 1 hazard token at the start of each activation."
@@ -2740,8 +2659,7 @@
       "Perk—Reckless§Hog Wild": {
         "stats": {
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         },
         "text": "This vehicle gains +2 smash attack dice during any collision resolved during a wipe out step."
@@ -2749,8 +2667,7 @@
       "Perk—Reckless§In For a Penny": {
         "stats": {
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         },
         "text": "If this vehicle has gained six or more hazard tokens during this activation, it may double the attack dice of any smash attack for this activation only."
@@ -2758,8 +2675,7 @@
       "Perk—Speed§Downshift": {
         "stats": {
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           }
         },
         "text": "At the end of a movement step in which this vehicle changed down one or more gears, this vehicle may immediately make a forced short straight movement forward."
@@ -2767,8 +2683,7 @@
       "Perk—Speed§Hell For Leather": {
         "stats": {
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           }
         },
         "text": "This vehicle considers long straight to he permitted in any gear. The long straight is not considered either hazardous or trivial in any gear."
@@ -2776,8 +2691,7 @@
       "Perk—Speed§Hot Start": {
         "stats": {
           "Cost": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           }
         },
         "text": "Roll a D6 at the start of the game This vehicle starts the game in that gear. Re-roll if this is above the vehicles max gear."
@@ -2785,8 +2699,7 @@
       "Perk—Speed§Overload": {
         "stats": {
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         },
         "text": "When making a skid check, this vehicle may roll one additional skid die. If it does, it must change up at least one gear or gain a hazard token."
@@ -2794,8 +2707,7 @@
       "Perk—Speed§Slipstream": {
         "stats": {
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         },
         "text": "If this vehicle is involved in a tailgate collision during its activation, this vehicle may declare a slipstream reaction. If they do, they other vehicle may not declare a reaction. If this vehicle declares a slipstream reaction: this vehicle may change up or down one gear and gains a hazard token. Neither vehicle gains hazard tokens as a result of this collision."
@@ -2803,8 +2715,7 @@
       "Perk—Speed§Time Extended!": {
         "stats": {
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           }
         },
         "text": "At the end of an activation in which this vehicle passes a gate, before checking for wipeouts, this vehicle may immediately remove any number of hazard tokens."
@@ -2812,8 +2723,7 @@
       "Perk—Technology§Eureka!": {
         "stats": {
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           }
         },
         "text": "Once per game, at the start of its attack step, this vehicle’s controller may declare any weapon that this vehicle has not attacked with yet this game. This vehicle counts as being armed with the declared weapon, on a facing of their choice, for the next attack only."
@@ -2821,8 +2731,7 @@
       "Perk—Technology§Gyroscope": {
         "stats": {
           "Cost": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           }
         },
         "text": "At the start of each game, this vehicle gains a random DARING PERK. This perk is lost at the end of the game."
@@ -2830,8 +2739,7 @@
       "Perk—Technology§Mobile Mechanic": {
         "stats": {
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           }
         },
         "text": "Once per activation, at the start of its attack step, this vehicle may temporarily reduce its crew value by one, once, until the end of the attack step, to perform a field repair. If it does, this vehicle gains 1 hull point, which may not take its hull points above the vehicle’s hull value."
@@ -2839,8 +2747,7 @@
       "Perk—Technology§Rocket Thrusters": {
         "stats": {
           "Cost": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           }
         },
         "text": "When this vehicle is moved as part of a flip, it may choose to use the long straight, veer or gentle templates instead of the medium straight template."
@@ -2848,8 +2755,7 @@
       "Perk—Technology§Satellite Navigation": {
         "stats": {
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         },
         "text": "When this vehicle resolves its skid dice, this vehicle’s controller may set aside one shift result. This vehicle may have any number of shift results set aside. Any vehicle in this team may use these set aside shift results during a later movement step, as if they had rolled them in that movement step."
@@ -2857,8 +2763,7 @@
       "Perk—Technology§Whizbang": {
         "stats": {
           "Cost": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           }
         },
         "text": "At the start of each game, this vehicle gains a random SPEED PERK. This perk is lost at the end of the game."
@@ -2866,8 +2771,7 @@
       "Perk—Tuning§Delicate Touch": {
         "stats": {
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           }
         },
         "text": "This vehicle ignores the hazard icons on maneuver templates."
@@ -2875,8 +2779,7 @@
       "Perk—Tuning§Fenderkiss": {
         "stats": {
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         },
         "text": "When this vehicle makes a smash attack, this vehicle suffers a penalty of -2 attack dice. Vehicles making a smash attack targeting this vehicle suffer a penalty of -2 attack dice."
@@ -2884,8 +2787,7 @@
       "Perk—Tuning§Momentum": {
         "stats": {
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           }
         },
         "text": "When resolving skid dice, this vehicle may set aside a Slide or Spin result to re-roll a skid dice. The effect may be used multiple times.  Set aside results must be resolved."
@@ -2893,8 +2795,7 @@
       "Perk—Tuning§Purring": {
         "stats": {
           "Cost": {
-            "value": 6,
-            "statType": "numeric"
+            "value": 6
           }
         },
         "text": "This vehicle does not receive more than 1 hazard token from Spin results each turn. This vehicle does not receive more than 1 hazard token from Slide results each turn. This vehicle does not receive more than 1 hazard token from Hazard results each turn."
@@ -2902,8 +2803,7 @@
       "Perk—Tuning§Rear Drive": {
         "stats": {
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         },
         "text": "This vehicle may pivot about the centre of its front edge, rather than the centre of the vehicle, when resolving Spin results."
@@ -2911,8 +2811,7 @@
       "Perk—Tuning§Skiing": {
         "stats": {
           "Cost": {
-            "value": 6,
-            "statType": "numeric"
+            "value": 6
           }
         },
         "text": "If this vehicle has handling 3 or higher, this vehicle may take 3 hazard tokens at the end of its activation to be ignored by other vehicles during their movement steps until the start of this vehicle’s next activation. If, by ignoring this vehicle in this way, a vehicle’s final position would overlap it, move that vehicle backwards along their maneuver template by the minimum amount to avoid overlapping any obstruction."
@@ -2922,13 +2821,6 @@
           "classifications": [
             "Vehicle—Standard"
           ]
-        },
-        "aspects": {
-          "Describe": true,
-          "Lock Qty": true,
-          "Rename": true,
-          "Type": "conceptual",
-          "Unique": true
         },
         "stats": {
           "Cost": {
@@ -2953,622 +2845,6 @@
             },
             "group": "General",
             "groupOrder": 1,
-            "dynamic": true
-          },
-          "Sponsor": {
-            "statType": "rank",
-            "ranks": {
-              "-": {
-                "order": 0
-              },
-              "Rutherford": {
-                "order": 1,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Military Hardware"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Well Stocked"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Might is Right"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Televised Carnage"
-                    }
-                  }
-                ]
-              },
-              "Miyazaki": {
-                "order": 2,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Virtuoso"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Elegance"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Showing Off"
-                    }
-                  }
-                ]
-              },
-              "Mishkin": {
-                "order": 3,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Thumpermonkey"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Dynamo"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§All the Toys"
-                    }
-                  }
-                ]
-              },
-              "Idris": {
-                "order": 4,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§N₂O Addict"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Speed Demon"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Cult of Speed"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Kiss My Asphalt"
-                    }
-                  }
-                ]
-              },
-              "Slime": {
-                "order": 5,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Live Fast"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Pinball"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Spiked Fist"
-                    }
-                  }
-                ]
-              },
-              "The Warden": {
-                "order": 6,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Prison Cars"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Fireworks"
-                    }
-                  }
-                ]
-              },
-              "Scarlett": {
-                "order": 7,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Crew Quarters"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Raiders"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Raise the Sails"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Press Gang"
-                    }
-                  }
-                ]
-              },
-              "Highway Patrol": {
-                "order": 8,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Hot Pursuit"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Bogey at 12 O‘Clock"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Siren"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Steel Justice"
-                    }
-                  }
-                ]
-              },
-              "Verney": {
-                "order": 9,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§MicroPlate Armour"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Tombstone"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Trunk of Junk"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§That’s Entertainment"
-                    }
-                  }
-                ]
-              },
-              "Maxxine": {
-                "order": 10,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Dizzy"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Maxximum Drift"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Meshuggah"
-                    }
-                  }
-                ]
-              },
-              "The Order of the Inferno": {
-                "order": 11,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Fire, Walk With Me"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Burning Man"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Cult of Flame"
-                    }
-                  }
-                ]
-              },
-              "Beverly, the Devil on the Highway": {
-                "order": 12,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Graveyard Shift"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Ghost Rider"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Soul Anchor"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§At the Crossroads"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Inexorable"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Soul Harvest"
-                    }
-                  }
-                ]
-              },
-              "Rusty’s Bootleggers": {
-                "order": 13,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Party Hard"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Dutch Courage"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§As Straight as I’m Able"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Over the Limit"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Trailer Trash"
-                    }
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": {
-                      "path": [
-                        "{self}"
-                      ],
-                      "trait": "Sponsor Perk§Haulage"
-                    }
-                  }
-                ]
-              }
-            },
-            "group": "General",
-            "groupOrder": 1,
-            "visibility": "always",
             "dynamic": true
           },
           "Votes": {
@@ -3603,6 +2879,379 @@
             "group": "Campaign",
             "groupOrder": 2,
             "dynamic": true
+          },
+          "Sponsor": {
+            "statType": "rank",
+            "value": "-",
+            "ranks": {
+              "-": {
+                "order": 0
+              },
+              "Rutherford": {
+                "order": 1,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Military Hardware"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Well Stocked"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Might is Right"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Televised Carnage"
+                  }
+                ]
+              },
+              "Miyazaki": {
+                "order": 2,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Virtuoso"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Elegance"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Showing Off"
+                  }
+                ]
+              },
+              "Mishkin": {
+                "order": 3,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Thumpermonkey"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Dynamo"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§All the Toys"
+                  }
+                ]
+              },
+              "Idris": {
+                "order": 4,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§N₂O Addict"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Speed Demon"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Cult of Speed"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Kiss My Asphalt"
+                  }
+                ]
+              },
+              "Slime": {
+                "order": 5,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Live Fast"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Pinball"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Spiked Fist"
+                  }
+                ]
+              },
+              "The Warden": {
+                "order": 6,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Prison Cars"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Fireworks"
+                  }
+                ]
+              },
+              "Scarlett": {
+                "order": 7,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Crew Quarters"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Raiders"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Raise the Sails"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Press Gang"
+                  }
+                ]
+              },
+              "Highway Patrol": {
+                "order": 8,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Hot Pursuit"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Bogey at 12 O‘Clock"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Siren"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Steel Justice"
+                  }
+                ]
+              },
+              "Verney": {
+                "order": 9,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§MicroPlate Armour"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Tombstone"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Trunk of Junk"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§That’s Entertainment"
+                  }
+                ]
+              },
+              "Maxxine": {
+                "order": 10,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Dizzy"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Maxximum Drift"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Meshuggah"
+                  }
+                ]
+              },
+              "The Order of the Inferno": {
+                "order": 11,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Fire, Walk With Me"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Burning Man"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Cult of Flame"
+                  }
+                ]
+              },
+              "Beverly, the Devil on the Highway": {
+                "order": 12,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Graveyard Shift"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Ghost Rider"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Soul Anchor"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§At the Crossroads"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Inexorable"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Soul Harvest"
+                  }
+                ]
+              },
+              "Rusty’s Bootleggers": {
+                "order": 13,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Party Hard"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Dutch Courage"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§As Straight as I’m Able"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Over the Limit"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Trailer Trash"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Haulage"
+                  }
+                ]
+              }
+            },
+            "group": "General",
+            "groupOrder": 1,
+            "visibility": "always",
+            "dynamic": true,
+            "tracked": false
           }
         },
         "rules": {
@@ -3891,45 +3540,6 @@
               }
             ]
           },
-          "campaign": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Game Type",
-                    "value"
-                  ]
-                ],
-                "value": "Campaign",
-                "operator": "AND",
-                "not": false
-              }
-            ],
-            "failState": "pass",
-            "evaluate": "OR",
-            "order": 5,
-            "actions": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "included",
-                    "classification",
-                    [
-                      "Vehicle",
-                      "Vehicle—Restricted"
-                    ],
-                    "traits"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Injuries§Injuries",
-                "iterations": 1
-              }
-            ]
-          },
           "scenario": {
             "evals": [
               {
@@ -3976,6 +3586,46 @@
                 ],
                 "actionType": "set",
                 "value": "hidden",
+                "iterations": 1
+              }
+            ]
+          },
+          "campaign": {
+            "evals": [
+              {
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Game Type",
+                    "value"
+                  ]
+                ],
+                "value": "Campaign",
+                "operator": "AND",
+                "not": false,
+                "actionable": true
+              }
+            ],
+            "failState": "pass",
+            "evaluate": "OR",
+            "order": 5,
+            "actions": [
+              {
+                "paths": [
+                  [
+                    "{self}",
+                    "included",
+                    "classification",
+                    [
+                      "Vehicle—Restricted",
+                      "Vehicle—Standard"
+                    ],
+                    "traits"
+                  ]
+                ],
+                "actionType": "add",
+                "value": "Injuries§Injuries",
                 "iterations": 1
               }
             ]
@@ -4301,8 +3951,7 @@
         "text": "If this vehicle is On Fire it gains +1 to all evade dice."
       },
       "Sponsor Perk§Crew Quarters": {
-        "text": "This team may purchase the Extra Crewmember upgrade at half the listed cost.",
-        "rules": {}
+        "text": "This team may purchase the Extra Crewmember upgrade at half the listed cost."
       },
       "Sponsor Perk§Cult of Flame": {
         "text": "At the end of the gear phase, if there are more enemy vehicles on fire than there are friendly vehicles on fire, or all enemy vehicles are on fire, this team gains 1 audience vote for each friendly vehicle that is On Fire."
@@ -4995,12 +4644,10 @@
       "Upgrade§Armour Plating": {
         "stats": {
           "Build Slots": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Hull": {
             "tracked": true,
@@ -5018,12 +4665,10 @@
         },
         "stats": {
           "Ammo": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           }
         },
         "text": "Highly Explosive. Limit of 1."
@@ -5031,8 +4676,7 @@
       "Upgrade§Extra Crewmember": {
         "stats": {
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Crew": {
             "value": 1,
@@ -5073,12 +4717,10 @@
       "Upgrade§Improvised Sludge Thrower": {
         "stats": {
           "Build Slots": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         },
         "text": "This vehicle may place the burst templates for its dropped weapons anywhere within a 360 arc of fire that is at least partially within medium range of this vehicle."
@@ -5086,12 +4728,10 @@
       "Upgrade§Nitro Booster": {
         "stats": {
           "Ammo": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Cost": {
-            "value": 6,
-            "statType": "numeric"
+            "value": 6
           }
         },
         "text": "Once per activation, at the start of a Movement Step, this vehicle may declare that it is using a Nitro Booster. If it does, this vehicle makes an immediate forced, Long Straight move forward, and then gains hazard tokens until it has 5 hazard tokens. It then resolves its Movement Step as normal, except that it may not reverse. Then, at the end of the movement step, it again gains Hazard Tokens until it has 5 Hazard Tokens."
@@ -5099,12 +4739,10 @@
       "Upgrade§Ram": {
         "stats": {
           "Build Slots": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           }
         },
         "text": "No hazards gained during collisions on declared facing."
@@ -5112,12 +4750,10 @@
       "Upgrade§Roll Cage": {
         "stats": {
           "Build Slots": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           }
         },
         "text": "May ignore hits received from Flips."
@@ -5130,12 +4766,10 @@
         },
         "stats": {
           "Build Slots": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Handling": {
             "tracked": true,
@@ -5912,27 +5546,9 @@
           ]
         },
         "stats": {
-          "Ammo": {
-            "ranks": {
-              "0": {
-                "format": "-",
-                "order": 0
-              }
-            },
-            "statType": "rank"
-          },
           "Attack Dice": {
             "value": 1,
             "statType": "numeric"
-          },
-          "Cost": {
-            "ranks": {
-              "0": {
-                "format": "-",
-                "order": 0
-              }
-            },
-            "statType": "rank"
           },
           "Range": {
             "statType": "rank"
@@ -6441,8 +6057,7 @@
             "statType": "rank"
           },
           "Mounting": {
-            "statType": "rank",
-            "ranks": {},
+            "value": "Front",
             "dynamic": false
           }
         },
@@ -7059,7 +6674,6 @@
         },
         "text": "Targets make gear+2 (max 6) flip check."
       }
-    },
-    "gameModes": {}
+    }
   }
 }
