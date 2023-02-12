@@ -1,6 +1,6 @@
 {
   "name": "Gaslands",
-  "revision": "0.2.0",
+  "revision": "0.2.1",
   "game": "Gaslands Refuelled",
   "genre": "sci-fi",
   "publisher": "Osprey Games",
@@ -61,11 +61,15 @@
         },
         "stats": {
           "Cost": {
+            "statType": "numeric",
+            "value": null,
             "icons": [
               "jerrycan"
             ],
             "group": "Cost",
             "groupOrder": -1,
+            "visibility": "always",
+            "dynamic": false,
             "tracked": true
           }
         }
@@ -119,29 +123,26 @@
         },
         "stats": {
           "Build Slots": {
+            "statType": "numeric",
             "statOrder": 6
           },
-          "Cost": {
-            "icons": [
-              "jerrycan"
-            ],
-            "group": "Cost",
-            "groupOrder": -1,
-            "tracked": true
-          },
           "Crew": {
+            "statType": "numeric",
             "statOrder": 5,
             "tracked": true
           },
           "Handling": {
+            "statType": "numeric",
             "statOrder": 3,
             "tracked": true
           },
           "Hull": {
+            "statType": "numeric",
             "statOrder": 2,
             "tracked": true
           },
           "Max Gear": {
+            "statType": "numeric",
             "statOrder": 4,
             "tracked": true
           },
@@ -153,6 +154,18 @@
             "dynamic": false,
             "tracked": true,
             "min": 0
+          },
+          "Cost": {
+            "statType": "numeric",
+            "value": null,
+            "icons": [
+              "jerrycan"
+            ],
+            "group": "Cost",
+            "groupOrder": -1,
+            "visibility": "always",
+            "dynamic": false,
+            "tracked": true
           }
         },
         "lineage": [
@@ -1324,8 +1337,11 @@
           "traits": []
         },
         "stats": {
-          "Ammo": {},
+          "Ammo": {
+            "statType": "numeric"
+          },
           "Cost": {
+            "statType": "numeric",
             "icons": [
               "jerrycan"
             ],
@@ -1369,6 +1385,7 @@
             "statType": "rank"
           },
           "Build Slots": {
+            "statType": "numeric",
             "tracked": true
           },
           "Attack Dice": {
@@ -2022,15 +2039,15 @@
         "text": "During this vehicle’s attack step, this vehicle may gain 2 hazards to count as one weight-class heavier (unless already heavyweight) until the start of its next activation."
       },
       "Perk§Dead-Eye": {
-        "keywords": {
-          "Tags": [
-            "Military"
-          ]
-        },
         "stats": {
           "Cost": {
             "value": 2
           }
+        },
+        "keywords": {
+          "Tags": [
+            "Military"
+          ]
         },
         "text": "During this vehicle’s attack step this vehicle may gain a +1 bonus to hit if making a shooting attack at a target within double range and not within medium range. \n\nCritical hits still occur only on the natural roll of a 6."
       },
@@ -2163,7 +2180,6 @@
           },
           "Handling": {
             "tracked": true,
-            "value": 1,
             "statType": "numeric",
             "visibility": "hidden"
           }
@@ -4818,8 +4834,7 @@
         },
         "stats": {
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Trailer": {
             "tracked": true,
@@ -4860,12 +4875,10 @@
         },
         "stats": {
           "Build Slots": {
-            "value": -1,
-            "statType": "numeric"
+            "value": -1
           },
           "Cost": {
-            "value": 8,
-            "statType": "numeric"
+            "value": 8
           },
           "Trailer": {
             "tracked": true,
@@ -4902,28 +4915,22 @@
         },
         "stats": {
           "Build Slots": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Cost": {
-            "value": 20,
-            "statType": "numeric"
+            "value": 20
           },
           "Crew": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Handling": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Hull": {
-            "value": 12,
-            "statType": "numeric"
+            "value": 12
           },
           "Max Gear": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           }
         }
       },
@@ -4944,28 +4951,22 @@
         },
         "stats": {
           "Build Slots": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           },
           "Crew": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Handling": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           },
           "Hull": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Max Gear": {
-            "value": 6,
-            "statType": "numeric"
+            "value": 6
           }
         }
       },
@@ -4986,28 +4987,22 @@
         },
         "stats": {
           "Build Slots": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Cost": {
-            "value": 8,
-            "statType": "numeric"
+            "value": 8
           },
           "Crew": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Handling": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           },
           "Hull": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Max Gear": {
-            "value": 6,
-            "statType": "numeric"
+            "value": 6
           }
         }
       },
@@ -5027,28 +5022,22 @@
         },
         "stats": {
           "Build Slots": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Crew": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Handling": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Hull": {
-            "value": 6,
-            "statType": "numeric"
+            "value": 6
           },
           "Max Gear": {
-            "value": 6,
-            "statType": "numeric"
+            "value": 6
           }
         }
       },
@@ -5063,28 +5052,22 @@
         },
         "stats": {
           "Build Slots": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Cost": {
-            "value": 30,
-            "statType": "numeric"
+            "value": 30
           },
           "Crew": {
-            "value": 8,
-            "statType": "numeric"
+            "value": 8
           },
           "Handling": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Hull": {
-            "value": 16,
-            "statType": "numeric"
+            "value": 16
           },
           "Max Gear": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           }
         }
       },
@@ -5099,28 +5082,22 @@
         },
         "stats": {
           "Build Slots": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Cost": {
-            "value": 12,
-            "statType": "numeric"
+            "value": 12
           },
           "Crew": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Handling": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Hull": {
-            "value": 10,
-            "statType": "numeric"
+            "value": 10
           },
           "Max Gear": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           }
         }
       },
@@ -5140,28 +5117,22 @@
         },
         "stats": {
           "Build Slots": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           },
           "Crew": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Handling": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Hull": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Max Gear": {
-            "value": 6,
-            "statType": "numeric"
+            "value": 6
           }
         }
       },
@@ -5183,24 +5154,19 @@
         },
         "stats": {
           "Cost": {
-            "value": 10,
-            "statType": "numeric"
+            "value": 10
           },
           "Crew": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Handling": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Hull": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Max Gear": {
-            "value": 6,
-            "statType": "numeric"
+            "value": 6
           }
         }
       },
@@ -5215,28 +5181,22 @@
         },
         "stats": {
           "Build Slots": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           },
           "Cost": {
-            "value": 25,
-            "statType": "numeric"
+            "value": 25
           },
           "Crew": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Handling": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Hull": {
-            "value": 14,
-            "statType": "numeric"
+            "value": 14
           },
           "Max Gear": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           }
         }
       },
@@ -5260,28 +5220,22 @@
         },
         "stats": {
           "Build Slots": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Cost": {
-            "value": 30,
-            "statType": "numeric"
+            "value": 30
           },
           "Crew": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Handling": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Hull": {
-            "value": 8,
-            "statType": "numeric"
+            "value": 8
           },
           "Max Gear": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           }
         },
         "aspects": {
@@ -5305,28 +5259,22 @@
         },
         "stats": {
           "Build Slots": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Cost": {
-            "value": 8,
-            "statType": "numeric"
+            "value": 8
           },
           "Crew": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Handling": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Hull": {
-            "value": 10,
-            "statType": "numeric"
+            "value": 10
           },
           "Max Gear": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           }
         }
       },
@@ -5347,28 +5295,22 @@
         },
         "stats": {
           "Build Slots": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Cost": {
-            "value": 25,
-            "statType": "numeric"
+            "value": 25
           },
           "Crew": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Handling": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Hull": {
-            "value": 8,
-            "statType": "numeric"
+            "value": 8
           },
           "Max Gear": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           }
         }
       },
@@ -5388,28 +5330,22 @@
         },
         "stats": {
           "Build Slots": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Cost": {
-            "value": 15,
-            "statType": "numeric"
+            "value": 15
           },
           "Crew": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Handling": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Hull": {
-            "value": 8,
-            "statType": "numeric"
+            "value": 8
           },
           "Max Gear": {
-            "value": 6,
-            "statType": "numeric"
+            "value": 6
           }
         }
       },
@@ -5434,28 +5370,22 @@
         },
         "stats": {
           "Build Slots": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Cost": {
-            "value": 40,
-            "statType": "numeric"
+            "value": 40
           },
           "Crew": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Handling": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Hull": {
-            "value": 20,
-            "statType": "numeric"
+            "value": 20
           },
           "Max Gear": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           }
         },
         "aspects": {
@@ -5474,28 +5404,22 @@
         },
         "stats": {
           "Build Slots": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Cost": {
-            "value": 15,
-            "statType": "numeric"
+            "value": 15
           },
           "Crew": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Handling": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Hull": {
-            "value": 12,
-            "statType": "numeric"
+            "value": 12
           },
           "Max Gear": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           }
         }
       },
@@ -5516,28 +5440,22 @@
         },
         "stats": {
           "Build Slots": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           },
           "Cost": {
-            "value": 36,
-            "statType": "numeric"
+            "value": 36
           },
           "Crew": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           },
           "Handling": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Hull": {
-            "value": 26,
-            "statType": "numeric"
+            "value": 26
           },
           "Max Gear": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           }
         }
       },
@@ -5564,12 +5482,10 @@
             "statType": "rank"
           },
           "Attack Dice": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Range": {
             "statType": "rank"
@@ -5591,16 +5507,13 @@
         },
         "stats": {
           "Ammo": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           },
           "Attack Dice": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Cost": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Range": {
             "statType": "rank"
@@ -5624,16 +5537,13 @@
         },
         "stats": {
           "Ammo": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           },
           "Attack Dice": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Cost": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Range": {
             "statType": "rank"
@@ -5652,8 +5562,7 @@
         },
         "stats": {
           "Attack Dice": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Range": {
             "statType": "rank"
@@ -5683,12 +5592,10 @@
             "statType": "rank"
           },
           "Attack Dice": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Range": {
             "statType": "rank"
@@ -5711,16 +5618,13 @@
         },
         "stats": {
           "Ammo": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           },
           "Attack Dice": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Cost": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Range": {
             "statType": "rank"
@@ -5758,8 +5662,7 @@
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Range": {
             "statType": "rank"
@@ -5789,12 +5692,10 @@
             "statType": "rank"
           },
           "Attack Dice": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         }
       },
@@ -5820,12 +5721,10 @@
             "statType": "rank"
           },
           "Attack Dice": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           },
           "Range": {
             "statType": "rank"
@@ -5843,20 +5742,16 @@
         },
         "stats": {
           "Ammo": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Attack Dice": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Build Slots": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Cost": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           }
         }
       },
@@ -5866,8 +5761,7 @@
         },
         "stats": {
           "Ammo": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Attack Dice": {
             "ranks": {
@@ -5879,12 +5773,10 @@
             "statType": "rank"
           },
           "Build Slots": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Cost": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           }
         }
       },
@@ -5900,20 +5792,16 @@
         },
         "stats": {
           "Ammo": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Attack Dice": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Build Slots": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Cost": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           }
         }
       },
@@ -5929,20 +5817,16 @@
         },
         "stats": {
           "Ammo": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Attack Dice": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Build Slots": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Cost": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           }
         }
       },
@@ -5952,8 +5836,7 @@
         },
         "stats": {
           "Ammo": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Attack Dice": {
             "ranks": {
@@ -5974,8 +5857,7 @@
             "statType": "rank"
           },
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           }
         }
       },
@@ -5985,12 +5867,10 @@
         },
         "stats": {
           "Ammo": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Attack Dice": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Build Slots": {
             "ranks": {
@@ -6002,8 +5882,7 @@
             "statType": "rank"
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           }
         }
       },
@@ -6013,12 +5892,10 @@
         },
         "stats": {
           "Ammo": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Attack Dice": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Build Slots": {
             "ranks": {
@@ -6030,8 +5907,7 @@
             "statType": "rank"
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           }
         }
       },
@@ -6041,8 +5917,7 @@
         },
         "stats": {
           "Ammo": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Attack Dice": {
             "ranks": {
@@ -6063,8 +5938,7 @@
             "statType": "rank"
           },
           "Cost": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           }
         }
       },
@@ -6081,20 +5955,16 @@
         },
         "stats": {
           "Ammo": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Attack Dice": {
-            "value": 8,
-            "statType": "numeric"
+            "value": 8
           },
           "Build Slots": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Cost": {
-            "value": 6,
-            "statType": "numeric"
+            "value": 6
           },
           "Range": {
             "statType": "rank"
@@ -6118,20 +5988,16 @@
         },
         "stats": {
           "Ammo": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Attack Dice": {
-            "value": 6,
-            "statType": "numeric"
+            "value": 6
           },
           "Build Slots": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Cost": {
-            "value": 6,
-            "statType": "numeric"
+            "value": 6
           },
           "Range": {
             "statType": "rank"
@@ -6152,20 +6018,16 @@
         },
         "stats": {
           "Ammo": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Attack Dice": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Build Slots": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Range": {
             "statType": "rank"
@@ -6180,20 +6042,16 @@
         },
         "stats": {
           "Ammo": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Attack Dice": {
-            "value": 10,
-            "statType": "numeric"
+            "value": 10
           },
           "Build Slots": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Cost": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Range": {
             "statType": "rank"
@@ -6227,16 +6085,13 @@
             "statType": "rank"
           },
           "Attack Dice": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Build Slots": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           },
           "Range": {
             "statType": "rank"
@@ -6256,20 +6111,16 @@
         },
         "stats": {
           "Ammo": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Attack Dice": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Build Slots": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Range": {
             "statType": "rank"
@@ -6292,20 +6143,16 @@
         },
         "stats": {
           "Ammo": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Attack Dice": {
-            "value": 6,
-            "statType": "numeric"
+            "value": 6
           },
           "Build Slots": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Range": {
             "statType": "rank"
@@ -6329,16 +6176,13 @@
             "statType": "rank"
           },
           "Attack Dice": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Build Slots": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Cost": {
-            "value": 6,
-            "statType": "numeric"
+            "value": 6
           }
         }
       },
@@ -6358,20 +6202,16 @@
         },
         "stats": {
           "Ammo": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Attack Dice": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Build Slots": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Range": {
             "statType": "rank"
@@ -6396,16 +6236,13 @@
             "statType": "rank"
           },
           "Attack Dice": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           },
           "Build Slots": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Range": {
             "statType": "rank"
@@ -6420,16 +6257,13 @@
         },
         "stats": {
           "Attack Dice": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Build Slots": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Range": {
             "statType": "rank"
@@ -6452,20 +6286,16 @@
         },
         "stats": {
           "Ammo": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Attack Dice": {
-            "value": null,
-            "statType": "numeric"
+            "value": null
           },
           "Build Slots": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Cost": {
-            "value": 6,
-            "statType": "numeric"
+            "value": 6
           },
           "Range": {
             "statType": "rank"
@@ -6481,16 +6311,13 @@
         },
         "stats": {
           "Attack Dice": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Build Slots": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Range": {
             "statType": "rank"
@@ -6540,8 +6367,7 @@
             "statType": "rank"
           },
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Range": {
             "statType": "rank"
@@ -6557,16 +6383,13 @@
         },
         "stats": {
           "Attack Dice": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Build Slots": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           },
           "Range": {
             "statType": "rank"
@@ -6586,20 +6409,16 @@
         },
         "stats": {
           "Ammo": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Attack Dice": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Build Slots": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Range": {
             "statType": "rank"
@@ -6614,20 +6433,16 @@
         },
         "stats": {
           "Ammo": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Attack Dice": {
-            "value": 6,
-            "statType": "numeric"
+            "value": 6
           },
           "Build Slots": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "value": 5
           },
           "Range": {
             "statType": "rank"
@@ -6652,8 +6467,7 @@
         },
         "stats": {
           "Ammo": {
-            "value": 1,
-            "statType": "numeric"
+            "value": 1
           },
           "Attack Dice": {
             "ranks": {
@@ -6665,12 +6479,10 @@
             "statType": "rank"
           },
           "Build Slots": {
-            "value": 2,
-            "statType": "numeric"
+            "value": 2
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Range": {
             "statType": "rank"
@@ -6709,12 +6521,10 @@
             "statType": "rank"
           },
           "Build Slots": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Range": {
             "statType": "rank"
@@ -6729,8 +6539,7 @@
         },
         "stats": {
           "Ammo": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Attack Dice": {
             "ranks": {
@@ -6742,12 +6551,10 @@
             "statType": "rank"
           },
           "Build Slots": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "value": 4
           },
           "Range": {
             "statType": "rank"
@@ -6780,8 +6587,7 @@
             "statType": "rank"
           },
           "Build Slots": {
-            "value": 3,
-            "statType": "numeric"
+            "value": 3
           },
           "Cost": {
             "value": 2,
