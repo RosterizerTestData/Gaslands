@@ -1,6 +1,6 @@
 {
   "name": "Gaslands",
-  "revision": "0.2.1",
+  "revision": "0.2.2",
   "game": "Gaslands Refuelled",
   "genre": "sci-fi",
   "publisher": "Osprey Games",
@@ -16,17 +16,17 @@
         }
       },
       "Damage": {
-        "stats": {
-          "Dents": {
-            "statType": "numeric",
-            "value": 0,
-            "visibility": "hidden",
-            "dynamic": false,
-            "tracked": true
-          }
-        },
         "aspects": {
           "Unique": true
+        },
+        "stats": {
+          "Dents": {
+            "dynamic": false,
+            "statType": "numeric",
+            "tracked": true,
+            "value": 0,
+            "visibility": "hidden"
+          }
         }
       },
       "Injuries": {
@@ -41,17 +41,17 @@
         }
       },
       "Injury": {
+        "aspects": {
+          "Lock Qty": true,
+          "Unique": true
+        },
         "stats": {
           "Dents": {
-            "value": 0,
             "statType": "numeric",
-            "visibility": "hidden",
-            "tracked": true
+            "tracked": true,
+            "value": 0,
+            "visibility": "hidden"
           }
-        },
-        "aspects": {
-          "Unique": true,
-          "Lock Qty": true
         }
       },
       "Perk": {
@@ -61,16 +61,16 @@
         },
         "stats": {
           "Cost": {
-            "statType": "numeric",
-            "value": null,
+            "dynamic": false,
+            "group": "Cost",
+            "groupOrder": -1,
             "icons": [
               "jerrycan"
             ],
-            "group": "Cost",
-            "groupOrder": -1,
-            "visibility": "always",
-            "dynamic": false,
-            "tracked": true
+            "statType": "numeric",
+            "tracked": true,
+            "value": null,
+            "visibility": "always"
           }
         }
       },
@@ -83,23 +83,23 @@
         "templateClass": "Perk"
       },
       "Upgrade": {
+        "aspects": {
+          "Lock Qty": true,
+          "Unique": true
+        },
         "stats": {
           "Build Slots": {
             "tracked": true
           },
           "Cost": {
+            "group": "Cost",
+            "groupOrder": -1,
             "icons": [
               "jerrycan"
             ],
-            "group": "Cost",
-            "groupOrder": -1,
-            "tracked": true,
-            "statType": "numeric"
+            "statType": "numeric",
+            "tracked": true
           }
-        },
-        "aspects": {
-          "Lock Qty": true,
-          "Unique": true
         }
       },
       "Vehicle": {
@@ -121,96 +121,87 @@
             "Weapon—Crew Fired§Handgun"
           ]
         },
-        "stats": {
-          "Build Slots": {
-            "statType": "numeric",
-            "statOrder": 6
-          },
-          "Crew": {
-            "statType": "numeric",
-            "statOrder": 5,
-            "tracked": true
-          },
-          "Handling": {
-            "statType": "numeric",
-            "statOrder": 3,
-            "tracked": true
-          },
-          "Hull": {
-            "statType": "numeric",
-            "statOrder": 2,
-            "tracked": true
-          },
-          "Max Gear": {
-            "statType": "numeric",
-            "statOrder": 4,
-            "tracked": true
-          },
-          "Dents": {
-            "statType": "numeric",
-            "value": 0,
-            "statOrder": 7,
-            "visibility": "normal",
-            "dynamic": false,
-            "tracked": true,
-            "min": 0
-          },
-          "Cost": {
-            "statType": "numeric",
-            "value": null,
-            "icons": [
-              "jerrycan"
-            ],
-            "group": "Cost",
-            "groupOrder": -1,
-            "visibility": "always",
-            "dynamic": false,
-            "tracked": true
-          }
+        "constraints": {
+          "any": [
+            "Advanced",
+            "Basic"
+          ],
+          "none": []
+        },
+        "keywords": {
+          "Weight": []
         },
         "lineage": [
           "Vehicle"
         ],
         "rules": {
-          "dentsMin0": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Crew",
-                    "processed",
-                    "numeric",
-                    "current"
-                  ]
-                ],
-                "max": 0,
-                "operator": "AND",
-                "not": false
-              }
-            ],
-            "failState": "pass",
-            "evaluate": "OR",
+          "beverly": {
             "actions": [
               {
+                "actionType": "add",
+                "iterations": 1,
                 "paths": [
                   [
                     "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Built"
+              },
+              {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Horror"
+              }
+            ],
+            "evals": [
+              {
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{roster}",
                     "stats",
-                    "Crew",
+                    "Sponsor",
                     "value"
                   ]
                 ],
-                "actionType": "set",
-                "value": 0,
-                "iterations": 1
+                "value": "Beverly, the Devil on the Highway"
               }
-            ]
+            ],
+            "evaluate": "OR",
+            "failState": "pass",
+            "order": 2
           },
           "crewMin1": {
+            "actions": [
+              {
+                "actionType": "set",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Crew",
+                    "value"
+                  ]
+                ],
+                "value": 1
+              }
+            ],
             "evals": [
               {
+                "max": 0,
+                "not": false,
+                "operator": "AND",
                 "paths": [
                   [
                     "{self}",
@@ -220,394 +211,17 @@
                     "numeric",
                     "current"
                   ]
-                ],
-                "max": 0,
-                "operator": "AND",
-                "not": false
+                ]
               }
             ],
-            "failState": "pass",
             "evaluate": "OR",
-            "actions": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Crew",
-                    "value"
-                  ]
-                ],
-                "actionType": "set",
-                "value": 1,
-                "iterations": 1
-              }
-            ]
-          },
-          "beverly": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{roster}",
-                    "stats",
-                    "Sponsor",
-                    "value"
-                  ]
-                ],
-                "value": "Beverly, the Devil on the Highway",
-                "operator": "AND",
-                "not": false
-              }
-            ],
-            "failState": "pass",
-            "evaluate": "OR",
-            "order": 2,
-            "actions": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Built",
-                "iterations": 1
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Horror",
-                "iterations": 1
-              }
-            ]
-          },
-          "idris": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{roster}",
-                    "stats",
-                    "Sponsor",
-                    "value"
-                  ]
-                ],
-                "value": "Beverly, the Devil on the Highway",
-                "operator": "AND",
-                "not": false
-              }
-            ],
-            "failState": "pass",
-            "evaluate": "OR",
-            "order": 2,
-            "actions": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Precision",
-                "iterations": 1
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Speed",
-                "iterations": 1
-              }
-            ]
-          },
-          "mizayaki": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{roster}",
-                    "stats",
-                    "Sponsor",
-                    "value"
-                  ]
-                ],
-                "value": "Miyazaki",
-                "operator": "AND",
-                "not": false
-              }
-            ],
-            "failState": "pass",
-            "evaluate": "OR",
-            "order": 2,
-            "actions": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Daring",
-                "iterations": 1
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Precision",
-                "iterations": 1
-              }
-            ]
-          },
-          "slime": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{roster}",
-                    "stats",
-                    "Sponsor",
-                    "value"
-                  ]
-                ],
-                "value": "Slime",
-                "operator": "AND",
-                "not": false
-              }
-            ],
-            "failState": "pass",
-            "evaluate": "OR",
-            "order": 2,
-            "actions": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Tuning",
-                "iterations": 1
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Reckless",
-                "iterations": 1
-              }
-            ]
-          },
-          "scarlett": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{roster}",
-                    "stats",
-                    "Sponsor",
-                    "value"
-                  ]
-                ],
-                "value": "Scarlett",
-                "operator": "AND",
-                "not": false
-              }
-            ],
-            "failState": "pass",
-            "evaluate": "OR",
-            "order": 2,
-            "actions": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Tuning",
-                "iterations": 1
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Aggression",
-                "iterations": 1
-              }
-            ]
-          },
-          "maxxine": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{roster}",
-                    "stats",
-                    "Sponsor",
-                    "value"
-                  ]
-                ],
-                "value": "Maxxine",
-                "operator": "AND",
-                "not": false
-              }
-            ],
-            "failState": "pass",
-            "evaluate": "OR",
-            "order": 2,
-            "actions": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Tuning",
-                "iterations": 1
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Pursuit",
-                "iterations": 1
-              }
-            ]
-          },
-          "inferno": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{roster}",
-                    "stats",
-                    "Sponsor",
-                    "value"
-                  ]
-                ],
-                "value": "The Order of the Inferno",
-                "operator": "AND",
-                "not": false
-              }
-            ],
-            "failState": "pass",
-            "evaluate": "OR",
-            "order": 2,
-            "actions": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Horror",
-                "iterations": 1
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Speed",
-                "iterations": 1
-              }
-            ]
+            "failState": "pass"
           },
           "crewQuarters": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{roster}",
-                    "tally",
-                    "Crew Quarters"
-                  ]
-                ],
-                "min": 1,
-                "operator": "AND",
-                "not": false
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "assets",
-                    "item",
-                    "Upgrade§Extra Crewmember",
-                    "stats",
-                    "Cost",
-                    "processed",
-                    "numeric",
-                    "default"
-                  ]
-                ],
-                "operator": "AND",
-                "not": false,
-                "actionable": false,
-                "equation": {
-                  "operator": "T*O",
-                  "value": -0.5
-                }
-              }
-            ],
-            "failState": "pass",
-            "evaluate": "OR",
-            "order": 15,
             "actions": [
               {
+                "actionType": "modify",
+                "iterations": 1,
                 "paths": [
                   [
                     "{self}",
@@ -619,7 +233,6 @@
                     "value"
                   ]
                 ],
-                "actionType": "modify",
                 "value": [
                   "{self}",
                   "rules",
@@ -628,26 +241,526 @@
                   "1",
                   "result",
                   "integer"
-                ],
-                "iterations": 1
+                ]
               }
-            ]
-          },
-          "n₂oAddict": {
+            ],
             "evals": [
               {
+                "min": 1,
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{roster}",
+                    "tally",
+                    "Crew Quarters"
+                  ]
+                ]
+              },
+              {
+                "actionable": false,
+                "equation": {
+                  "operator": "T*O",
+                  "value": -0.5
+                },
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{self}",
+                    "assets",
+                    "item",
+                    "Upgrade§Extra Crewmember",
+                    "stats",
+                    "Cost",
+                    "processed",
+                    "numeric",
+                    "default"
+                  ]
+                ]
+              }
+            ],
+            "evaluate": "OR",
+            "failState": "pass",
+            "order": 15
+          },
+          "dentsMin0": {
+            "actions": [
+              {
+                "actionType": "set",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Crew",
+                    "value"
+                  ]
+                ],
+                "value": 0
+              }
+            ],
+            "evals": [
+              {
+                "max": 0,
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Crew",
+                    "processed",
+                    "numeric",
+                    "current"
+                  ]
+                ]
+              }
+            ],
+            "evaluate": "OR",
+            "failState": "pass"
+          },
+          "heavyTrailer": {
+            "actions": [
+              {
+                "actionType": "remove",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "allowed",
+                    "items"
+                  ]
+                ],
+                "value": "Upgrade—Restricted§Trailer (heavy)"
+              }
+            ],
+            "evals": [
+              {
+                "min": 1,
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{self}",
+                    "tally",
+                    "Middle"
+                  ]
+                ]
+              },
+              {
+                "min": 1,
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{self}",
+                    "tally",
+                    "Light"
+                  ]
+                ]
+              }
+            ],
+            "evaluate": "OR",
+            "failState": "pass"
+          },
+          "highwayPatrol": {
+            "actions": [
+              {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Speed"
+              },
+              {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Pursuit"
+              },
+              {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Highway Patrol"
+              }
+            ],
+            "evals": [
+              {
+                "actionable": true,
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{roster}",
+                    "stats",
+                    "Sponsor",
+                    "value"
+                  ]
+                ],
+                "value": "Highway Patrol"
+              }
+            ],
+            "evaluate": "OR",
+            "failState": "pass",
+            "order": 2
+          },
+          "idris": {
+            "actions": [
+              {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Precision"
+              },
+              {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Speed"
+              }
+            ],
+            "evals": [
+              {
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{roster}",
+                    "stats",
+                    "Sponsor",
+                    "value"
+                  ]
+                ],
+                "value": "Beverly, the Devil on the Highway"
+              }
+            ],
+            "evaluate": "OR",
+            "failState": "pass",
+            "order": 2
+          },
+          "inferno": {
+            "actions": [
+              {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Horror"
+              },
+              {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Speed"
+              }
+            ],
+            "evals": [
+              {
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{roster}",
+                    "stats",
+                    "Sponsor",
+                    "value"
+                  ]
+                ],
+                "value": "The Order of the Inferno"
+              }
+            ],
+            "evaluate": "OR",
+            "failState": "pass",
+            "order": 2
+          },
+          "maxxine": {
+            "actions": [
+              {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Tuning"
+              },
+              {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Pursuit"
+              }
+            ],
+            "evals": [
+              {
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{roster}",
+                    "stats",
+                    "Sponsor",
+                    "value"
+                  ]
+                ],
+                "value": "Maxxine"
+              }
+            ],
+            "evaluate": "OR",
+            "failState": "pass",
+            "order": 2
+          },
+          "mediumTrailer": {
+            "actions": [
+              {
+                "actionType": "remove",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "allowed",
+                    "items"
+                  ]
+                ],
+                "value": "Upgrade—Restricted§Trailer (middle)"
+              }
+            ],
+            "evals": [
+              {
+                "min": 1,
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{self}",
+                    "tally",
+                    "Light"
+                  ]
+                ]
+              }
+            ],
+            "evaluate": "OR",
+            "failState": "pass"
+          },
+          "mishkin": {
+            "actions": [
+              {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Military"
+              },
+              {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Technology"
+              },
+              {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Mishkin"
+              },
+              {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "traits",
+                    "item",
+                    "Special Rule§Articulated",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Mishkin"
+              }
+            ],
+            "evals": [
+              {
+                "actionable": true,
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{roster}",
+                    "stats",
+                    "Sponsor",
+                    "value"
+                  ]
+                ],
+                "value": "Mishkin"
+              }
+            ],
+            "evaluate": "OR",
+            "failState": "pass",
+            "order": 2
+          },
+          "mizayaki": {
+            "actions": [
+              {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Daring"
+              },
+              {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Precision"
+              }
+            ],
+            "evals": [
+              {
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{roster}",
+                    "stats",
+                    "Sponsor",
+                    "value"
+                  ]
+                ],
+                "value": "Miyazaki"
+              }
+            ],
+            "evaluate": "OR",
+            "failState": "pass",
+            "order": 2
+          },
+          "n₂oAddict": {
+            "actions": [
+              {
+                "actionType": "modify",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "assets",
+                    "item",
+                    "Upgrade§Nitro Booster",
+                    "stats",
+                    "Cost",
+                    "value"
+                  ]
+                ],
+                "value": [
+                  "{self}",
+                  "rules",
+                  "n₂o addict",
+                  "evals",
+                  "1",
+                  "result",
+                  "integer"
+                ]
+              }
+            ],
+            "evals": [
+              {
+                "min": 1,
+                "not": false,
+                "operator": "AND",
                 "paths": [
                   [
                     "{roster}",
                     "tally",
                     "N₂O Addict"
                   ]
-                ],
-                "min": 1,
-                "operator": "AND",
-                "not": false
+                ]
               },
               {
+                "actionable": false,
+                "equation": {
+                  "operator": "T*O",
+                  "value": -0.5
+                },
+                "not": false,
+                "operator": "AND",
                 "paths": [
                   [
                     "{self}",
@@ -660,67 +773,40 @@
                     "numeric",
                     "default"
                   ]
-                ],
-                "operator": "AND",
-                "not": false,
-                "actionable": false,
-                "equation": {
-                  "operator": "T*O",
-                  "value": -0.5
-                }
+                ]
               }
             ],
-            "failState": "pass",
             "evaluate": "OR",
-            "order": 15,
-            "actions": [
+            "failState": "pass",
+            "order": 15
+          },
+          "noSponsor": {
+            "evals": [
               {
+                "actionable": true,
+                "not": false,
+                "operator": "AND",
                 "paths": [
                   [
-                    "{self}",
-                    "assets",
-                    "item",
-                    "Upgrade§Nitro Booster",
+                    "{roster}",
                     "stats",
-                    "Cost",
+                    "Sponsor",
                     "value"
                   ]
                 ],
-                "actionType": "modify",
-                "value": [
-                  "{self}",
-                  "rules",
-                  "n₂o addict",
-                  "evals",
-                  "1",
-                  "result",
-                  "integer"
-                ],
-                "iterations": 1
-              }
-            ]
-          },
-          "This vehicle may only take one Cargo": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "tally",
-                    "Cargo"
-                  ]
-                ],
-                "min": 2,
-                "operator": "AND",
-                "not": true
+                "value": "-"
               }
             ],
-            "failState": "error",
-            "evaluate": "OR"
+            "evaluate": "OR",
+            "failState": "pass",
+            "order": 1
           },
           "Only one trailer is allowed per vehicle": {
             "evals": [
               {
+                "min": 2,
+                "not": true,
+                "operator": "SUM",
                 "paths": [
                   [
                     "{self}",
@@ -737,94 +823,78 @@
                     "tally",
                     "Trailer (heavy)"
                   ]
-                ],
-                "min": 2,
-                "operator": "SUM",
-                "not": true
+                ]
               }
             ],
-            "failState": "error",
-            "evaluate": "OR"
+            "evaluate": "OR",
+            "failState": "error"
           },
-          "heavyTrailer": {
-            "evals": [
+          "rusty’sBootleggers": {
+            "actions": [
               {
+                "actionType": "add",
+                "iterations": 1,
                 "paths": [
                   [
                     "{self}",
-                    "tally",
-                    "Middle"
+                    "constraints",
+                    "any"
                   ]
                 ],
-                "min": 1,
-                "operator": "AND",
-                "not": false
+                "value": "Reckless"
               },
               {
+                "actionType": "add",
+                "iterations": 1,
                 "paths": [
                   [
                     "{self}",
-                    "tally",
-                    "Light"
+                    "constraints",
+                    "any"
                   ]
                 ],
-                "min": 1,
-                "operator": "AND",
-                "not": false
+                "value": "Built"
+              },
+              {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Rusty’s Bootleggers"
               }
             ],
-            "failState": "pass",
-            "evaluate": "OR",
-            "actions": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "allowed",
-                    "items"
-                  ]
-                ],
-                "actionType": "remove",
-                "value": "Upgrade—Restricted§Trailer (heavy)",
-                "iterations": 1
-              }
-            ]
-          },
-          "mediumTrailer": {
             "evals": [
               {
+                "actionable": true,
+                "not": false,
+                "operator": "AND",
                 "paths": [
                   [
-                    "{self}",
-                    "tally",
-                    "Light"
+                    "{roster}",
+                    "stats",
+                    "Sponsor",
+                    "value"
                   ]
                 ],
-                "min": 1,
-                "operator": "AND",
-                "not": false
+                "value": "Rusty’s Bootleggers"
               }
             ],
-            "failState": "pass",
             "evaluate": "OR",
-            "actions": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "allowed",
-                    "items"
-                  ]
-                ],
-                "actionType": "remove",
-                "value": "Upgrade—Restricted§Trailer (middle)",
-                "iterations": 1
-              }
-            ]
+            "failState": "pass",
+            "order": 2
           },
           "rusty’sTrailers": {
             "evals": [
               {
+                "actionable": false,
+                "contains": true,
+                "not": false,
+                "operator": "AND",
                 "paths": [
                   [
                     "{self}",
@@ -832,13 +902,13 @@
                     "Weight"
                   ]
                 ],
-                "value": "Middle",
-                "contains": true,
-                "operator": "AND",
-                "not": false,
-                "actionable": false
+                "value": "Middle"
               },
               {
+                "actionable": false,
+                "contains": true,
+                "not": false,
+                "operator": "AND",
                 "paths": [
                   [
                     "{self}",
@@ -846,13 +916,13 @@
                     "Weight"
                   ]
                 ],
-                "value": "Heavy",
-                "contains": true,
-                "operator": "AND",
-                "not": false,
-                "actionable": false
+                "value": "Heavy"
               },
               {
+                "actionable": false,
+                "min": 1,
+                "not": false,
+                "operator": "SUM",
                 "paths": [
                   [
                     "{self}",
@@ -863,13 +933,12 @@
                       "Trailer (middle)"
                     ]
                   ]
-                ],
-                "min": 1,
-                "operator": "SUM",
-                "not": false,
-                "actionable": false
+                ]
               },
               {
+                "min": 2,
+                "not": false,
+                "operator": "SUM",
                 "paths": [
                   [
                     "{self}",
@@ -884,19 +953,57 @@
                     "result",
                     "truthy"
                   ]
-                ],
-                "min": 2,
-                "operator": "SUM",
-                "not": false
+                ]
               }
             ],
-            "failState": "pass",
             "evaluate": "OR",
+            "failState": "pass",
             "order": 20
           },
-          "Teams sponsored by Miyazaki may not purchase vehicle types with a base Handling value of 2 or lower": {
+          "rutherford": {
+            "actions": [
+              {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Badass"
+              },
+              {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Military"
+              },
+              {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Rutherford"
+              }
+            ],
             "evals": [
               {
+                "actionable": true,
+                "not": false,
+                "operator": "AND",
                 "paths": [
                   [
                     "{roster}",
@@ -905,12 +1012,126 @@
                     "value"
                   ]
                 ],
-                "value": "Miyazaki",
-                "operator": "AND",
-                "not": true,
-                "actionable": true
+                "value": "Rutherford"
+              }
+            ],
+            "evaluate": "OR",
+            "failState": "pass",
+            "order": 2
+          },
+          "scarlett": {
+            "actions": [
+              {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Tuning"
               },
               {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Aggression"
+              }
+            ],
+            "evals": [
+              {
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{roster}",
+                    "stats",
+                    "Sponsor",
+                    "value"
+                  ]
+                ],
+                "value": "Scarlett"
+              }
+            ],
+            "evaluate": "OR",
+            "failState": "pass",
+            "order": 2
+          },
+          "slime": {
+            "actions": [
+              {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Tuning"
+              },
+              {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Reckless"
+              }
+            ],
+            "evals": [
+              {
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{roster}",
+                    "stats",
+                    "Sponsor",
+                    "value"
+                  ]
+                ],
+                "value": "Slime"
+              }
+            ],
+            "evaluate": "OR",
+            "failState": "pass",
+            "order": 2
+          },
+          "Teams sponsored by Miyazaki may not purchase vehicle types with a base Handling value of 2 or lower": {
+            "evals": [
+              {
+                "actionable": true,
+                "not": true,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{roster}",
+                    "stats",
+                    "Sponsor",
+                    "value"
+                  ]
+                ],
+                "value": "Miyazaki"
+              },
+              {
+                "actionable": true,
+                "min": 3,
+                "not": false,
+                "operator": "AND",
                 "paths": [
                   [
                     "{self}",
@@ -920,270 +1141,56 @@
                     "numeric",
                     "default"
                   ]
-                ],
-                "min": 3,
-                "operator": "AND",
-                "not": false,
-                "actionable": true
+                ]
               }
             ],
-            "failState": "error",
-            "evaluate": "OR"
-          },
-          "rusty’sBootleggers": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{roster}",
-                    "stats",
-                    "Sponsor",
-                    "value"
-                  ]
-                ],
-                "value": "Rusty’s Bootleggers",
-                "operator": "AND",
-                "not": false,
-                "actionable": true
-              }
-            ],
-            "failState": "pass",
             "evaluate": "OR",
-            "order": 2,
-            "actions": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Reckless",
-                "iterations": 1
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Built",
-                "iterations": 1
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Rusty’s Bootleggers",
-                "iterations": 1
-              }
-            ]
-          },
-          "highwayPatrol": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{roster}",
-                    "stats",
-                    "Sponsor",
-                    "value"
-                  ]
-                ],
-                "value": "Highway Patrol",
-                "operator": "AND",
-                "not": false,
-                "actionable": true
-              }
-            ],
-            "failState": "pass",
-            "evaluate": "OR",
-            "order": 2,
-            "actions": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Speed",
-                "iterations": 1
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Pursuit",
-                "iterations": 1
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Highway Patrol",
-                "iterations": 1
-              }
-            ]
-          },
-          "rutherford": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{roster}",
-                    "stats",
-                    "Sponsor",
-                    "value"
-                  ]
-                ],
-                "value": "Rutherford",
-                "operator": "AND",
-                "not": false,
-                "actionable": true
-              }
-            ],
-            "failState": "pass",
-            "evaluate": "OR",
-            "order": 2,
-            "actions": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Badass",
-                "iterations": 1
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Military",
-                "iterations": 1
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Rutherford",
-                "iterations": 1
-              }
-            ]
-          },
-          "mishkin": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{roster}",
-                    "stats",
-                    "Sponsor",
-                    "value"
-                  ]
-                ],
-                "value": "Mishkin",
-                "operator": "AND",
-                "not": false,
-                "actionable": true
-              }
-            ],
-            "failState": "pass",
-            "evaluate": "OR",
-            "order": 2,
-            "actions": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Military",
-                "iterations": 1
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Technology",
-                "iterations": 1
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Mishkin",
-                "iterations": 1
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "traits",
-                    "item",
-                    "Special Rule§Articulated",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Mishkin",
-                "iterations": 1
-              }
-            ]
+            "failState": "error"
           },
           "theWarden": {
+            "actions": [
+              {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Aggression"
+              },
+              {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Badass"
+              },
+              {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "The Warden"
+              }
+            ],
             "evals": [
               {
+                "actionable": true,
+                "not": false,
+                "operator": "AND",
                 "paths": [
                   [
                     "{roster}",
@@ -1192,76 +1199,36 @@
                     "value"
                   ]
                 ],
-                "value": "The Warden",
-                "operator": "AND",
-                "not": false,
-                "actionable": true
+                "value": "The Warden"
               }
             ],
-            "failState": "pass",
             "evaluate": "OR",
-            "order": 2,
-            "actions": [
+            "failState": "pass",
+            "order": 2
+          },
+          "This vehicle may only take one Cargo": {
+            "evals": [
               {
+                "min": 2,
+                "not": true,
+                "operator": "AND",
                 "paths": [
                   [
                     "{self}",
-                    "constraints",
-                    "any"
+                    "tally",
+                    "Cargo"
                   ]
-                ],
-                "actionType": "add",
-                "value": "Aggression",
-                "iterations": 1
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Badass",
-                "iterations": 1
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "The Warden",
-                "iterations": 1
+                ]
               }
-            ]
+            ],
+            "evaluate": "OR",
+            "failState": "error"
           },
           "verney": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{roster}",
-                    "stats",
-                    "Sponsor",
-                    "value"
-                  ]
-                ],
-                "value": "Verney",
-                "operator": "AND",
-                "not": false,
-                "actionable": true
-              }
-            ],
-            "failState": "pass",
-            "evaluate": "OR",
-            "order": 2,
             "actions": [
               {
+                "actionType": "add",
+                "iterations": 1,
                 "paths": [
                   [
                     "{self}",
@@ -1269,11 +1236,11 @@
                     "any"
                   ]
                 ],
-                "actionType": "add",
-                "value": "Built",
-                "iterations": 1
+                "value": "Built"
               },
               {
+                "actionType": "add",
+                "iterations": 1,
                 "paths": [
                   [
                     "{self}",
@@ -1281,11 +1248,11 @@
                     "any"
                   ]
                 ],
-                "actionType": "add",
-                "value": "Technology",
-                "iterations": 1
+                "value": "Technology"
               },
               {
+                "actionType": "add",
+                "iterations": 1,
                 "paths": [
                   [
                     "{self}",
@@ -1293,15 +1260,14 @@
                     "any"
                   ]
                 ],
-                "actionType": "add",
-                "value": "Verney",
-                "iterations": 1
+                "value": "Verney"
               }
-            ]
-          },
-          "noSponsor": {
+            ],
             "evals": [
               {
+                "actionable": true,
+                "not": false,
+                "operator": "AND",
                 "paths": [
                   [
                     "{roster}",
@@ -1310,111 +1276,99 @@
                     "value"
                   ]
                 ],
-                "value": "-",
-                "operator": "AND",
-                "not": false,
-                "actionable": true
+                "value": "Verney"
               }
             ],
-            "failState": "pass",
             "evaluate": "OR",
-            "order": 1
+            "failState": "pass",
+            "order": 2
           }
         },
-        "keywords": {
-          "Weight": []
-        },
-        "constraints": {
-          "any": [
-            "Advanced",
-            "Basic"
-          ],
-          "none": []
+        "stats": {
+          "Build Slots": {
+            "statOrder": 6,
+            "statType": "numeric"
+          },
+          "Cost": {
+            "dynamic": false,
+            "group": "Cost",
+            "groupOrder": -1,
+            "icons": [
+              "jerrycan"
+            ],
+            "statType": "numeric",
+            "tracked": true,
+            "value": null,
+            "visibility": "always"
+          },
+          "Crew": {
+            "statOrder": 5,
+            "statType": "numeric",
+            "tracked": true
+          },
+          "Dents": {
+            "dynamic": false,
+            "min": 0,
+            "statOrder": 7,
+            "statType": "numeric",
+            "tracked": true,
+            "value": 0,
+            "visibility": "normal"
+          },
+          "Handling": {
+            "statOrder": 3,
+            "statType": "numeric",
+            "tracked": true
+          },
+          "Hull": {
+            "statOrder": 2,
+            "statType": "numeric",
+            "tracked": true
+          },
+          "Max Gear": {
+            "statOrder": 4,
+            "statType": "numeric",
+            "tracked": true
+          }
         }
       },
       "Weapon": {
         "assets": {
           "traits": []
         },
-        "stats": {
-          "Ammo": {
-            "statType": "numeric"
-          },
-          "Cost": {
-            "statType": "numeric",
-            "icons": [
-              "jerrycan"
-            ],
-            "group": "Cost",
-            "groupOrder": -1,
-            "tracked": true
-          },
-          "Range": {
-            "statOrder": 1,
-            "label": "Range",
-            "ranks": {
-              "Short": {
-                "hotkey": "s",
-                "order": 0
-              },
-              "Medium": {
-                "hotkey": "m",
-                "order": 1
-              },
-              "Long": {
-                "hotkey": "l",
-                "order": 2
-              },
-              "Double": {
-                "hotkey": "d",
-                "order": 3
-              },
-              "Small Burst": {
-                "hotkey": "b",
-                "order": 4
-              },
-              "Large Burst": {
-                "hotkey": "u",
-                "order": 5
-              },
-              "Double/Dropped": {
-                "hotkey": "o",
-                "order": 6
-              }
-            },
-            "statType": "rank"
-          },
-          "Build Slots": {
-            "statType": "numeric",
-            "tracked": true
-          },
-          "Attack Dice": {
-            "label": "Attack Dice",
-            "statType": "numeric",
-            "format": "{v}d6",
-            "value": null,
-            "icons": [
-              "perspective-dice-six"
-            ],
-            "statOrder": 2
-          }
-        },
         "rules": {
           "wellStocked": {
+            "actions": [
+              {
+                "actionType": "modify",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Ammo",
+                    "value"
+                  ]
+                ],
+                "value": 1
+              }
+            ],
             "evals": [
               {
+                "min": 1,
+                "not": false,
+                "operator": "AND",
                 "paths": [
                   [
                     "{roster}",
                     "tally",
                     "Well Stocked"
                   ]
-                ],
-                "min": 1,
-                "operator": "AND",
-                "not": false
+                ]
               },
               {
+                "not": false,
+                "operator": "AND",
                 "paths": [
                   [
                     "{self}",
@@ -1425,28 +1379,74 @@
                     "default"
                   ]
                 ],
-                "value": 3,
-                "operator": "AND",
-                "not": false
+                "value": 3
               }
             ],
-            "failState": "pass",
             "evaluate": "OR",
-            "actions": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Ammo",
-                    "value"
-                  ]
-                ],
-                "actionType": "modify",
-                "value": 1,
-                "iterations": 1
+            "failState": "pass"
+          }
+        },
+        "stats": {
+          "Ammo": {
+            "statType": "numeric"
+          },
+          "Attack Dice": {
+            "format": "{v}d6",
+            "icons": [
+              "perspective-dice-six"
+            ],
+            "label": "Attack Dice",
+            "statOrder": 2,
+            "statType": "numeric",
+            "value": null
+          },
+          "Build Slots": {
+            "statType": "numeric",
+            "tracked": true
+          },
+          "Cost": {
+            "group": "Cost",
+            "groupOrder": -1,
+            "icons": [
+              "jerrycan"
+            ],
+            "statType": "numeric",
+            "tracked": true
+          },
+          "Range": {
+            "label": "Range",
+            "ranks": {
+              "Double": {
+                "hotkey": "d",
+                "order": 3
+              },
+              "Double/Dropped": {
+                "hotkey": "o",
+                "order": 6
+              },
+              "Large Burst": {
+                "hotkey": "u",
+                "order": 5
+              },
+              "Long": {
+                "hotkey": "l",
+                "order": 2
+              },
+              "Medium": {
+                "hotkey": "m",
+                "order": 1
+              },
+              "Short": {
+                "hotkey": "s",
+                "order": 0
+              },
+              "Small Burst": {
+                "hotkey": "b",
+                "order": 4
               }
-            ]
+            },
+            "statOrder": 1,
+            "statType": "rank"
           }
         }
       },
@@ -1465,22 +1465,169 @@
         "templateClass": "Weapon"
       },
       "Weapon—Mounted": {
-        "templateClass": "Weapon",
         "rules": {
-          "wellStocked": {
+          "Choose mounting direction": {
             "evals": [
               {
+                "actionable": true,
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Mounting",
+                    "value"
+                  ]
+                ],
+                "value": "Back"
+              },
+              {
+                "actionable": true,
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Mounting",
+                    "value"
+                  ]
+                ],
+                "value": "Front"
+              },
+              {
+                "actionable": true,
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Mounting",
+                    "value"
+                  ]
+                ],
+                "value": "Left"
+              },
+              {
+                "actionable": true,
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Mounting",
+                    "value"
+                  ]
+                ],
+                "value": "Right"
+              },
+              {
+                "actionable": true,
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Mounting",
+                    "value"
+                  ]
+                ],
+                "value": "360°"
+              }
+            ],
+            "evaluate": "OR",
+            "failState": "warning"
+          },
+          "turretMounting": {
+            "actions": [
+              {
+                "actionType": "modify",
+                "iterations": 2,
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Cost",
+                    "value"
+                  ]
+                ],
+                "value": [
+                  "{self}",
+                  "stats",
+                  "Cost",
+                  "processed",
+                  "numeric",
+                  "default"
+                ]
+              }
+            ],
+            "evals": [
+              {
+                "actionable": true,
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Mounting",
+                    "value"
+                  ]
+                ],
+                "value": "360°"
+              },
+              {
+                "actionable": true,
+                "not": true,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{parent}",
+                    "designation"
+                  ]
+                ],
+                "value": "Turret"
+              }
+            ],
+            "evaluate": "AND",
+            "failState": "pass",
+            "order": 25
+          },
+          "wellStocked": {
+            "actions": [
+              {
+                "actionType": "modify",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Ammo",
+                    "value"
+                  ]
+                ],
+                "value": 1
+              }
+            ],
+            "evals": [
+              {
+                "not": false,
+                "operator": "AND",
                 "paths": [
                   [
                     "{roster}",
                     "tally",
                     "Well Stocked"
                   ]
-                ],
-                "operator": "AND",
-                "not": false
+                ]
               },
               {
+                "not": false,
+                "operator": "AND",
                 "paths": [
                   [
                     "{self}",
@@ -1491,196 +1638,49 @@
                     "default"
                   ]
                 ],
-                "value": 3,
-                "operator": "AND",
-                "not": false
+                "value": 3
               }
             ],
-            "failState": "pass",
             "evaluate": "OR",
-            "actions": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Ammo",
-                    "value"
-                  ]
-                ],
-                "actionType": "modify",
-                "value": 1,
-                "iterations": 1
-              }
-            ]
-          },
-          "turretMounting": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Mounting",
-                    "value"
-                  ]
-                ],
-                "value": "360°",
-                "operator": "AND",
-                "not": false,
-                "actionable": true
-              },
-              {
-                "paths": [
-                  [
-                    "{parent}",
-                    "designation"
-                  ]
-                ],
-                "value": "Turret",
-                "operator": "AND",
-                "not": true,
-                "actionable": true
-              }
-            ],
-            "failState": "pass",
-            "evaluate": "AND",
-            "order": 25,
-            "actions": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Cost",
-                    "value"
-                  ]
-                ],
-                "actionType": "modify",
-                "value": [
-                  "{self}",
-                  "stats",
-                  "Cost",
-                  "processed",
-                  "numeric",
-                  "default"
-                ],
-                "iterations": 2
-              }
-            ]
-          },
-          "Choose mounting direction": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Mounting",
-                    "value"
-                  ]
-                ],
-                "value": "Back",
-                "operator": "AND",
-                "not": false,
-                "actionable": true
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Mounting",
-                    "value"
-                  ]
-                ],
-                "value": "Front",
-                "operator": "AND",
-                "not": false,
-                "actionable": true
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Mounting",
-                    "value"
-                  ]
-                ],
-                "value": "Left",
-                "operator": "AND",
-                "not": false,
-                "actionable": true
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Mounting",
-                    "value"
-                  ]
-                ],
-                "value": "Right",
-                "operator": "AND",
-                "not": false,
-                "actionable": true
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Mounting",
-                    "value"
-                  ]
-                ],
-                "value": "360°",
-                "operator": "AND",
-                "not": false,
-                "actionable": true
-              }
-            ],
-            "failState": "warning",
-            "evaluate": "OR"
+            "failState": "pass"
           }
         },
         "stats": {
           "Mounting": {
-            "statType": "rank",
-            "value": "-",
+            "dynamic": true,
             "ranks": {
               "-": {
                 "order": 0
               },
-              "Front": {
-                "order": 1,
-                "hotkey": "f"
+              "360°": {
+                "hotkey": "3",
+                "order": 5
               },
               "Back": {
-                "order": 2,
-                "hotkey": "b"
+                "hotkey": "b",
+                "order": 2
+              },
+              "Front": {
+                "hotkey": "f",
+                "order": 1
               },
               "Left": {
-                "order": 3,
-                "hotkey": "l"
+                "hotkey": "l",
+                "order": 3
               },
               "Right": {
-                "order": 4,
-                "hotkey": "r"
-              },
-              "360°": {
-                "order": 5,
-                "hotkey": "3"
+                "hotkey": "r",
+                "order": 4
               }
             },
             "statOrder": 0,
-            "visibility": "normal",
-            "dynamic": true,
-            "tracked": false
+            "statType": "rank",
+            "tracked": false,
+            "value": "-",
+            "visibility": "normal"
           }
-        }
+        },
+        "templateClass": "Weapon"
       }
     },
     "assetCatalog": {
@@ -1701,14 +1701,14 @@
       },
       "Damage§Audience Favorite": {
         "stats": {
-          "Dents": {
-            "value": 3
-          },
           "Champ. Points": {
             "statType": "numeric",
-            "visibility": "hidden",
             "tracked": true,
-            "value": 5
+            "value": 5,
+            "visibility": "hidden"
+          },
+          "Dents": {
+            "value": 3
           }
         },
         "text": "If this vehicle is Wrecked, its controller immediately discards 3 Audience Votes (to a minimum of 0)."
@@ -1738,9 +1738,9 @@
         "stats": {
           "Crew": {
             "statType": "numeric",
-            "visibility": "hidden",
             "tracked": true,
-            "value": -1
+            "value": -1,
+            "visibility": "hidden"
           },
           "Dents": {
             "value": 2
@@ -1748,12 +1748,12 @@
         }
       },
       "Damage§Weakened chassis": {
-        "text": "+1 Hazard Token when involved in a Collision.",
         "stats": {
           "Dents": {
             "value": 2
           }
-        }
+        },
+        "text": "+1 Hazard Token when involved in a Collision."
       },
       "Damage§Wrecked Pinion": {
         "stats": {
@@ -1998,32 +1998,32 @@
             "Built"
           ]
         },
-        "stats": {
-          "Cost": {
-            "value": 7
-          }
-        },
-        "text": "This vehicle gains the Up and Over special rule (see the Monster Truck rules).",
         "rules": {
           "upAndOver": {
-            "evals": [],
-            "failState": "pass",
-            "evaluate": "OR",
             "actions": [
               {
+                "actionType": "add",
+                "iterations": 1,
                 "paths": [
                   [
                     "{parent}",
                     "traits"
                   ]
                 ],
-                "actionType": "add",
-                "value": "Special Rule§Up and Over",
-                "iterations": 1
+                "value": "Special Rule§Up and Over"
               }
-            ]
+            ],
+            "evals": [],
+            "evaluate": "OR",
+            "failState": "pass"
           }
-        }
+        },
+        "stats": {
+          "Cost": {
+            "value": 7
+          }
+        },
+        "text": "This vehicle gains the Up and Over special rule (see the Monster Truck rules)."
       },
       "Perk§Dead Weight": {
         "keywords": {
@@ -2039,15 +2039,15 @@
         "text": "During this vehicle’s attack step, this vehicle may gain 2 hazards to count as one weight-class heavier (unless already heavyweight) until the start of its next activation."
       },
       "Perk§Dead-Eye": {
-        "stats": {
-          "Cost": {
-            "value": 2
-          }
-        },
         "keywords": {
           "Tags": [
             "Military"
           ]
+        },
+        "stats": {
+          "Cost": {
+            "value": 2
+          }
         },
         "text": "During this vehicle’s attack step this vehicle may gain a +1 bonus to hit if making a shooting attack at a target within double range and not within medium range. \n\nCritical hits still occur only on the natural roll of a 6."
       },
@@ -2179,8 +2179,8 @@
             "value": 3
           },
           "Handling": {
-            "tracked": true,
             "statType": "numeric",
+            "tracked": true,
             "visibility": "hidden"
           }
         },
@@ -2703,6 +2703,8 @@
           "This perk may only be taken on a lightweight or middleweight vehicle type with a base handling value of 3 or more.": {
             "evals": [
               {
+                "not": true,
+                "operator": "AND",
                 "paths": [
                   [
                     "{parent}",
@@ -2711,11 +2713,12 @@
                     "value"
                   ]
                 ],
-                "value": "heavy",
-                "operator": "AND",
-                "not": true
+                "value": "heavy"
               },
               {
+                "min": 3,
+                "not": false,
+                "operator": "AND",
                 "paths": [
                   [
                     "{parent}",
@@ -2725,14 +2728,11 @@
                     "numeric",
                     "default"
                   ]
-                ],
-                "min": 3,
-                "operator": "AND",
-                "not": false
+                ]
               }
             ],
-            "failState": "error",
-            "evaluate": "AND"
+            "evaluate": "AND",
+            "failState": "error"
           }
         },
         "stats": {
@@ -2852,347 +2852,229 @@
             "Vehicle"
           ]
         },
+        "constraints": {
+          "any": [
+            "Basic",
+            "Advanced"
+          ]
+        },
+        "rules": {
+          "campaign": {
+            "actions": [
+              {
+                "actionType": "add",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "included",
+                    "classification",
+                    [
+                      "Vehicle—Restricted",
+                      "Vehicle—Standard"
+                    ],
+                    "traits"
+                  ]
+                ],
+                "value": "Injuries§Injuries"
+              }
+            ],
+            "evals": [
+              {
+                "actionable": true,
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Game Type",
+                    "value"
+                  ]
+                ],
+                "value": "Campaign"
+              }
+            ],
+            "evaluate": "OR",
+            "failState": "pass",
+            "order": 5
+          },
+          "noSponsor": {
+            "actions": [
+              {
+                "actionType": "remove",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Basic"
+              },
+              {
+                "actionType": "remove",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "constraints",
+                    "any"
+                  ]
+                ],
+                "value": "Advanced"
+              },
+              {
+                "actionType": "remove",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "assets",
+                    "classification",
+                    "Vehicle",
+                    "constraints",
+                    "none"
+                  ],
+                  [
+                    "{self}",
+                    "assets",
+                    "classification",
+                    "Vehicle",
+                    "assets",
+                    "item",
+                    "Special Rule§Turret",
+                    "constraints",
+                    "none"
+                  ],
+                  [
+                    "{self}",
+                    "assets",
+                    "classification",
+                    "Vehicle",
+                    "assets",
+                    "item",
+                    "Special Rule§Articulated",
+                    "constraints",
+                    "none"
+                  ]
+                ],
+                "value": "Mishkin"
+              }
+            ],
+            "evals": [
+              {
+                "actionable": true,
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Sponsor",
+                    "value"
+                  ]
+                ],
+                "value": "-"
+              }
+            ],
+            "evaluate": "OR",
+            "failState": "pass"
+          },
+          "scenario": {
+            "actions": [
+              {
+                "actionType": "set",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    [
+                      "Stash",
+                      "Champ. Points"
+                    ],
+                    "visibility"
+                  ],
+                  [
+                    "{self}",
+                    "assets",
+                    "classification",
+                    [
+                      "Vehicle—Standard",
+                      "Vehicle—Restricted"
+                    ],
+                    "stats",
+                    "Dents",
+                    "visibility"
+                  ]
+                ],
+                "value": "hidden"
+              }
+            ],
+            "evals": [
+              {
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Game Type",
+                    "value"
+                  ]
+                ],
+                "value": "Scenario"
+              }
+            ],
+            "evaluate": "OR",
+            "failState": "pass",
+            "order": 5
+          }
+        },
         "stats": {
+          "Champ. Points": {
+            "dynamic": true,
+            "group": "Campaign",
+            "groupOrder": 2,
+            "increment": {
+              "value": 1
+            },
+            "statType": "numeric",
+            "value": 0
+          },
           "Cost": {
-            "label": "Cans",
+            "group": "Cost",
+            "groupOrder": -1,
             "icons": [
               "jerrycan"
             ],
-            "group": "Cost",
-            "groupOrder": -1,
+            "label": "Cans",
             "tracked": true,
             "value": 0
           },
           "Game Type": {
-            "statType": "rank",
+            "dynamic": true,
+            "group": "General",
+            "groupOrder": 1,
             "ranks": {
-              "Scenario": {
-                "order": 0
-              },
               "Campaign": {
                 "order": 1
+              },
+              "Scenario": {
+                "order": 0
               }
             },
-            "group": "General",
-            "groupOrder": 1,
-            "dynamic": true
-          },
-          "Votes": {
-            "value": 0,
-            "statType": "numeric",
-            "increment": {
-              "value": 1
-            },
-            "group": "General",
-            "groupOrder": 1,
-            "dynamic": true
-          },
-          "Champ. Points": {
-            "value": 0,
-            "statType": "numeric",
-            "increment": {
-              "value": 1
-            },
-            "group": "Campaign",
-            "groupOrder": 2,
-            "dynamic": true
-          },
-          "Stash": {
-            "value": 0,
-            "statType": "numeric",
-            "increment": {
-              "value": 1
-            },
-            "icons": [
-              "fuel-tank"
-            ],
-            "group": "Campaign",
-            "groupOrder": 2,
-            "dynamic": true
+            "statType": "rank"
           },
           "Sponsor": {
-            "statType": "rank",
-            "value": "-",
+            "dynamic": true,
+            "group": "General",
+            "groupOrder": 1,
             "ranks": {
               "-": {
                 "order": 0
-              },
-              "Rutherford": {
-                "order": 1,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Military Hardware"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Well Stocked"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Might is Right"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Televised Carnage"
-                  }
-                ]
-              },
-              "Miyazaki": {
-                "order": 2,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Virtuoso"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Elegance"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Showing Off"
-                  }
-                ]
-              },
-              "Mishkin": {
-                "order": 3,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Thumpermonkey"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Dynamo"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§All the Toys"
-                  }
-                ]
-              },
-              "Idris": {
-                "order": 4,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§N₂O Addict"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Speed Demon"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Cult of Speed"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Kiss My Asphalt"
-                  }
-                ]
-              },
-              "Slime": {
-                "order": 5,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Live Fast"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Pinball"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Spiked Fist"
-                  }
-                ]
-              },
-              "The Warden": {
-                "order": 6,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Prison Cars"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Fireworks"
-                  }
-                ]
-              },
-              "Scarlett": {
-                "order": 7,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Crew Quarters"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Raiders"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Raise the Sails"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Press Gang"
-                  }
-                ]
-              },
-              "Highway Patrol": {
-                "order": 8,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Hot Pursuit"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Bogey at 12 O‘Clock"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Siren"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Steel Justice"
-                  }
-                ]
-              },
-              "Verney": {
-                "order": 9,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§MicroPlate Armour"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Tombstone"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Trunk of Junk"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§That’s Entertainment"
-                  }
-                ]
-              },
-              "Maxxine": {
-                "order": 10,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Dizzy"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Maxximum Drift"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Meshuggah"
-                  }
-                ]
-              },
-              "The Order of the Inferno": {
-                "order": 11,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Fire, Walk With Me"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Burning Man"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Cult of Flame"
-                  }
-                ]
               },
               "Beverly, the Devil on the Highway": {
                 "order": 12,
@@ -3232,6 +3114,133 @@
                       "{self}"
                     ],
                     "trait": "Sponsor Perk§Soul Harvest"
+                  }
+                ]
+              },
+              "Highway Patrol": {
+                "order": 8,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Hot Pursuit"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Bogey at 12 O‘Clock"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Siren"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Steel Justice"
+                  }
+                ]
+              },
+              "Idris": {
+                "order": 4,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§N₂O Addict"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Speed Demon"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Cult of Speed"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Kiss My Asphalt"
+                  }
+                ]
+              },
+              "Maxxine": {
+                "order": 10,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Dizzy"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Maxximum Drift"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Meshuggah"
+                  }
+                ]
+              },
+              "Mishkin": {
+                "order": 3,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Thumpermonkey"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Dynamo"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§All the Toys"
+                  }
+                ]
+              },
+              "Miyazaki": {
+                "order": 2,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Virtuoso"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Elegance"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Showing Off"
                   }
                 ]
               },
@@ -3275,195 +3284,186 @@
                     "trait": "Sponsor Perk§Haulage"
                   }
                 ]
+              },
+              "Rutherford": {
+                "order": 1,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Military Hardware"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Well Stocked"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Might is Right"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Televised Carnage"
+                  }
+                ]
+              },
+              "Scarlett": {
+                "order": 7,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Crew Quarters"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Raiders"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Raise the Sails"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Press Gang"
+                  }
+                ]
+              },
+              "Slime": {
+                "order": 5,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Live Fast"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Pinball"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Spiked Fist"
+                  }
+                ]
+              },
+              "The Order of the Inferno": {
+                "order": 11,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Fire, Walk With Me"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Burning Man"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Cult of Flame"
+                  }
+                ]
+              },
+              "The Warden": {
+                "order": 6,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Prison Cars"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Fireworks"
+                  }
+                ]
+              },
+              "Verney": {
+                "order": 9,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§MicroPlate Armour"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Tombstone"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Trunk of Junk"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§That’s Entertainment"
+                  }
+                ]
               }
             },
+            "statType": "rank",
+            "tracked": false,
+            "value": "-",
+            "visibility": "always"
+          },
+          "Stash": {
+            "dynamic": true,
+            "group": "Campaign",
+            "groupOrder": 2,
+            "icons": [
+              "fuel-tank"
+            ],
+            "increment": {
+              "value": 1
+            },
+            "statType": "numeric",
+            "value": 0
+          },
+          "Votes": {
+            "dynamic": true,
             "group": "General",
             "groupOrder": 1,
-            "visibility": "always",
-            "dynamic": true,
-            "tracked": false
+            "increment": {
+              "value": 1
+            },
+            "statType": "numeric",
+            "value": 0
           }
-        },
-        "rules": {
-          "scenario": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Game Type",
-                    "value"
-                  ]
-                ],
-                "value": "Scenario",
-                "operator": "AND",
-                "not": false
-              }
-            ],
-            "failState": "pass",
-            "evaluate": "OR",
-            "order": 5,
-            "actions": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    [
-                      "Stash",
-                      "Champ. Points"
-                    ],
-                    "visibility"
-                  ],
-                  [
-                    "{self}",
-                    "assets",
-                    "classification",
-                    [
-                      "Vehicle—Standard",
-                      "Vehicle—Restricted"
-                    ],
-                    "stats",
-                    "Dents",
-                    "visibility"
-                  ]
-                ],
-                "actionType": "set",
-                "value": "hidden",
-                "iterations": 1
-              }
-            ]
-          },
-          "campaign": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Game Type",
-                    "value"
-                  ]
-                ],
-                "value": "Campaign",
-                "operator": "AND",
-                "not": false,
-                "actionable": true
-              }
-            ],
-            "failState": "pass",
-            "evaluate": "OR",
-            "order": 5,
-            "actions": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "included",
-                    "classification",
-                    [
-                      "Vehicle—Restricted",
-                      "Vehicle—Standard"
-                    ],
-                    "traits"
-                  ]
-                ],
-                "actionType": "add",
-                "value": "Injuries§Injuries",
-                "iterations": 1
-              }
-            ]
-          },
-          "noSponsor": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Sponsor",
-                    "value"
-                  ]
-                ],
-                "value": "-",
-                "operator": "AND",
-                "not": false,
-                "actionable": true
-              }
-            ],
-            "failState": "pass",
-            "evaluate": "OR",
-            "actions": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "remove",
-                "value": "Basic",
-                "iterations": 1
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "constraints",
-                    "any"
-                  ]
-                ],
-                "actionType": "remove",
-                "value": "Advanced",
-                "iterations": 1
-              },
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "assets",
-                    "classification",
-                    "Vehicle",
-                    "constraints",
-                    "none"
-                  ],
-                  [
-                    "{self}",
-                    "assets",
-                    "classification",
-                    "Vehicle",
-                    "assets",
-                    "item",
-                    "Special Rule§Turret",
-                    "constraints",
-                    "none"
-                  ],
-                  [
-                    "{self}",
-                    "assets",
-                    "classification",
-                    "Vehicle",
-                    "assets",
-                    "item",
-                    "Special Rule§Articulated",
-                    "constraints",
-                    "none"
-                  ]
-                ],
-                "actionType": "remove",
-                "value": "Mishkin",
-                "iterations": 1
-              }
-            ]
-          }
-        },
-        "constraints": {
-          "any": [
-            "Basic",
-            "Advanced"
-          ]
         }
       },
       "Special Rule§360-degree": {
@@ -3499,12 +3499,6 @@
         "text": "This vehicle may ignore the penalties for rough and treacherous surfaces."
       },
       "Special Rule§Articulated": {
-        "keywords": {
-          "Tags": [
-            "Vehicle Rule"
-          ]
-        },
-        "text": "An articulated vehicle is comprised of two parts: the cab and the trailer. See War Rig rules for details.",
         "allowed": {
           "classifications": [
             "Weapon—Mounted",
@@ -3515,7 +3509,13 @@
           "none": [
             "Mishkin"
           ]
-        }
+        },
+        "keywords": {
+          "Tags": [
+            "Vehicle Rule"
+          ]
+        },
+        "text": "An articulated vehicle is comprised of two parts: the cab and the trailer. See War Rig rules for details."
       },
       "Special Rule§Blast": {
         "keywords": {
@@ -3539,14 +3539,12 @@
             "Vehicle Rule"
           ]
         },
-        "text": "When purchasing weapons, this vehicle may count dropped weapons as requiring 0 build slots.",
         "rules": {
           "bombsAway": {
-            "evals": [],
-            "failState": "pass",
-            "evaluate": "OR",
             "actions": [
               {
+                "actionType": "set",
+                "iterations": 1,
                 "paths": [
                   [
                     "{parent}",
@@ -3558,13 +3556,15 @@
                     "value"
                   ]
                 ],
-                "actionType": "set",
-                "value": 0,
-                "iterations": 1
+                "value": 0
               }
-            ]
+            ],
+            "evals": [],
+            "evaluate": "OR",
+            "failState": "pass"
           }
-        }
+        },
+        "text": "When purchasing weapons, this vehicle may count dropped weapons as requiring 0 build slots."
       },
       "Special Rule§Crew Fired": {
         "keywords": {
@@ -3679,41 +3679,27 @@
         "text": "When this weapon is used to attack, resolve a separate attack targeting each vehicle, including allies, under its shooting template."
       },
       "Special Rule§Turret": {
-        "keywords": {
-          "Tags": [
-            "Vehicle Rule"
-          ]
-        },
-        "text": "This vehicle may count one weapon as turret-mounted without paying for the upgrade.",
         "allowed": {
           "classifications": [
             "Weapon—Mounted"
           ]
         },
+        "constraints": {
+          "none": [
+            "Mishkin"
+          ]
+        },
+        "keywords": {
+          "Tags": [
+            "Vehicle Rule"
+          ]
+        },
         "rules": {
           "Only 1 weapon can mount on this turret": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "tally",
-                    [
-                      "Weapon—Mounted",
-                      "Weapon—Restricted"
-                    ]
-                  ]
-                ],
-                "min": 2,
-                "operator": "SUM",
-                "not": true
-              }
-            ],
-            "failState": "error",
-            "evaluate": "OR",
-            "order": 23,
             "actions": [
               {
+                "actionType": "set",
+                "iterations": 1,
                 "paths": [
                   [
                     "{self}",
@@ -3728,11 +3714,11 @@
                     "value"
                   ]
                 ],
-                "actionType": "set",
-                "value": "360°",
-                "iterations": 1
+                "value": "360°"
               },
               {
+                "actionType": "set",
+                "iterations": 1,
                 "paths": [
                   [
                     "{self}",
@@ -3750,18 +3736,32 @@
                     "dynamic"
                   ]
                 ],
-                "actionType": "set",
-                "value": false,
-                "iterations": 1
+                "value": false
               }
-            ]
+            ],
+            "evals": [
+              {
+                "min": 2,
+                "not": true,
+                "operator": "SUM",
+                "paths": [
+                  [
+                    "{self}",
+                    "tally",
+                    [
+                      "Weapon—Mounted",
+                      "Weapon—Restricted"
+                    ]
+                  ]
+                ]
+              }
+            ],
+            "evaluate": "OR",
+            "failState": "error",
+            "order": 23
           }
         },
-        "constraints": {
-          "none": [
-            "Mishkin"
-          ]
-        }
+        "text": "This vehicle may count one weapon as turret-mounted without paying for the upgrade."
       },
       "Special Rule§Up and Over": {
         "keywords": {
@@ -3795,13 +3795,12 @@
         "text": "If this vehicle is On Fire it gains +1 to all evade dice."
       },
       "Sponsor Perk§Crew Quarters": {
-        "text": "This team may purchase the Extra Crewmember upgrade at half the listed cost.",
         "rules": {
           "halfCostCrew": {
-            "failState": "pass",
-            "evaluate": "AND",
             "actions": [
               {
+                "actionType": "set",
+                "iterations": 1,
                 "paths": [
                   [
                     "{roster}",
@@ -3816,13 +3815,14 @@
                     "value"
                   ]
                 ],
-                "actionType": "set",
-                "value": 2,
-                "iterations": 1
+                "value": 2
               }
-            ]
+            ],
+            "evaluate": "AND",
+            "failState": "pass"
           }
-        }
+        },
+        "text": "This team may purchase the Extra Crewmember upgrade at half the listed cost."
       },
       "Sponsor Perk§Cult of Flame": {
         "text": "At the end of the gear phase, if there are more enemy vehicles on fire than there are friendly vehicles on fire, or all enemy vehicles are on fire, this team gains 1 audience vote for each friendly vehicle that is On Fire."
@@ -3837,15 +3837,12 @@
         "text": "Vehicles in this team only wipe out when they have 8 hazards."
       },
       "Sponsor Perk§Dynamo": {
-        "text": "After activating in gear Phase 4, 5 or 6, this vehicle may add +1 ammo token to a single electrical weapon or upgrade on that vehicle.",
         "rules": {
           "dynamo": {
-            "evals": [],
-            "failState": "pass",
-            "evaluate": "OR",
-            "order": 5,
             "actions": [
               {
+                "actionType": "set",
+                "iterations": 1,
                 "paths": [
                   [
                     "{roster}",
@@ -3869,13 +3866,16 @@
                     "increment"
                   ]
                 ],
-                "actionType": "set",
-                "value": 1,
-                "iterations": 1
+                "value": 1
               }
-            ]
+            ],
+            "evals": [],
+            "evaluate": "OR",
+            "failState": "pass",
+            "order": 5
           }
-        }
+        },
+        "text": "After activating in gear Phase 4, 5 or 6, this vehicle may add +1 ammo token to a single electrical weapon or upgrade on that vehicle."
       },
       "Sponsor Perk§Elegance": {
         "text": "Teams sponsored by Miyazaki may not purchase vehicle types with a base Handling value of 2 or lower."
@@ -3893,14 +3893,12 @@
         "text": "At the start of the game, after deployment, all vehicle in this team except one must gain the *Ghost Rider* special rule."
       },
       "Sponsor Perk§Haulage": {
-        "text": "Each vehicle on this team equipped with a trailer upgrade, and each War Rig, may equip a single trailer cargo upgrade for free.",
         "rules": {
           "haulage": {
-            "evals": [],
-            "failState": "pass",
-            "evaluate": "OR",
             "actions": [
               {
+                "actionType": "add",
+                "iterations": 1,
                 "paths": [
                   [
                     "{self}",
@@ -3914,13 +3912,15 @@
                     "classifications"
                   ]
                 ],
-                "actionType": "add",
-                "value": "Cargo",
-                "iterations": 1
+                "value": "Cargo"
               }
-            ]
+            ],
+            "evals": [],
+            "evaluate": "OR",
+            "failState": "pass"
           }
-        }
+        },
+        "text": "Each vehicle on this team equipped with a trailer upgrade, and each War Rig, may equip a single trailer cargo upgrade for free."
       },
       "Sponsor Perk§Hot Pursuit": {
         "text": "Before the first gear phase of the game, after deployment, this team must nominate one enemy vehicle as the *Bogey*."
@@ -3929,27 +3929,27 @@
         "text": "If a vehicle from this team is a wreck or out of play, the vehicle may be respawned, even if other rules would ordinarily prevent that."
       },
       "Sponsor Perk§Kiss My Asphalt": {
-        "text": "This team may not purchase Gyrocopters.",
         "rules": {
           "This team may not purchase Gyrocopters": {
             "evals": [
               {
+                "max": 0,
+                "not": false,
+                "operator": "AND",
                 "paths": [
                   [
                     "{roster}",
                     "tally",
                     "Gyrocopter"
                   ]
-                ],
-                "max": 0,
-                "operator": "AND",
-                "not": false
+                ]
               }
             ],
-            "failState": "error",
-            "evaluate": "OR"
+            "evaluate": "OR",
+            "failState": "error"
           }
-        }
+        },
+        "text": "This team may not purchase Gyrocopters."
       },
       "Sponsor Perk§Live Fast": {
         "text": "If a vehicle in this team begins the wipeout step with more hazard tokens than hull points during its own activation this team gains +1 audience vote."
@@ -3961,15 +3961,12 @@
         "text": "When this vehicle resolves a slide or spin that ends within medium of a friendly vehicle without causing a collision: this team gains +1 Audience Vote."
       },
       "Sponsor Perk§MicroPlate Armour": {
-        "text": "Vehicles in this team may purchase the MicroPlate Armour upgrade.",
         "rules": {
           "microplate": {
-            "evals": [],
-            "failState": "pass",
-            "evaluate": "OR",
-            "order": 10,
             "actions": [
               {
+                "actionType": "remove",
+                "iterations": 1,
                 "paths": [
                   [
                     "{roster}",
@@ -3983,40 +3980,24 @@
                     "items"
                   ]
                 ],
-                "actionType": "remove",
-                "value": "Sponsor Perk§MicroPlate Armour",
-                "iterations": 1
-              }
-            ]
-          }
-        }
-      },
-      "Sponsor Perk§Might is Right": {
-        "text": "This team may not purchase lightweight vehicles.",
-        "rules": {
-          "This team may not purchase lightweight vehicles": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{roster}",
-                    "tally",
-                    "Light"
-                  ]
-                ],
-                "min": 1,
-                "operator": "AND",
-                "not": true
+                "value": "Sponsor Perk§MicroPlate Armour"
               }
             ],
-            "failState": "error",
-            "evaluate": "OR"
-          },
-          "noLight": {
+            "evals": [],
+            "evaluate": "OR",
             "failState": "pass",
-            "evaluate": "AND",
+            "order": 10
+          }
+        },
+        "text": "Vehicles in this team may purchase the MicroPlate Armour upgrade."
+      },
+      "Sponsor Perk§Might is Right": {
+        "rules": {
+          "noLight": {
             "actions": [
               {
+                "actionType": "add",
+                "iterations": 1,
                 "paths": [
                   [
                     "{roster}",
@@ -4024,23 +4005,40 @@
                     "none"
                   ]
                 ],
-                "actionType": "add",
-                "value": "Light",
-                "iterations": 1
+                "value": "Light"
               }
-            ]
+            ],
+            "evaluate": "AND",
+            "failState": "pass"
+          },
+          "This team may not purchase lightweight vehicles": {
+            "evals": [
+              {
+                "min": 1,
+                "not": true,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{roster}",
+                    "tally",
+                    "Light"
+                  ]
+                ]
+              }
+            ],
+            "evaluate": "OR",
+            "failState": "error"
           }
-        }
+        },
+        "text": "This team may not purchase lightweight vehicles."
       },
       "Sponsor Perk§Military Hardware": {
-        "text": "This team may purchase a single Tank. This team may purchase a single Helicopter.",
         "rules": {
           "tankChopper": {
-            "failState": "pass",
-            "evaluate": "OR",
-            "order": 10,
             "actions": [
               {
+                "actionType": "add",
+                "iterations": 1,
                 "paths": [
                   [
                     "{roster}",
@@ -4048,11 +4046,11 @@
                     "any"
                   ]
                 ],
-                "actionType": "add",
-                "value": "Military",
-                "iterations": 1
+                "value": "Military"
               },
               {
+                "actionType": "add",
+                "iterations": 1,
                 "paths": [
                   [
                     "{roster}",
@@ -4060,11 +4058,11 @@
                     "any"
                   ]
                 ],
-                "actionType": "add",
-                "value": "Advanced",
-                "iterations": 1
+                "value": "Advanced"
               },
               {
+                "actionType": "add",
+                "iterations": 1,
                 "paths": [
                   [
                     "{roster}",
@@ -4072,13 +4070,15 @@
                     "any"
                   ]
                 ],
-                "actionType": "add",
-                "value": "Basic",
-                "iterations": 1
+                "value": "Basic"
               }
-            ]
+            ],
+            "evaluate": "OR",
+            "failState": "pass",
+            "order": 10
           }
-        }
+        },
+        "text": "This team may purchase a single Tank. This team may purchase a single Helicopter."
       },
       "Sponsor Perk§N₂O Addict": {
         "text": "This team may purchase the Nitro upgrade at half the listed cost."
@@ -4093,15 +4093,12 @@
         "text": "If a vehicle in this team is involved in a collision during its movement step in which the point of contact on both vehicles is along their side edges and this vehicle declares a smash attack, then this vehicle may immediately resolve another movement step after the current movement step."
       },
       "Sponsor Perk§Press Gang": {
-        "text": "When another vehicle in contact with this vehicle is wrecked, this vehicle may gain either 1 crew or 2 audience votes.",
         "rules": {
           "pressGang": {
-            "evals": [],
-            "failState": "pass",
-            "evaluate": "OR",
-            "order": 5,
             "actions": [
               {
+                "actionType": "set",
+                "iterations": 1,
                 "paths": [
                   [
                     "{roster}",
@@ -4116,27 +4113,27 @@
                     "increment"
                   ]
                 ],
-                "actionType": "set",
-                "value": 1,
-                "iterations": 1
+                "value": 1
               }
-            ]
+            ],
+            "evals": [],
+            "evaluate": "OR",
+            "failState": "pass",
+            "order": 5
           }
-        }
+        },
+        "text": "When another vehicle in contact with this vehicle is wrecked, this vehicle may gain either 1 crew or 2 audience votes."
       },
       "Sponsor Perk§Prison Cars": {
         "text": "Vehicles in this team may purchase the Prison Car upgrade."
       },
       "Sponsor Perk§Raiders": {
-        "text": "At the end of the attack step, this vehicle may permanently reduce its crew value by any number, to a minimum of 0 crew: remove 1 hull point from any vehicle in base contact for each crew removed in this way.",
         "rules": {
           "raiders": {
-            "evals": [],
-            "failState": "pass",
-            "evaluate": "OR",
-            "order": 5,
             "actions": [
               {
+                "actionType": "set",
+                "iterations": 1,
                 "paths": [
                   [
                     "{roster}",
@@ -4151,13 +4148,16 @@
                     "increment"
                   ]
                 ],
-                "actionType": "set",
-                "value": 1,
-                "iterations": 1
+                "value": 1
               }
-            ]
+            ],
+            "evals": [],
+            "evaluate": "OR",
+            "failState": "pass",
+            "order": 5
           }
-        }
+        },
+        "text": "At the end of the attack step, this vehicle may permanently reduce its crew value by any number, to a minimum of 0 crew: remove 1 hull point from any vehicle in base contact for each crew removed in this way."
       },
       "Sponsor Perk§Raise the Sails": {
         "text": "After rolling skid dice, this vehicle may permanently reduce its crew value by 1, to a minimum of 0 crew to add 1 free shift result to the skid dice result."
@@ -4178,14 +4178,12 @@
         "text": "When this vehicle gains hazards as a result of the Nitro Booster, this vehicle only gains hazard tokens until it has 3 hazard tokens, rather than 5 hazard tokens."
       },
       "Sponsor Perk§Spiked Fist": {
-        "text": "This vehicle counts the Ram upgrade as requiring zero build slots.",
         "rules": {
           "spikedFist": {
-            "evals": [],
-            "failState": "pass",
-            "evaluate": "OR",
             "actions": [
               {
+                "actionType": "set",
+                "iterations": 1,
                 "paths": [
                   [
                     "{roster}",
@@ -4203,13 +4201,15 @@
                     "value"
                   ]
                 ],
-                "actionType": "set",
-                "value": 0,
-                "iterations": 1
+                "value": 0
               }
-            ]
+            ],
+            "evals": [],
+            "evaluate": "OR",
+            "failState": "pass"
           }
-        }
+        },
+        "text": "This vehicle counts the Ram upgrade as requiring zero build slots."
       },
       "Sponsor Perk§Steel Justice": {
         "text": "If the Bogey wipes out this team as a whole gains 2 audience votes. If the Bogey is wrecked this team as a whole gains 4 audience votes."
@@ -4227,11 +4227,12 @@
         "text": "If the shooting template of a shooting attack touches the rear edge of this vehicle, this vehicle gains +1 to its evade rolls. During this vehicle’s  attack step, this vehicle may gain 2 hazards. If it does, all collisions involving this vehicle are considered to be head-on until the start of its next activation."
       },
       "Sponsor Perk§Trailer Trash": {
-        "text": "This team must contain at least one medium or heavyweight vehicle equipped with a trailer upgrade, or a War Rig.",
         "rules": {
           "Add a War Rig or put a trailer on a middleweight or heavy!": {
             "evals": [
               {
+                "not": true,
+                "operator": "AND",
                 "paths": [
                   [
                     "{roster}",
@@ -4246,27 +4247,26 @@
                     "return"
                   ]
                 ],
-                "value": 0,
-                "operator": "AND",
-                "not": true
+                "value": 0
               },
               {
+                "min": 1,
+                "not": false,
+                "operator": "AND",
                 "paths": [
                   [
                     "{roster}",
                     "tally",
                     "War Rig"
                   ]
-                ],
-                "min": 1,
-                "operator": "AND",
-                "not": false
+                ]
               }
             ],
-            "failState": "error",
-            "evaluate": "OR"
+            "evaluate": "OR",
+            "failState": "error"
           }
-        }
+        },
+        "text": "This team must contain at least one medium or heavyweight vehicle equipped with a trailer upgrade, or a War Rig."
       },
       "Sponsor Perk§Trunk of Junk": {
         "text": "You may attack with any number of dropped weapons in a single activation."
@@ -4278,6 +4278,9 @@
         "text": "This team considers any weapon with the ammo 3 special rule to instead have the ammo 4 special rule when purchased."
       },
       "Upgrade§Armour Plating": {
+        "aspects": {
+          "Unique": false
+        },
         "stats": {
           "Build Slots": {
             "value": 1
@@ -4286,16 +4289,13 @@
             "value": 4
           },
           "Hull": {
+            "statType": "numeric",
             "tracked": true,
             "value": 2,
-            "statType": "numeric",
             "visibility": "hidden"
           }
         },
-        "text": "+2 Hull",
-        "aspects": {
-          "Unique": false
-        }
+        "text": "+2 Hull"
       },
       "Upgrade§Experimental Nuclear Engine": {
         "assets": {
@@ -4310,8 +4310,8 @@
         },
         "stats": {
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 5
           }
         },
         "text": "See rulebook"
@@ -4329,8 +4329,8 @@
         },
         "stats": {
           "Cost": {
-            "value": 7,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 7
           }
         },
         "text": "See rulebook"
@@ -4340,57 +4340,13 @@
           "Lock Qty": true,
           "Unique": true
         },
-        "stats": {
-          "Ammo": {
-            "value": 1
-          },
-          "Cost": {
-            "value": 3
-          },
-          "Facing": {
-            "statType": "rank",
-            "label": "Facing",
-            "value": "-",
-            "ranks": {
-              "-": {
-                "order": 0
-              },
-              "ramFront": {
-                "order": 1,
-                "hotkey": "f",
-                "format": "Front",
-                "tracking": {}
-              },
-              "ramBack": {
-                "order": 2,
-                "hotkey": "b",
-                "format": "Back",
-                "tracking": {}
-              },
-              "ramLeft": {
-                "order": 3,
-                "hotkey": "l",
-                "format": "Left",
-                "tracking": {}
-              },
-              "ramRight": {
-                "order": 4,
-                "hotkey": "r",
-                "format": "Right",
-                "tracking": {}
-              }
-            },
-            "statOrder": 0,
-            "visibility": "normal",
-            "dynamic": true,
-            "tracked": false
-          }
-        },
-        "text": "Highly Explosive.",
         "rules": {
           "Select a facing.": {
             "evals": [
               {
+                "actionable": true,
+                "not": true,
+                "operator": "AND",
                 "paths": [
                   [
                     "{self}",
@@ -4399,41 +4355,69 @@
                     "value"
                   ]
                 ],
-                "value": "-",
-                "operator": "AND",
-                "not": true,
-                "actionable": true
+                "value": "-"
               }
             ],
-            "failState": "warning",
-            "evaluate": "AND"
-          }
-        }
-      },
-      "Upgrade§Extra Crewmember": {
-        "stats": {
-          "Cost": {
-            "value": 4
-          },
-          "Crew": {
-            "value": 1,
-            "tracked": true,
-            "statType": "numeric",
-            "visibility": "hidden"
+            "evaluate": "AND",
+            "failState": "warning"
           }
         },
-        "text": "+1 Crew, up to double starting crew",
+        "stats": {
+          "Ammo": {
+            "value": 1
+          },
+          "Cost": {
+            "value": 3
+          },
+          "Facing": {
+            "dynamic": true,
+            "label": "Facing",
+            "ranks": {
+              "-": {
+                "order": 0
+              },
+              "ramBack": {
+                "format": "Back",
+                "hotkey": "b",
+                "order": 2,
+                "tracking": {}
+              },
+              "ramFront": {
+                "format": "Front",
+                "hotkey": "f",
+                "order": 1,
+                "tracking": {}
+              },
+              "ramLeft": {
+                "format": "Left",
+                "hotkey": "l",
+                "order": 3,
+                "tracking": {}
+              },
+              "ramRight": {
+                "format": "Right",
+                "hotkey": "r",
+                "order": 4,
+                "tracking": {}
+              }
+            },
+            "statOrder": 0,
+            "statType": "rank",
+            "tracked": false,
+            "value": "-",
+            "visibility": "normal"
+          }
+        },
+        "text": "Highly Explosive."
+      },
+      "Upgrade§Extra Crewmember": {
+        "aspects": {
+          "Unique": false
+        },
         "rules": {
           "Too many Extra Crewmembers": {
             "evals": [
               {
-                "paths": [
-                  [
-                    "{parent}",
-                    "tally",
-                    "Extra Crewmember"
-                  ]
-                ],
                 "max": [
                   "{parent}",
                   "stats",
@@ -4442,17 +4426,33 @@
                   "numeric",
                   "default"
                 ],
+                "not": false,
                 "operator": "AND",
-                "not": false
+                "paths": [
+                  [
+                    "{parent}",
+                    "tally",
+                    "Extra Crewmember"
+                  ]
+                ]
               }
             ],
-            "failState": "error",
-            "evaluate": "OR"
+            "evaluate": "OR",
+            "failState": "error"
           }
         },
-        "aspects": {
-          "Unique": false
-        }
+        "stats": {
+          "Cost": {
+            "value": 4
+          },
+          "Crew": {
+            "statType": "numeric",
+            "tracked": true,
+            "value": 1,
+            "visibility": "hidden"
+          }
+        },
+        "text": "+1 Crew, up to double starting crew"
       },
       "Upgrade§Improvised Sludge Thrower": {
         "stats": {
@@ -4473,8 +4473,8 @@
         },
         "stats": {
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 2
           }
         }
       },
@@ -4489,9 +4489,9 @@
             "value": 6
           },
           "Hull": {
+            "statType": "numeric",
             "tracked": true,
             "value": 2,
-            "statType": "numeric",
             "visibility": "hidden"
           }
         },
@@ -4509,66 +4509,123 @@
         "text": "Once per activation, at the start of a Movement Step, this vehicle may declare that it is using a Nitro Booster. If it does, this vehicle makes an immediate forced, Long Straight move forward, and then gains hazard tokens until it has 5 hazard tokens. It then resolves its Movement Step as normal, except that it may not reverse. Then, at the end of the movement step, it again gains Hazard Tokens until it has 5 Hazard Tokens."
       },
       "Upgrade§Prison Car": {
+        "aspects": {
+          "Unique": true
+        },
         "keywords": {
           "Keywords": [
             "The Warden"
           ]
         },
-        "text": "Reduce the cost of this vehicle by 4 Cans to a minimum of 5 Cans. Reduce the hull value of this vehicle by 2. May only be purchased by middleweight vehicles. May only be purchased once for each vehicle.",
-        "aspects": {
-          "Unique": true
+        "rules": {
+          "minCost5": {
+            "actions": [
+              {
+                "actionType": "set",
+                "iterations": 1,
+                "paths": [
+                  [
+                    "{parent}",
+                    "stats",
+                    "Cost",
+                    "value"
+                  ]
+                ],
+                "value": 5
+              }
+            ],
+            "evals": [
+              {
+                "actionable": true,
+                "min": 5,
+                "not": true,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{parent}",
+                    "stats",
+                    "Cost",
+                    "value"
+                  ]
+                ]
+              }
+            ],
+            "evaluate": "AND",
+            "failState": "pass"
+          }
         },
         "stats": {
           "Cost": {
             "value": -4
           },
           "Hull": {
-            "statType": "numeric",
-            "value": -2,
-            "visibility": "normal",
             "dynamic": false,
-            "tracked": true
+            "statType": "numeric",
+            "tracked": true,
+            "value": -2,
+            "visibility": "normal"
           }
         },
-        "rules": {
-          "minCost5": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{parent}",
-                    "stats",
-                    "Cost",
-                    "value"
-                  ]
-                ],
-                "min": 5,
-                "operator": "AND",
-                "not": true,
-                "actionable": true
-              }
-            ],
-            "failState": "pass",
-            "evaluate": "AND",
-            "actions": [
-              {
-                "paths": [
-                  [
-                    "{parent}",
-                    "stats",
-                    "Cost",
-                    "value"
-                  ]
-                ],
-                "actionType": "set",
-                "value": 5,
-                "iterations": 1
-              }
-            ]
-          }
-        }
+        "text": "Reduce the cost of this vehicle by 4 Cans to a minimum of 5 Cans. Reduce the hull value of this vehicle by 2. May only be purchased by middleweight vehicles. May only be purchased once for each vehicle."
       },
       "Upgrade§Ram": {
+        "aspects": {
+          "Unique": false
+        },
+        "rules": {
+          "Rams must have different facings.": {
+            "evals": [
+              {
+                "actionable": false,
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Ram Facing",
+                    "value"
+                  ]
+                ]
+              },
+              {
+                "actionable": true,
+                "max": 1,
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{parent}",
+                    "tracked",
+                    "{0string}"
+                  ]
+                ]
+              }
+            ],
+            "evaluate": "AND",
+            "failState": "error"
+          },
+          "Select a facing.": {
+            "evals": [
+              {
+                "actionable": true,
+                "not": true,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Ram Facing",
+                    "value"
+                  ]
+                ],
+                "value": "-"
+              }
+            ],
+            "evaluate": "AND",
+            "failState": "warning"
+          }
+        },
         "stats": {
           "Build Slots": {
             "value": 1
@@ -4577,110 +4634,53 @@
             "value": 4
           },
           "Ram Facing": {
-            "statType": "rank",
+            "dynamic": true,
             "label": "Facing",
-            "value": "-",
             "ranks": {
               "-": {
                 "order": 0
               },
-              "ramFront": {
-                "order": 1,
-                "hotkey": "f",
-                "format": "Front",
-                "tracking": {
-                  "ramFront": 1
-                }
-              },
               "ramBack": {
-                "order": 2,
-                "hotkey": "b",
                 "format": "Back",
+                "hotkey": "b",
+                "order": 2,
                 "tracking": {
                   "ramBack": 1
                 }
               },
+              "ramFront": {
+                "format": "Front",
+                "hotkey": "f",
+                "order": 1,
+                "tracking": {
+                  "ramFront": 1
+                }
+              },
               "ramLeft": {
-                "order": 3,
-                "hotkey": "l",
                 "format": "Left",
+                "hotkey": "l",
+                "order": 3,
                 "tracking": {
                   "ramLeft": 1
                 }
               },
               "ramRight": {
-                "order": 4,
-                "hotkey": "r",
                 "format": "Right",
+                "hotkey": "r",
+                "order": 4,
                 "tracking": {
                   "ramRight": 1
                 }
               }
             },
             "statOrder": 0,
-            "visibility": "normal",
-            "dynamic": true,
-            "tracked": false
+            "statType": "rank",
+            "tracked": false,
+            "value": "-",
+            "visibility": "normal"
           }
         },
-        "text": "No hazards gained during collisions on declared facing.",
-        "aspects": {
-          "Unique": false
-        },
-        "rules": {
-          "Select a facing.": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Ram Facing",
-                    "value"
-                  ]
-                ],
-                "value": "-",
-                "operator": "AND",
-                "not": true,
-                "actionable": true
-              }
-            ],
-            "failState": "warning",
-            "evaluate": "AND"
-          },
-          "Rams must have different facings.": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Ram Facing",
-                    "value"
-                  ]
-                ],
-                "operator": "AND",
-                "not": false,
-                "actionable": false
-              },
-              {
-                "paths": [
-                  [
-                    "{parent}",
-                    "tracked",
-                    "{0string}"
-                  ]
-                ],
-                "max": 1,
-                "operator": "AND",
-                "not": false,
-                "actionable": true
-              }
-            ],
-            "failState": "error",
-            "evaluate": "AND"
-          }
-        }
+        "text": "No hazards gained during collisions on declared facing."
       },
       "Upgrade§Roll Cage": {
         "stats": {
@@ -4707,15 +4707,15 @@
             "value": 4
           },
           "Handling": {
+            "statType": "numeric",
             "tracked": true,
             "value": 1,
-            "statType": "numeric",
             "visibility": "hidden"
           },
           "Max Gear": {
-            "value": -1,
-            "tracked": true,
             "statType": "numeric",
+            "tracked": true,
+            "value": -1,
             "visibility": "hidden"
           }
         },
@@ -4728,6 +4728,10 @@
             "Weapon—Mounted"
           ]
         },
+        "aspects": {
+          "Lock Qty": true,
+          "Unique": true
+        },
         "assets": {
           "traits": [
             "Special Rule§Articulated",
@@ -4735,63 +4739,23 @@
             "Special Rule§Piledriver"
           ]
         },
+        "constraints": {
+          "any": [
+            "Basic",
+            "Advanced"
+          ]
+        },
         "keywords": {
           "Keywords": [
             "Rusty’s Bootleggers"
           ]
         },
-        "stats": {
-          "Build Slots": {
-            "value": -3,
-            "statType": "numeric"
-          },
-          "Cost": {
-            "value": 12,
-            "statType": "numeric"
-          },
-          "Trailer": {
-            "tracked": true,
-            "value": 1,
-            "statType": "numeric",
-            "visibility": "hidden"
-          }
-        },
-        "aspects": {
-          "Lock Qty": true,
-          "Unique": true
-        },
         "rules": {
           "heavyTrailer": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{parent}",
-                    "tally",
-                    "Middle"
-                  ]
-                ],
-                "min": 1,
-                "operator": "AND",
-                "not": false
-              },
-              {
-                "paths": [
-                  [
-                    "{parent}",
-                    "tally",
-                    "Light"
-                  ]
-                ],
-                "min": 1,
-                "operator": "AND",
-                "not": false
-              }
-            ],
-            "failState": "pass",
-            "evaluate": "OR",
             "actions": [
               {
+                "actionType": "remove",
+                "iterations": 1,
                 "paths": [
                   [
                     "{parent}",
@@ -4799,18 +4763,54 @@
                     "items"
                   ]
                 ],
-                "actionType": "remove",
-                "value": "Upgrade§Trailer (heavy)",
-                "iterations": 1
+                "value": "Upgrade§Trailer (heavy)"
               }
-            ]
+            ],
+            "evals": [
+              {
+                "min": 1,
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{parent}",
+                    "tally",
+                    "Middle"
+                  ]
+                ]
+              },
+              {
+                "min": 1,
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{parent}",
+                    "tally",
+                    "Light"
+                  ]
+                ]
+              }
+            ],
+            "evaluate": "OR",
+            "failState": "pass"
           }
         },
-        "constraints": {
-          "any": [
-            "Basic",
-            "Advanced"
-          ]
+        "stats": {
+          "Build Slots": {
+            "statType": "numeric",
+            "value": -3
+          },
+          "Cost": {
+            "statType": "numeric",
+            "value": 12
+          },
+          "Trailer": {
+            "statType": "numeric",
+            "tracked": true,
+            "value": 1,
+            "visibility": "hidden"
+          }
         }
       },
       "Upgrade§Trailer (light)": {
@@ -4820,11 +4820,21 @@
             "Weapon—Mounted"
           ]
         },
+        "aspects": {
+          "Lock Qty": true,
+          "Unique": true
+        },
         "assets": {
           "traits": [
             "Special Rule§Articulated",
             "Special Rule§Ponderous",
             "Special Rule§Piledriver"
+          ]
+        },
+        "constraints": {
+          "any": [
+            "Basic",
+            "Advanced"
           ]
         },
         "keywords": {
@@ -4837,21 +4847,11 @@
             "value": 4
           },
           "Trailer": {
+            "statType": "numeric",
             "tracked": true,
             "value": 1,
-            "statType": "numeric",
             "visibility": "hidden"
           }
-        },
-        "aspects": {
-          "Lock Qty": true,
-          "Unique": true
-        },
-        "constraints": {
-          "any": [
-            "Basic",
-            "Advanced"
-          ]
         }
       },
       "Upgrade§Trailer (middle)": {
@@ -4861,11 +4861,21 @@
             "Weapon—Mounted"
           ]
         },
+        "aspects": {
+          "Lock Qty": true,
+          "Unique": true
+        },
         "assets": {
           "traits": [
             "Special Rule§Articulated",
             "Special Rule§Ponderous",
             "Special Rule§Piledriver"
+          ]
+        },
+        "constraints": {
+          "any": [
+            "Basic",
+            "Advanced"
           ]
         },
         "keywords": {
@@ -4881,21 +4891,11 @@
             "value": 8
           },
           "Trailer": {
+            "statType": "numeric",
             "tracked": true,
             "value": 1,
-            "statType": "numeric",
             "visibility": "hidden"
           }
-        },
-        "aspects": {
-          "Lock Qty": true,
-          "Unique": true
-        },
-        "constraints": {
-          "any": [
-            "Basic",
-            "Advanced"
-          ]
         }
       },
       "Vehicle§Ambulance": {
@@ -5201,6 +5201,10 @@
         }
       },
       "Vehicle§Helicopter": {
+        "aspects": {
+          "Lock Qty": true,
+          "Unique": true
+        },
         "assets": {
           "traits": [
             "Special Rule§Airborne",
@@ -5237,10 +5241,6 @@
           "Max Gear": {
             "value": 4
           }
-        },
-        "aspects": {
-          "Lock Qty": true,
-          "Unique": true
         }
       },
       "Vehicle§Ice Cream Truck": {
@@ -5350,6 +5350,10 @@
         }
       },
       "Vehicle§Tank": {
+        "aspects": {
+          "Lock Qty": true,
+          "Unique": true
+        },
         "assets": {
           "traits": [
             "Special Rule§Pivot",
@@ -5387,10 +5391,6 @@
           "Max Gear": {
             "value": 3
           }
-        },
-        "aspects": {
-          "Unique": true,
-          "Lock Qty": true
         }
       },
       "Vehicle§Truck": {
@@ -6053,12 +6053,12 @@
           "Cost": {
             "value": 1
           },
+          "Mounting": {
+            "dynamic": false,
+            "value": "Front"
+          },
           "Range": {
             "statType": "rank"
-          },
-          "Mounting": {
-            "value": "Front",
-            "dynamic": false
           }
         },
         "text": "Medium straight backwards, gear=1, hazards +3"
@@ -6590,8 +6590,8 @@
             "value": 3
           },
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 2
           }
         }
       }
