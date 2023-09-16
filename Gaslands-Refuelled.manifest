@@ -1,6 +1,6 @@
 {
   "name": "Gaslands",
-  "revision": "0.2.2",
+  "revision": "0.3.0",
   "game": "Gaslands Refuelled",
   "genre": "sci-fi",
   "publisher": "Osprey Games",
@@ -108,13 +108,15 @@
             "Upgrade",
             "Weapon—Crew Fired",
             "Weapon—Dropped",
-            "Weapon—Mounted"
+            "Weapon—Mounted",
+            "Perk"
           ]
         },
         "aspects": {
           "Describe": true,
+          "Group Includes": true,
           "Rename": true,
-          "Type": "game piece"
+          "Type": "conceptual"
         },
         "assets": {
           "traits": [
@@ -1416,33 +1418,33 @@
           "Range": {
             "label": "Range",
             "ranks": {
-              "Double": {
-                "hotkey": "d",
-                "order": 3
-              },
-              "Double/Dropped": {
-                "hotkey": "o",
-                "order": 6
-              },
-              "Large Burst": {
-                "hotkey": "u",
-                "order": 5
-              },
-              "Long": {
-                "hotkey": "l",
-                "order": 2
+              "Short": {
+                "hotkey": "s",
+                "order": 0
               },
               "Medium": {
                 "hotkey": "m",
                 "order": 1
               },
-              "Short": {
-                "hotkey": "s",
-                "order": 0
+              "Long": {
+                "hotkey": "l",
+                "order": 2
+              },
+              "Double": {
+                "hotkey": "d",
+                "order": 3
               },
               "Small Burst": {
                 "hotkey": "b",
                 "order": 4
+              },
+              "Large Burst": {
+                "hotkey": "u",
+                "order": 5
+              },
+              "Double/Dropped": {
+                "hotkey": "o",
+                "order": 6
               }
             },
             "statOrder": 1,
@@ -1652,17 +1654,13 @@
               "-": {
                 "order": 0
               },
-              "360°": {
-                "hotkey": "3",
-                "order": 5
+              "Front": {
+                "hotkey": "f",
+                "order": 1
               },
               "Back": {
                 "hotkey": "b",
                 "order": 2
-              },
-              "Front": {
-                "hotkey": "f",
-                "order": 1
               },
               "Left": {
                 "hotkey": "l",
@@ -1671,6 +1669,10 @@
               "Right": {
                 "hotkey": "r",
                 "order": 4
+              },
+              "360°": {
+                "hotkey": "3",
+                "order": 5
               }
             },
             "statOrder": 0,
@@ -3046,24 +3048,26 @@
           },
           "Cost": {
             "group": "Cost",
-            "groupOrder": -1,
+            "groupOrder": 1,
             "icons": [
               "jerrycan"
             ],
             "label": "Cans",
+            "statType": "numeric",
             "tracked": true,
-            "value": 0
+            "value": 0,
+            "visibility": "always"
           },
           "Game Type": {
             "dynamic": true,
             "group": "General",
             "groupOrder": 1,
             "ranks": {
-              "Campaign": {
-                "order": 1
-              },
               "Scenario": {
                 "order": 0
+              },
+              "Campaign": {
+                "order": 1
               }
             },
             "statType": "rank"
@@ -3075,6 +3079,283 @@
             "ranks": {
               "-": {
                 "order": 0
+              },
+              "Rutherford": {
+                "order": 1,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Military Hardware"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Well Stocked"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Might is Right"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Televised Carnage"
+                  }
+                ]
+              },
+              "Miyazaki": {
+                "order": 2,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Virtuoso"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Elegance"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Showing Off"
+                  }
+                ]
+              },
+              "Mishkin": {
+                "order": 3,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Thumpermonkey"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Dynamo"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§All the Toys"
+                  }
+                ]
+              },
+              "Idris": {
+                "order": 4,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§N₂O Addict"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Speed Demon"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Cult of Speed"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Kiss My Asphalt"
+                  }
+                ]
+              },
+              "Slime": {
+                "order": 5,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Live Fast"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Pinball"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Spiked Fist"
+                  }
+                ]
+              },
+              "The Warden": {
+                "order": 6,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Prison Cars"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Fireworks"
+                  }
+                ]
+              },
+              "Scarlett": {
+                "order": 7,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Crew Quarters"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Raiders"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Raise the Sails"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Press Gang"
+                  }
+                ]
+              },
+              "Highway Patrol": {
+                "order": 8,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Hot Pursuit"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Bogey at 12 O‘Clock"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Siren"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Steel Justice"
+                  }
+                ]
+              },
+              "Verney": {
+                "order": 9,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§MicroPlate Armour"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Tombstone"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Trunk of Junk"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§That’s Entertainment"
+                  }
+                ]
+              },
+              "Maxxine": {
+                "order": 10,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Dizzy"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Maxximum Drift"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Meshuggah"
+                  }
+                ]
+              },
+              "The Order of the Inferno": {
+                "order": 11,
+                "traits": [
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Fire, Walk With Me"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Burning Man"
+                  },
+                  {
+                    "path": [
+                      "{self}"
+                    ],
+                    "trait": "Sponsor Perk§Cult of Flame"
+                  }
+                ]
               },
               "Beverly, the Devil on the Highway": {
                 "order": 12,
@@ -3117,133 +3398,6 @@
                   }
                 ]
               },
-              "Highway Patrol": {
-                "order": 8,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Hot Pursuit"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Bogey at 12 O‘Clock"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Siren"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Steel Justice"
-                  }
-                ]
-              },
-              "Idris": {
-                "order": 4,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§N₂O Addict"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Speed Demon"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Cult of Speed"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Kiss My Asphalt"
-                  }
-                ]
-              },
-              "Maxxine": {
-                "order": 10,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Dizzy"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Maxximum Drift"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Meshuggah"
-                  }
-                ]
-              },
-              "Mishkin": {
-                "order": 3,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Thumpermonkey"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Dynamo"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§All the Toys"
-                  }
-                ]
-              },
-              "Miyazaki": {
-                "order": 2,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Virtuoso"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Elegance"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Showing Off"
-                  }
-                ]
-              },
               "Rusty’s Bootleggers": {
                 "order": 13,
                 "traits": [
@@ -3282,156 +3436,6 @@
                       "{self}"
                     ],
                     "trait": "Sponsor Perk§Haulage"
-                  }
-                ]
-              },
-              "Rutherford": {
-                "order": 1,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Military Hardware"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Well Stocked"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Might is Right"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Televised Carnage"
-                  }
-                ]
-              },
-              "Scarlett": {
-                "order": 7,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Crew Quarters"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Raiders"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Raise the Sails"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Press Gang"
-                  }
-                ]
-              },
-              "Slime": {
-                "order": 5,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Live Fast"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Pinball"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Spiked Fist"
-                  }
-                ]
-              },
-              "The Order of the Inferno": {
-                "order": 11,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Fire, Walk With Me"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Burning Man"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Cult of Flame"
-                  }
-                ]
-              },
-              "The Warden": {
-                "order": 6,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Prison Cars"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Fireworks"
-                  }
-                ]
-              },
-              "Verney": {
-                "order": 9,
-                "traits": [
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§MicroPlate Armour"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Tombstone"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§Trunk of Junk"
-                  },
-                  {
-                    "path": [
-                      "{self}"
-                    ],
-                    "trait": "Sponsor Perk§That’s Entertainment"
                   }
                 ]
               }
@@ -3670,6 +3674,7 @@
         },
         "text": "If this vehicle is targeted with a tailgate, T-bone or sideswipe smash attack, and this vehicle declares evade as its reaction, this vehicle may perform a free activation immediately after the active vehicle completes its activation. This free activation does not count as the vehicle’s activation this gear phase."
       },
+      "Special Rule§Small Burst": {},
       "Special Rule§Splash": {
         "keywords": {
           "Tags": [
@@ -4376,16 +4381,16 @@
               "-": {
                 "order": 0
               },
-              "ramBack": {
-                "format": "Back",
-                "hotkey": "b",
-                "order": 2,
-                "tracking": {}
-              },
               "ramFront": {
                 "format": "Front",
                 "hotkey": "f",
                 "order": 1,
+                "tracking": {}
+              },
+              "ramBack": {
+                "format": "Back",
+                "hotkey": "b",
+                "order": 2,
                 "tracking": {}
               },
               "ramLeft": {
@@ -4640,20 +4645,20 @@
               "-": {
                 "order": 0
               },
-              "ramBack": {
-                "format": "Back",
-                "hotkey": "b",
-                "order": 2,
-                "tracking": {
-                  "ramBack": 1
-                }
-              },
               "ramFront": {
                 "format": "Front",
                 "hotkey": "f",
                 "order": 1,
                 "tracking": {
                   "ramFront": 1
+                }
+              },
+              "ramBack": {
+                "format": "Back",
+                "hotkey": "b",
+                "order": 2,
+                "tracking": {
+                  "ramBack": 1
                 }
               },
               "ramLeft": {
