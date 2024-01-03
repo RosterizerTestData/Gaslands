@@ -1,6 +1,6 @@
 {
   "name": "Gaslands",
-  "revision": "0.3.0",
+  "revision": "0.4.0",
   "game": "Gaslands Refuelled",
   "genre": "sci-fi",
   "publisher": "Osprey Games",
@@ -2848,11 +2848,14 @@
         },
         "text": "At the start of each game, this vehicle gains a random SPEED PERK. This perk is lost at the end of the game."
       },
-      "Roster§Team": {
+      "Roster§Roster": {
         "allowed": {
           "classifications": [
             "Vehicle"
           ]
+        },
+        "aspects": {
+          "Label": "Team"
         },
         "constraints": {
           "any": [
