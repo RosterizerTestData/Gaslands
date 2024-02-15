@@ -236,9 +236,7 @@
                   ]
                 ],
                 "value": [
-                  "{self}",
-                  "rules",
-                  "crew quarters",
+                  "{this}",
                   "evals",
                   "1",
                   "result",
@@ -732,9 +730,7 @@
                   ]
                 ],
                 "value": [
-                  "{self}",
-                  "rules",
-                  "n₂o addict",
+                  "{this}",
                   "evals",
                   "1",
                   "result",
@@ -943,9 +939,7 @@
                 "operator": "SUM",
                 "paths": [
                   [
-                    "{self}",
-                    "rules",
-                    "rusty's trailers",
+                    "{this}",
                     "evals",
                     [
                       "0",
@@ -4251,7 +4245,7 @@
                       "Vehicle—Restricted"
                     ],
                     "rules",
-                    "rusty's trailers",
+                    "rusty'sTrailers",
                     "return"
                   ]
                 ],
