@@ -1,6 +1,6 @@
 {
   "name": "Gaslands",
-  "revision": "0.4.0",
+  "revision": "0.4.1",
   "game": "Gaslands Refuelled",
   "genre": "sci-fi",
   "publisher": "Osprey Games",
@@ -77,7 +77,7 @@
       "Special Rule": {},
       "Sponsor Perk": {
         "aspects": {
-          "Type": "game piece",
+          "Type": "conceptual",
           "Visibility": "active"
         },
         "templateClass": "Perk"
@@ -116,7 +116,7 @@
           "Describe": true,
           "Group Includes": true,
           "Rename": true,
-          "Type": "conceptual"
+          "Type": "game piece"
         },
         "assets": {
           "traits": [
