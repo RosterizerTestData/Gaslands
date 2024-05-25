@@ -1,6 +1,6 @@
 {
   "name": "Gaslands",
-  "revision": "0.4.1",
+  "revision": "0.4.2",
   "game": "Gaslands Refuelled",
   "genre": "sci-fi",
   "publisher": "Osprey Games",
@@ -136,6 +136,9 @@
         "lineage": [
           "Vehicle"
         ],
+        "meta": {
+          "ttsDamageStat": "Hull"
+        },
         "rules": {
           "beverly": {
             "actions": [
